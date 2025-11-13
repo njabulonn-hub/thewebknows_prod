@@ -42,15 +42,15 @@ The site includes the following security headers:
 ### Example CSP
 
 ```html
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google; font-src 'self' data:; base-uri 'self'; form-action 'self';" />
 ```
 
 This CSP:
 - Allows scripts and styles from the same origin (with `unsafe-inline` for simplicity)
 - Allows images from same origin, data URIs, and HTTPS
 - Allows connections only to the specific API endpoints needed
-- Prevents framing (`frame-ancestors 'none'`)
 - Restricts base URI and form actions to same origin
+- Forbids framing when sent as an HTTP response header; note that browsers ignore `frame-ancestors` in `<meta http-equiv>` tags, so managed hosting should set this directive via headers instead
 
 ## Data Collection
 
