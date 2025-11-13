@@ -61,6 +61,8 @@ const ARTICLE_FOOTER_SCRIPTS = [
     '    <script src="/glossary-utils.js"></script>',
     '    <script src="/blog/articles-data.js"></script>',
     '    <script src="/blog/article.js"></script>',
+    '    <!-- Google AdSense (loaded lazily) -->',
+    '    <script src="/lazy-ads.js" defer></script>',
     '    <script src="/app.js" defer></script>'
 ];
 
@@ -708,9 +710,6 @@ function buildArticleHead(article) {
         '    <meta name="robots" content="index, follow" />',
         '',
         `    <link rel="canonical" href="${escapeAttribute(canonicalUrl)}" />`,
-        '',
-        '    <!-- Google AdSense -->',
-        '    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9160600423347839" crossorigin="anonymous"></script>',
         '',
         '    <meta property="og:type" content="article" />',
         '    <meta property="og:site_name" content="The Web Knows" />',
