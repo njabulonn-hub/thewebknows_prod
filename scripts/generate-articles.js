@@ -306,8 +306,7 @@ function generateArticleHtml(article, bodyHtml) {
     <title>${safeTitleText} | Privacy Insights | The Web Knows</title>
     <meta name="description" content="${safeDescriptionAttr}" />
     <link rel="canonical" href="${canonicalUrl}" />
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9160600423347839" crossorigin="anonymous"></script>
+    <!-- Google AdSense - Loaded after page load to avoid blocking render -->
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="The Web Knows" />
     <meta property="og:url" content="${canonicalUrl}" />
@@ -388,6 +387,16 @@ ${structuredDataJson}
     </footer>
 
     <script src="/app.js" defer></script>
+    <script>
+        // Defer AdSense script loading until after page load
+        window.addEventListener('load', function() {
+            var script = document.createElement('script');
+            script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9160600423347839';
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            document.head.appendChild(script);
+        });
+    </script>
 </body>
 </html>`;
 }
