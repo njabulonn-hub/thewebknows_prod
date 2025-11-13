@@ -2,10 +2,6 @@ User-agent: *
 Allow: /
 Sitemap: https://thewebknows.pages.dev/sitemap.xml
 
-# NOTE: Previously indicated "Content-Signal" metadata here, but the
-# syntax is not part of the robots.txt specification and caused
-# validation errors. The comment has been removed to keep the file
-# standards-compliant while preserving the intent in this explanation.
 User-agent: GPTBot
 Disallow: /
 
