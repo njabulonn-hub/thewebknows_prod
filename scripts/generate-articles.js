@@ -303,8 +303,6 @@ function generateArticleHtml(article, bodyHtml) {
     <title>${safeTitleText} | Privacy Insights | The Web Knows</title>
     <meta name="description" content="${safeDescriptionAttr}" />
     <link rel="canonical" href="${canonicalUrl}" />
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9160600423347839" crossorigin="anonymous"></script>
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="The Web Knows" />
     <meta property="og:url" content="${canonicalUrl}" />
@@ -384,6 +382,8 @@ ${structuredDataJson}
         </div>
     </footer>
 
+    <!-- Google AdSense (loaded lazily) -->
+    <script src="/lazy-ads.js" defer></script>
     <script src="/app.js" defer></script>
 </body>
 </html>`;
