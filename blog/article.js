@@ -1,508 +1,61 @@
-(function () {
-    'use strict';
-
-    const dynamicRoot = document.getElementById('article-root');
-    const staticArticle = dynamicRoot ? null : document.querySelector('.blog-article');
-
-    if (!dynamicRoot && !staticArticle) {
-        return;
-    }
-
-    const glossaryUtils = (typeof GlossaryUtils !== 'undefined' && GlossaryUtils) || null;
-    const glossaryEntries = (glossaryUtils && typeof glossaryUtils.createEntries === 'function' && Array.isArray(window.glossaryData))
-        ? glossaryUtils.createEntries(window.glossaryData)
-        : [];
-    const matchGlossaryEntries = glossaryUtils && typeof glossaryUtils.matchText === 'function'
-        ? glossaryUtils.matchText
-        : null;
-
-    function escapeHtml(value) {
-        return String(value ?? '')
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#39;');
-    }
-
-    function escapeAttribute(value) {
-        return String(value ?? '')
-            .replace(/&/g, '&amp;')
-            .replace(/"/g, '&quot;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;');
-    }
-
-    function buildLink(slug) {
-        if (!slug) {
-            return '/privacy-insights/';
-        }
-        return `/privacy-insights/${encodeURIComponent(slug)}/`;
-    }
-
-    function cssEscape(value) {
-        if (typeof CSS !== 'undefined' && typeof CSS.escape === 'function') {
-            return CSS.escape(value);
-        }
-        return String(value).replace(/[^a-zA-Z0-9_-]/g, '\\$&');
-    }
-
-    function getCanonicalOrigin() {
-        const canonicalLink = document.head.querySelector('link[rel="canonical"]');
-        if (canonicalLink && canonicalLink.href) {
-            try {
-                const url = new URL(canonicalLink.href, window.location.href);
-                if (url.origin && url.origin !== 'null') {
-                    return url.origin;
-                }
-            } catch (error) {
-                // fall back to other methods
-            }
-        }
-
-        try {
-            if (window.location && window.location.origin && window.location.origin !== 'null') {
-                return window.location.origin;
-            }
-        } catch (error) {
-            // ignore origin errors
-        }
-
-        return 'https://thewebknows.pages.dev';
-    }
-
-    const CANONICAL_ORIGIN = getCanonicalOrigin();
-
-    function ensureMetaName(name, content) {
-        if (!name || typeof content !== 'string') {
-            return;
-        }
-        let meta = document.head.querySelector(`meta[name="${cssEscape(name)}"]`);
-        if (!meta) {
-            meta = document.createElement('meta');
-            meta.setAttribute('name', name);
-            document.head.appendChild(meta);
-        }
-        meta.setAttribute('content', content);
-    }
-
-    function ensureMetaProperty(property, content) {
-        if (!property || typeof content !== 'string') {
-            return;
-        }
-        let meta = document.head.querySelector(`meta[property="${cssEscape(property)}"]`);
-        if (!meta) {
-            meta = document.createElement('meta');
-            meta.setAttribute('property', property);
-            document.head.appendChild(meta);
-        }
-        meta.setAttribute('content', content);
-    }
-
-    function ensureLinkRel(rel, href) {
-        if (!rel || typeof href !== 'string') {
-            return;
-        }
-        let link = document.head.querySelector(`link[rel="${cssEscape(rel)}"]`);
-        if (!link) {
-            link = document.createElement('link');
-            link.setAttribute('rel', rel);
-            document.head.appendChild(link);
-        }
-        link.setAttribute('href', href);
-    }
-
-
-    function buildMetaDescription(meta) {
-        const source = (meta && (meta.summary || meta.excerpt)) ? String(meta.summary || meta.excerpt).trim() : '';
-        if (!source) {
-            return '';
-        }
-        if (source.length <= 155) {
-            return source;
-        }
-        const truncated = source.slice(0, 155);
-        const cleaned = truncated.replace(/\s+[^\s]*$/, '');
-        return cleaned.length ? `${cleaned}...` : source;
-    }
-
-    function toIsoTimestamp(dateString) {
-        if (!dateString) {
-            return null;
-        }
-        const isoCandidate = `${dateString}T00:00:00.000Z`;
-        if (!Number.isNaN(Date.parse(isoCandidate))) {
-            return isoCandidate;
-        }
-        const parsed = new Date(dateString);
-        if (!Number.isNaN(parsed.getTime())) {
-            return parsed.toISOString();
-        }
-        return null;
-    }
-
-    function updateStructuredData(meta, canonicalUrl, description) {
-        if (!meta || !canonicalUrl) {
-            return;
-        }
-        const graph = [];
-        const articleId = `${canonicalUrl}#article`;
-        const hubUrl = `${CANONICAL_ORIGIN}/privacy-insights/`;
-        const isoDate = toIsoTimestamp(meta.lastUpdated);
-
-        graph.push({
-            '@type': 'Article',
-            '@id': articleId,
-            headline: meta.title || '',
-            description: description || '',
-            inLanguage: 'en',
-            isPartOf: {
-                '@id': `${hubUrl}#page`
-            },
-            mainEntityOfPage: {
-                '@id': canonicalUrl
-            },
-            articleSection: meta.category || '',
-            image: `${CANONICAL_ORIGIN}/og-image.png`,
-            author: {
-                '@type': 'Organization',
-                name: 'The Web Knows'
-            },
-            publisher: {
-                '@type': 'Organization',
-                name: 'The Web Knows',
-                logo: {
-                    '@type': 'ImageObject',
-                    url: `${CANONICAL_ORIGIN}/favicon.svg`
-                }
-            },
-            datePublished: isoDate || undefined,
-            dateModified: isoDate || undefined
-        });
-
-        graph.push({
-            '@type': 'BreadcrumbList',
-            '@id': `${canonicalUrl}#breadcrumbs`,
-            itemListElement: [
-                {
-                    '@type': 'ListItem',
-                    position: 1,
-                    name: 'Home',
-                    item: `${CANONICAL_ORIGIN}/`
-                },
-                {
-                    '@type': 'ListItem',
-                    position: 2,
-                    name: 'Privacy Insights',
-                    item: hubUrl
-                },
-                {
-                    '@type': 'ListItem',
-                    position: 3,
-                    name: meta.title || '',
-                    item: canonicalUrl
-                }
-            ]
-        });
-
-        let ldScript = document.head.querySelector('script[data-dynamic-article-ld]');
-        if (!ldScript) {
-            ldScript = document.createElement('script');
-            ldScript.type = 'application/ld+json';
-            ldScript.setAttribute('data-dynamic-article-ld', 'true');
-            document.head.appendChild(ldScript);
-        }
-        ldScript.textContent = JSON.stringify({
-            '@context': 'https://schema.org',
-            '@graph': graph
-        }, null, 2);
-    }
-
-    function applyHeadMetadata(meta) {
-        if (!meta || !meta.slug) {
-            return;
-        }
-
-        const canonicalUrl = `${CANONICAL_ORIGIN}${buildLink(meta.slug)}`;
-        const description = buildMetaDescription(meta);
-        const isoDate = toIsoTimestamp(meta.lastUpdated);
-
-        document.title = `${meta.title || 'Privacy Insights'} | Privacy Insights | The Web Knows`;
-
-        ensureMetaName('description', description || 'Explore privacy diagnostics and guides from The Web Knows.');
-        ensureLinkRel('canonical', canonicalUrl);
-
-        ensureMetaProperty('og:type', 'article');
-        ensureMetaProperty('og:site_name', 'The Web Knows');
-        ensureMetaProperty('og:url', canonicalUrl);
-        ensureMetaProperty('og:title', meta.title || 'Privacy Insights');
-        ensureMetaProperty('og:description', description || '');
-        ensureMetaProperty('og:image', `${CANONICAL_ORIGIN}/og-image.png`);
-
-        ensureMetaProperty('article:section', meta.category || '');
-        if (isoDate) {
-            ensureMetaProperty('article:published_time', isoDate);
-            ensureMetaProperty('article:modified_time', isoDate);
-        }
-
-        ensureMetaName('twitter:card', 'summary_large_image');
-        ensureMetaName('twitter:title', meta.title || 'Privacy Insights');
-        ensureMetaName('twitter:description', description || '');
-        ensureMetaName('twitter:image', `${CANONICAL_ORIGIN}/og-image.png`);
-        ensureMetaName('twitter:url', canonicalUrl);
-
-        updateStructuredData(meta, canonicalUrl, description);
-    }
-
-    function formatDate(dateString) {
-        const date = new Date(dateString);
-        if (Number.isNaN(date.getTime())) {
-            return dateString;
-        }
-        return date.toLocaleDateString('en-GB', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-    }
-
-    function findGlossaryMatches(meta, additionalText = '') {
-        if (!matchGlossaryEntries || !glossaryEntries.length || !meta) {
-            return [];
-        }
-        const sources = [
-            meta.title,
-            meta.excerpt,
-            Array.isArray(meta.keywords) ? meta.keywords.join(' ') : '',
-            meta.summary,
-            additionalText
-        ].filter(Boolean);
-        if (!sources.length) {
-            return [];
-        }
-        const combined = sources.join(' ');
-        const matches = matchGlossaryEntries(glossaryEntries, combined);
-        if (!Array.isArray(matches) || !matches.length) {
-            return [];
-        }
-        const unique = [];
-        const seen = new Set();
-        matches.forEach(entry => {
-            if (!entry) return;
-            const key = entry.slug || entry.id || entry.term;
-            if (!key || seen.has(key)) return;
-            seen.add(key);
-            unique.push(entry);
-        });
-        unique.sort((a, b) => a.term.localeCompare(b.term));
-        return unique.slice(0, 8);
-    }
-
-    function buildGlossarySection(matches) {
-        if (!Array.isArray(matches) || !matches.length) {
-            return '';
-        }
-
-        const items = matches.map(entry => {
-            const slug = entry.slug || entry.id || '';
-            const aliases = Array.isArray(entry.aliases) ? entry.aliases : [];
-            const aliasText = aliases.length
-                ? `<span class="article-glossary-term__aliases">Also known as: ${escapeHtml(aliases.join(', '))}</span>`
-                : '';
-            const glossaryHref = slug
-                ? `/glossary/#glossary-${escapeAttribute(slug)}`
-                : '/glossary/';
-
-            return `
-                <details class="article-glossary-term" data-term="${escapeAttribute(slug)}">
-                    <summary>
-                        <span class="article-glossary-term__name">${escapeHtml(entry.term)}</span>
-                        ${aliasText}
-                    </summary>
-                    <div class="article-glossary-term__body">
-                        <p>${escapeHtml(entry.definition)}</p>
-                        <p class="article-glossary-term__actions"><a href="${glossaryHref}">View in glossary</a></p>
-                    </div>
-                </details>
-            `;
-        }).join('');
-
-        return `
+(()=>{let s=document.getElementById("article-root"),c=s?null:document.querySelector(".blog-article");if(s||c){let n="undefined"!=typeof GlossaryUtils&&GlossaryUtils||null,r=n&&"function"==typeof n.createEntries&&Array.isArray(window.glossaryData)?n.createEntries(window.glossaryData):[],l=n&&"function"==typeof n.matchText?n.matchText:null,o=(()=>{var e=document.head.querySelector('link[rel="canonical"]');if(e&&e.href)try{var t=new URL(e.href,window.location.href);if(t.origin&&"null"!==t.origin)return t.origin}catch(e){}try{if(window.location&&window.location.origin&&"null"!==window.location.origin)return window.location.origin}catch(e){}return"https://thewebknows.pages.dev"})();function d(e){return String(e??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}function g(e){return String(e??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}function u(e){return e?`/privacy-insights/${encodeURIComponent(e)}/`:"/privacy-insights/"}function m(e){return"undefined"!=typeof CSS&&"function"==typeof CSS.escape?CSS.escape(e):String(e).replace(/[^a-zA-Z0-9_-]/g,"\\$&")}function p(t,i){if(t&&"string"==typeof i){let e=document.head.querySelector(`meta[name="${m(t)}"]`);e||((e=document.createElement("meta")).setAttribute("name",t),document.head.appendChild(e)),e.setAttribute("content",i)}}function h(t,i){if(t&&"string"==typeof i){let e=document.head.querySelector(`meta[property="${m(t)}"]`);e||((e=document.createElement("meta")).setAttribute("property",t),document.head.appendChild(e)),e.setAttribute("content",i)}}function y(e){var t;return e?(t=e+"T00:00:00.000Z",Number.isNaN(Date.parse(t))?(e=new Date(e),Number.isNaN(e.getTime())?null:e.toISOString()):t):null}function f(t){if(t&&t.slug){var i=""+o+u(t.slug),e=(a=(a=t)&&(a.summary||a.excerpt)?String(a.summary||a.excerpt).trim():"")?!(a.length<=155)&&(e=a.slice(0,155).replace(/\s+[^\s]*$/,"")).length?e+"...":a:"",a=y(t.lastUpdated),r=(document.title=`${t.title||"Privacy Insights"} | Privacy Insights | The Web Knows`,p("description",e||"Explore privacy diagnostics and guides from The Web Knows."),"canonical"),n=i;if(r&&"string"==typeof n){let e=document.head.querySelector(`link[rel="${m(r)}"]`);e||((e=document.createElement("link")).setAttribute("rel",r),document.head.appendChild(e)),e.setAttribute("href",n)}h("og:type","article"),h("og:site_name","The Web Knows"),h("og:url",i),h("og:title",t.title||"Privacy Insights"),h("og:description",e||""),h("og:image",o+"/og-image.png"),h("article:section",t.category||""),a&&(h("article:published_time",a),h("article:modified_time",a)),p("twitter:card","summary_large_image"),p("twitter:title",t.title||"Privacy Insights"),p("twitter:description",e||""),p("twitter:image",o+"/og-image.png"),p("twitter:url",i);r=t,n=i,a=e;if(r&&n){var t=[],i=n+"#article",l=o+"/privacy-insights/",s=y(r.lastUpdated);t.push({"@type":"Article","@id":i,headline:r.title||"",description:a||"",inLanguage:"en",isPartOf:{"@id":l+"#page"},mainEntityOfPage:{"@id":n},articleSection:r.category||"",image:o+"/og-image.png",author:{"@type":"Organization",name:"The Web Knows"},publisher:{"@type":"Organization",name:"The Web Knows",logo:{"@type":"ImageObject",url:o+"/favicon.svg"}},datePublished:s||void 0,dateModified:s||void 0}),t.push({"@type":"BreadcrumbList","@id":n+"#breadcrumbs",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:o+"/"},{"@type":"ListItem",position:2,name:"Privacy Insights",item:l},{"@type":"ListItem",position:3,name:r.title||"",item:n}]});let e=document.head.querySelector("script[data-dynamic-article-ld]");e||((e=document.createElement("script")).type="application/ld+json",e.setAttribute("data-dynamic-article-ld","true"),document.head.appendChild(e)),e.textContent=JSON.stringify({"@context":"https://schema.org","@graph":t},null,2)}}}function b(e,t=""){if(!l||!r.length||!e)return[];e=[e.title,e.excerpt,Array.isArray(e.keywords)?e.keywords.join(" "):"",e.summary,t].filter(Boolean);if(!e.length)return[];t=e.join(" "),e=l(r,t);if(!Array.isArray(e)||!e.length)return[];let i=[],a=new Set;return e.forEach(e=>{var t;e&&(t=e.slug||e.id||e.term)&&!a.has(t)&&(a.add(t),i.push(e))}),i.sort((e,t)=>e.term.localeCompare(t.term)),i.slice(0,8)}function A(e){return Array.isArray(e)&&e.length?`
             <section class="blog-article__glossary">
                 <h2>Glossary Terms Mentioned</h2>
                 <div class="article-glossary-list">
-                    ${items}
+                    ${e.map(e=>{var t=e.slug||e.id||"",i=Array.isArray(e.aliases)?e.aliases:[],i=i.length?`<span class="article-glossary-term__aliases">Also known as: ${d(i.join(", "))}</span>`:"",a=t?"/glossary/#glossary-"+g(t):"/glossary/";return`
+                <details class="article-glossary-term" data-term="${g(t)}">
+                    <summary>
+                        <span class="article-glossary-term__name">${d(e.term)}</span>
+                        ${i}
+                    </summary>
+                    <div class="article-glossary-term__body">
+                        <p>${d(e.definition)}</p>
+                        <p class="article-glossary-term__actions"><a href="${a}">View in glossary</a></p>
+                    </div>
+                </details>
+            `}).join("")}
                 </div>
             </section>
-        `;
-    }
-
-    function buildRelatedSection(relatedSlugs) {
-        const relatedList = Array.isArray(relatedSlugs) ? relatedSlugs : [];
-        const items = [];
-        const seen = new Set();
-
-        if (Array.isArray(ARTICLES_DATA)) {
-            relatedList.forEach(slug => {
-                if (!slug || seen.has(slug)) {
-                    return;
-                }
-                const related = ARTICLES_DATA.find(article => article.slug === slug);
-                if (!related) {
-                    return;
-                }
-                seen.add(slug);
-                const href = glossaryUtils && typeof glossaryUtils.buildArticleUrl === 'function'
-                    ? glossaryUtils.buildArticleUrl(related.slug, { prefix: './' })
-                    : buildLink(related.slug);
-                items.push(`<li><a href="${escapeAttribute(href)}">${escapeHtml(related.title)}</a></li>`);
-            });
-        }
-
-        if (!items.length) {
-            return '';
-        }
-
-        return `
+        `:""}function v(e){e=Array.isArray(e)?e:[];let a=[],r=new Set;return Array.isArray(ARTICLES_DATA)&&e.forEach(t=>{var e,i;t&&!r.has(t)&&(e=ARTICLES_DATA.find(e=>e.slug===t))&&(r.add(t),i=n&&"function"==typeof n.buildArticleUrl?n.buildArticleUrl(e.slug,{prefix:"./"}):u(e.slug),a.push(`<li><a href="${g(i)}">${d(e.title)}</a></li>`))}),a.length?`
             <aside class="blog-article__related">
                 <h2>Related Articles</h2>
                 <ul class="related-articles-list">
-                    ${items.join('')}
+                    ${a.join("")}
                 </ul>
             </aside>
-        `;
-    }
-
-    function renderError(message) {
-        if (!dynamicRoot) {
-            return;
-        }
-        dynamicRoot.innerHTML = `
+        `:""}function w(e){s&&(s.innerHTML=`
             <div class="blog-article__content">
                 <h1>Article not found</h1>
-                <p>${message}</p>
+                <p>${e}</p>
                 <p><a href="/privacy-insights/" class="btn btn-primary">Back to Privacy Insights</a></p>
             </div>
-        `;
-        dynamicRoot.classList.remove('placeholder-article');
-        dynamicRoot.setAttribute('aria-busy', 'false');
-    }
-
-    function enhanceStaticArticle(meta) {
-        if (!staticArticle || !meta) {
-            return;
-        }
-        const contentEl = staticArticle.querySelector('.blog-article__content');
-        const bodyText = contentEl ? contentEl.textContent || '' : '';
-        const glossaryMatches = findGlossaryMatches(meta, bodyText);
-        const glossaryMarkup = buildGlossarySection(glossaryMatches);
-        const relatedMarkup = buildRelatedSection(meta.relatedArticles || []);
-
-        if (glossaryMarkup && !staticArticle.querySelector('.blog-article__glossary')) {
-            staticArticle.insertAdjacentHTML('beforeend', glossaryMarkup);
-        }
-
-        if (relatedMarkup && !staticArticle.querySelector('.blog-article__related')) {
-            staticArticle.insertAdjacentHTML('beforeend', relatedMarkup);
-        }
-    }
-
-    function renderDynamicArticle(meta) {
-        if (!dynamicRoot) {
-            return;
-        }
-        applyHeadMetadata(meta);
-        const { title, category, lastUpdated, readingTime, excerpt, relatedArticles = [] } = meta;
-        const safeTitle = escapeHtml(title);
-        const safeCategory = escapeHtml(category);
-        const safeExcerpt = escapeHtml(excerpt);
-        const glossaryMatches = findGlossaryMatches(meta);
-        const glossarySection = buildGlossarySection(glossaryMatches);
-        const relatedSection = buildRelatedSection(relatedArticles);
-
-        dynamicRoot.innerHTML = `
+        `,s.classList.remove("placeholder-article"),s.setAttribute("aria-busy","false"))}function _(e){var t,i,a,r,n,l;s&&(f(e),{title:l,category:n,lastUpdated:t,readingTime:i,excerpt:a,relatedArticles:r=[]}=e,l=d(l),n=d(n),a=d(a),e=A(b(e)),r=v(r),s.innerHTML=`
             <nav class="breadcrumb" aria-label="Breadcrumb">
                 <ol class="breadcrumb-list">
                     <li><a href="../">Home</a></li>
                 <li><a href="/privacy-insights/">Insights</a></li>
-                    <li aria-current="page">${safeTitle}</li>
+                    <li aria-current="page">${l}</li>
                 </ol>
             </nav>
 
             <header class="blog-article__header">
-                <p class="blog-article__category">${safeCategory}</p>
-                <h1 class="blog-article__title">${safeTitle}</h1>
+                <p class="blog-article__category">${n}</p>
+                <h1 class="blog-article__title">${l}</h1>
                 <div class="blog-article__meta">
-                    <time datetime="${lastUpdated}">${formatDate(lastUpdated)}</time>
-                    <span class="blog-article__reading-time">${readingTime} min read</span>
+                    <time datetime="${t}">${n=t,l=new Date(n),Number.isNaN(l.getTime())?n:l.toLocaleDateString("en-GB",{year:"numeric",month:"long",day:"numeric"})}</time>
+                    <span class="blog-article__reading-time">${i} min read</span>
                 </div>
             </header>
 
             <section class="blog-article__content">
                 <h2>Summary</h2>
-                <p>${safeExcerpt}</p>
+                <p>${a}</p>
                 <div class="info-card-note">
                     <p><strong>Full article coming soon.</strong></p>
                     <p>We're still polishing the deep dive for this topic. Check back shortly or explore the related guides below.</p>
                 </div>
             </section>
 
-            ${glossarySection}
-            ${relatedSection}
-        `;
-
-        dynamicRoot.classList.remove('placeholder-article');
-        dynamicRoot.setAttribute('aria-busy', 'false');
-    }
-
-    function init() {
-        if (!dynamicRoot && staticArticle) {
-            if (typeof ARTICLES_DATA === 'undefined') {
-                return;
-            }
-            const pathMatch = window.location.pathname.match(/\/privacy-insights\/([^/]+)\/?$/) ||
-                window.location.pathname.match(/\/blog\/([^/.]+)\.html?$/);
-            const slug = pathMatch ? pathMatch[1] : null;
-            if (!slug) {
-                return;
-            }
-            const meta = ARTICLES_DATA.find(article => article.slug === slug);
-            if (meta) {
-                enhanceStaticArticle(meta);
-            }
-            return;
-        }
-
-        if (!dynamicRoot) {
-            return;
-        }
-
-        const params = new URLSearchParams(window.location.search);
-        const slug = params.get('slug');
-
-        if (!slug) {
-            renderError('No article was specified. Please choose a guide from the Privacy Insights section.');
-            return;
-        }
-
-        if (typeof ARTICLES_DATA === 'undefined') {
-            renderError('Article data failed to load. Please refresh the page.');
-            return;
-        }
-
-        const meta = ARTICLES_DATA.find(article => article.slug === slug);
-        if (!meta) {
-            renderError('We couldn’t find that article. It may have moved or been renamed.');
-            return;
-        }
-
-        renderDynamicArticle(meta);
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
-})();
-
+            ${e}
+            ${r}
+        `,s.classList.remove("placeholder-article"),s.setAttribute("aria-busy","false"))}function e(){if(!s&&c){if("undefined"==typeof ARTICLES_DATA)return;var i=window.location.pathname.match(/\/privacy-insights\/([^/]+)\/?$/)||window.location.pathname.match(/\/blog\/([^/.]+)\.html?$/);let t=i?i[1]:null;if(!t)return;let e=ARTICLES_DATA.find(e=>e.slug===t);void(e&&(i=e,c)&&i&&(a=A(b(i,(a=c.querySelector(".blog-article__content"))&&a.textContent||"")),i=v(i.relatedArticles||[]),a&&!c.querySelector(".blog-article__glossary")&&c.insertAdjacentHTML("beforeend",a),i)&&!c.querySelector(".blog-article__related")&&c.insertAdjacentHTML("beforeend",i))}else{var a;if(s){let t=new URLSearchParams(window.location.search).get("slug");if(t)if("undefined"==typeof ARTICLES_DATA)w("Article data failed to load. Please refresh the page.");else{let e=ARTICLES_DATA.find(e=>e.slug===t);e?_(e):w("We couldn’t find that article. It may have moved or been renamed.")}else w("No article was specified. Please choose a guide from the Privacy Insights section.")}}}"loading"===document.readyState?document.addEventListener("DOMContentLoaded",e):e()}})();
