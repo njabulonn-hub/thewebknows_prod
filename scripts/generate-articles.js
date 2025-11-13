@@ -298,11 +298,13 @@ function generateArticleHtml(article, bodyHtml) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com; font-src 'self' data:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>${safeTitleText} | Privacy Insights | The Web Knows</title>
     <meta name="description" content="${safeDescriptionAttr}" />
     <link rel="canonical" href="${canonicalUrl}" />
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9160600423347839" crossorigin="anonymous"></script>
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="The Web Knows" />
     <meta property="og:url" content="${canonicalUrl}" />
