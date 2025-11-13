@@ -696,7 +696,7 @@ function buildArticleHead(article) {
         '<head>',
         '    <meta charset="UTF-8" />',
         '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
-        "    <meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google https://pagead2.googlesyndication.com; font-src 'self' data:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';\" />",
+        "    <meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google https://pagead2.googlesyndication.com; font-src 'self' data:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; base-uri 'self'; form-action 'self';\" />",
         '    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />',
         '    <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=()" />',
         '    <meta http-equiv="X-Content-Type-Options" content="nosniff" />',
