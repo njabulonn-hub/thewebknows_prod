@@ -28,7 +28,7 @@ const glossaryHtmlPath = resolveFirstExistingPath([
     path.join(rootDir, 'glossary.html')
 ]);
 
-const SITE_ORIGIN = 'https://thewebknows.pages.dev';
+const SITE_ORIGIN = 'https://thewebknows.com';
 const HOME_URL = `${SITE_ORIGIN}/`;
 const INSIGHTS_URL = `${SITE_ORIGIN}/privacy-insights/`;
 const GLOSSARY_URL = `${SITE_ORIGIN}/glossary/`;
@@ -698,7 +698,7 @@ function buildArticleHead(article) {
         '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
         "    <meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://static.cloudflareinsights.com https://ep2.adtrafficquality.google; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com; font-src 'self' data:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep2.adtrafficquality.google https://*.google.com; base-uri 'self'; form-action 'self';\" />",
         '    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />',
-        '    <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=()" />',
+        '    <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), browsing-topics=(self)" />',
         '    <meta http-equiv="X-Content-Type-Options" content="nosniff" />',
         '',
         '    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />',

@@ -4,7 +4,7 @@ const path = require('path');
 const DATA_PATH = path.join(__dirname, '..', 'blog', 'articles-data.js');
 const SOURCE_MARKDOWN = path.join(__dirname, '..', 'blog', 'articles-expanded.md');
 const OUTPUT_DIR = path.join(__dirname, '..', 'privacy-insights');
-const SITE_ORIGIN = 'https://thewebknows.pages.dev';
+const SITE_ORIGIN = 'https://thewebknows.com';
 
 const THEME_PREFLIGHT_SCRIPT = `    <script>
         (function() {
@@ -299,6 +299,9 @@ function generateArticleHtml(article, bodyHtml) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://static.cloudflareinsights.com https://ep2.adtrafficquality.google; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com; font-src 'self' data:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep2.adtrafficquality.google https://*.google.com; base-uri 'self'; form-action 'self';" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), browsing-topics=(self)" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>${safeTitleText} | Privacy Insights | The Web Knows</title>
     <meta name="description" content="${safeDescriptionAttr}" />
