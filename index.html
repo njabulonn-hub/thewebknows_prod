@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="geolocation=(self), camera=(), microphone=(), browsing-topics=(self)" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- SEO Meta Tags -->
+    <title>What Websites Already Know About You | The Web Knows</title>
+    <meta name="description" content="Run a privacy check: see the IP, ISP, browser, and fingerprint data websites can already see—explained in plain English." />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://thewebknows.pages.dev/" />
+    <meta property="og:title" content="The Web Knows – Privacy Diagnostics" />
+    <meta property="og:description" content="Plain-English privacy diagnostics & guides." />
+    <meta property="og:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://thewebknows.pages.dev/" />
+    <meta name="twitter:title" content="The Web Knows – Privacy Diagnostics" />
+    <meta name="twitter:description" content="Plain-English privacy diagnostics & guides." />
+    <meta name="twitter:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta name="twitter:image:alt" content="Illustration representing The Web Knows privacy diagnostics" />
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://thewebknows.pages.dev/" />
+    <script>
+        (function() {
+            try {
+                if (window.location.hostname === 'thewebknows.pages.dev' && window.location.protocol !== 'https:') {
+                    window.location.replace('https://' + window.location.host + window.location.pathname + window.location.search + window.location.hash);
+                }
+            } catch (error) {
+                console.warn('HTTPS redirect check failed:', error);
+            }
+        }());
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebSite",
+                    "@id": "https://thewebknows.pages.dev/#website",
+                    "url": "https://thewebknows.pages.dev/",
+                    "name": "The Web Knows",
+                    "description": "Plain-English privacy diagnostics & guides.",
+                    "inLanguage": "en",
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": "https://thewebknows.pages.dev/?q={search_term_string}",
+                        "query-input": "required name=search_term_string"
+                    }
+                },
+                {
+                    "@type": "WebPage",
+                    "@id": "https://thewebknows.pages.dev/#webpage",
+                    "url": "https://thewebknows.pages.dev/",
+                    "name": "What Websites Already Know About You | The Web Knows",
+                    "description": "Run a privacy check: see the IP, ISP, browser, and fingerprint data websites can already see—explained in plain English.",
+                    "isPartOf": {
+                        "@id": "https://thewebknows.pages.dev/#website"
+                    },
+                    "datePublished": "2024-02-15",
+                    "dateModified": "2025-11-10"
+                }
+            ]
+        }
+    </script>
+    
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/info-metadata.js"></script>
+</head>
+<body>
+    <noscript>
+        <div class="noscript-banner">
+            <p>This site requires JavaScript to display your live diagnostics, but you can still review what the scan covers.</p>
+            <ul>
+                <li>Public IPv4/IPv6 addresses, ISP, ASN, and IP-based city detection.</li>
+                <li>Browser fingerprint traits such as user agent, screen size, GPU, installed fonts, cookies, and storage flags.</li>
+                <li>Advertising privacy signals including Chrome Topics, ad personalization toggles, and Global Privacy Control.</li>
+            </ul>
+            <p>Enable JavaScript when you are ready to view your personalized results.</p>
+        </div>
+    </noscript>
+    
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/" aria-current="page">Report</a>
+                <a class="nav-link" href="/privacy-insights/">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+
+        <section class="intro-hero">
+            <div class="intro-hero__layout">
+                <div class="intro-hero__content">
+                    <h1 class="intro-hero__title">What Websites Already Know About You</h1>
+                </div>
+                <div class="intro-hero__highlight">
+                    <p class="intro-hero__lede">We've <strong>scanned</strong> your device and compiled what websites can readily <strong>see about you</strong> and your device.<br><br>Use the "<strong>Learn More</strong>" links to understand each data point, how it's typically used and <strong>practical implications</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Network Section -->
+        <section class="info-card" aria-labelledby="network-heading">
+            <div class="info-card__intro info-card__intro--split">
+                <div class="info-card__intro-content">
+                    <h2 id="network-heading" data-section-number="01">Network <span class="section-subtitle">What the internet sees about your connection</span></h2>
+                </div>
+                <!-- <div class="info-card__intro-highlight">
+                    <p class="section-intro">Use this IP address checker to confirm the public IPv4 or IPv6 your network broadcasts, verify ISP ownership, and understand the location data other sites rely on.</p>
+                </div> -->
+            </div>
+                <div class="info-item">
+                    <span class="info-label">Public IP (IPv4)</span>
+                    <span class="info-value" aria-live="polite" id="ipv4">Detecting your public IPv4 address so you can confirm what the web sees.</span>
+                    <details class="info-explanation-collapsible">
+                        <summary>Learn More <span class="collapse-icon">+</span></summary>
+                        <div class="info-explanation">
+                            <h4>What is a public IPv4 Address?</h4>
+                            <p id="ipv4-explanation">IPv4 addresses are 32-bit numbers written as four decimals separated by dots (for example 192.0.2.1). The format supports about 4.3 billion unique connections and still powers most of the public internet.</p>
+                            <h4>How is your Public IP Address used legitimately?</h4>
+                            <p id="ipv4-legal">Legitimate services rely on IPv4 for routing, meeting regional content rules, detecting fraud, and tailoring content to your location.</p>
+                            <h4>How could your Public IP Address be used maliciously?</h4>
+                            <p id="ipv4-malicious">Attackers combine IPv4 with other signals to profile you, launch targeted attacks, or approximate where you live or work.</p>
+                            <h4>Is this accurate?</h4>
+                            <p id="ipv4-accuracy">This value is known because it is the exact IPv4 address your connection broadcasts to every site you visit.</p>
+                            <h4>Can I hide my Public IP Address?</h4>
+                            <p id="ipv4-hide">Use a trustworthy VPN, proxy, or privacy network to mask your IPv4 address. Remember that VPN providers can still see your real address and some services block shared VPN ranges.</p>
+                        </div>
+                    </details>
+                </div>
+            <div class="info-item">
+                <span class="info-label">Public IP (IPv6)</span>
+                <span class="info-value" aria-live="polite" id="ipv6">Detecting whether your connection advertises an IPv6 address alongside IPv4.</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation">
+                    <h4>What is a public IPv6 Address?</h4>
+                    <p id="ipv6-explanation">IPv6 addresses are 128-bit numbers written as eight groups of hexadecimal characters separated by colons. The space holds roughly 340 undecillion addresses, removing the supply crunch seen with IPv4.</p>
+                    <h4>How is your Public IPv6 Address used legitimately?</h4>
+                    <p id="ipv6-legal">IPv6 performs the same routing, compliance, and device-assignment duties as IPv4 while supporting the billions of devices connected to the modern internet.</p>
+                    <h4>How could your Public IPv6 Address be used maliciously?</h4>
+                    <p id="ipv6-malicious">Exposed IPv6 addresses can be combined with other telemetry for tracking or to target attacks at your network.</p>
+                    <h4>Is this accurate?</h4>
+                    <p id="ipv6-accuracy">This is known when your ISP enables IPv6. If nothing appears, your provider is not broadcasting IPv6 to the web.</p>
+                    <h4>Can I hide my Public IPv6 Address?</h4>
+                    <p id="ipv6-hide">Use a VPN that supports IPv6 or disable IPv6 on your device or router if you do not want the address exposed.</p>
+                </div></details></div>
+            </div>
+            <div class="info-item">
+                <span class="info-label">ISP / ASN</span>
+                <span class="info-value" aria-live="polite" id="isp">Identifying the ISP and autonomous system number linked to your IP address.</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation">
+                    <h4>What are your ISP and ASN?</h4>
+                    <p id="isp-explanation">Your Internet Service Provider is the company delivering your connection, while the Autonomous System Number identifies the network that announces your traffic to the internet.</p>
+                    <h4>How are your ISP and ASN used legitimately?</h4>
+                    <p id="isp-legal">Websites use this data to understand connection quality, apply local licensing rules, detect VPNs, and tailor experiences to home or business networks.</p>
+                    <h4>How could your ISP and ASN be used maliciously?</h4>
+                    <p id="isp-malicious">Attackers can cross-reference ISP data to guess your location, profile customers of a provider, or target vulnerabilities affecting that network.</p>
+                    <h4>Is this accurate?</h4>
+                    <p id="isp-accuracy">This information is known and drawn from public routing databases that map IP ranges to ISPs.</p>
+                    <h4>Can I hide my ISP or ASN?</h4>
+                    <p id="isp-hide">Connecting through a VPN or privacy relay will show the VPN operator instead of your residential ISP.</p>
+                </div></details></div>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Location (IP-based)</span>
+                <span class="info-value" aria-live="polite" id="location">Estimating your city and region from public IP geolocation databases.</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation">
+                    <h4>What is your IP-based location?</h4>
+                    <p id="location-explanation">This is an IP-based guess at your location that is typically accurate to the city or metro area but not to a precise street address.</p>
+                    <h4>How is your IP-based location used legitimately?</h4>
+                    <p id="location-legal">Websites use location to localize pricing, language, compliance messages, and fraud controls.</p>
+                    <h4>How could your IP-based location be used maliciously?</h4>
+                    <p id="location-malicious">Bad actors can combine this with other data points to stalk targets, launch region-specific scams, or infer daily habits.</p>
+                    <h4>Is this accurate?</h4>
+                    <p id="location-accuracy">This is inferred from commercial geolocation databases and can be wrong, especially when you use VPNs or corporate routes.</p>
+                    <h4>Can I hide my IP-based location?</h4>
+                    <p id="location-hide">A VPN or privacy relay can make it appear that you are in a different city; keep in mind this may impact access to localized services.</p>
+                </div></details></div>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Referrer</span>
+                <span class="info-value" aria-live="polite" id="referrer">Capturing the referring page or noting when privacy settings strip the referrer header.</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation">
+                    <h4>What is your referrer?</h4>
+                    <p id="referrer-explanation">The referrer reveals which site or search engine sent you here; it is automatically shared when you click most links.</p>
+                    <h4>How is your referrer used legitimately?</h4>
+                    <p id="referrer-legal">Websites analyze referrers to understand acquisition channels, pay affiliates, and fix navigation issues.</p>
+                    <h4>How could your referrer be used maliciously?</h4>
+                    <p id="referrer-malicious">Referrers can expose sensitive query strings or reveal your browsing habits when tracked across multiple sites.</p>
+                    <h4>Is this accurate?</h4>
+                    <p id="referrer-accuracy">Referrer values are known because browsers send them automatically unless a privacy control removes the header.</p>
+                    <h4>Can I hide my referrer?</h4>
+                    <p id="referrer-hide">Most modern browsers and privacy extensions can strip referrers; note that doing so may affect affiliate attribution or break some embedded content.</p>
+                </div></details></div>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Network type (guess)</span><span class="info-value" aria-live="polite" id="network-type">Guessing whether your IP looks residential, mobile, or like a VPN exit.</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What does your network type guess mean?</h4>
+                        <p id="network-type-explanation">We compare your ISP name with known residential, mobile, and hosting providers to infer whether your traffic resembles a home line or anonymized relay.</p>
+                        <h4>How is your network type guess used legitimately?</h4>
+                        <p id="network-type-legal">Legitimate businesses use this signal to trigger extra anti-fraud checks, throttle automated bots, or adapt experiences for corporate networks.</p>
+                        <h4>How could your network type guess be used maliciously?</h4>
+                        <p id="network-type-malicious">Malicious actors may flag VPN usage, craft more believable phishing lures, or bypass security settings aimed specifically at residential users.</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="network-type-accuracy">This is an educated guess based on naming patterns and may mislabel niche or newly announced networks.</p>
+                        <h4>Can I change my network type guess?</h4>
+                        <p id="network-type-hide">Because the label is inferred, the only way to change it is to switch providers or use a VPN that mimics a residential connection.</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Reverse DNS</span><span class="info-value" aria-live="polite" id="reverse-dns">Checking the hostname attached to your IP address, when one exists.</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your reverse DNS hostname?</h4>
+                        <p id="reverse-dns-explanation">Reverse DNS looks up a readable hostname from your IP, similar to looking up a phone number to learn the caller name.</p>
+                        <h4>How is your reverse DNS hostname used legitimately?</h4>
+                        <p id="reverse-dns-legal">Network teams rely on reverse DNS for email authentication, traffic routing, and debugging connectivity issues.</p>
+                        <h4>How could your reverse DNS hostname be used maliciously?</h4>
+                        <p id="reverse-dns-malicious">Attackers can inspect the hostname to learn which ISP you use or whether other devices share the same network.</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="reverse-dns-accuracy">It is known only if your ISP publishes a reverse DNS record; many residential IPs do not have one.</p>
+                        <h4>Can I hide my reverse DNS hostname?</h4>
+                        <p id="reverse-dns-hide">You cannot edit reverse DNS directly, but using a VPN will surface the VPN provider’s hostname instead.</p></div></details>
+            </div>
+        </section>
+
+        <!-- Browser & Device Section -->
+        <section class="info-card" aria-labelledby="browser-heading">
+            <div class="info-card__intro info-card__intro--split">
+                <div class="info-card__intro-content">
+                    <h2 id="browser-heading" data-section-number="02">Browser & Device <span class="section-subtitle">Information your browser shares automatically</span></h2>
+                </div>
+                <!-- <div class="info-card__intro-highlight">
+                    <p class="section-intro">Run this browser fingerprint test to see the user agent, OS, languages, screen size, and display traits exposed before you click anything.</p>
+                </div> -->
+            </div>
+            <div class="info-item">
+                <span class="info-label">Browser & version</span><span class="info-value" aria-live="polite" id="browser">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your browser and version?</h4>
+                        <p id="browser-explanation">—</p>
+                        <h4>How is your browser information used legitimately?</h4>
+                        <p id="browser-legal">—</p>
+                        <h4>How could your browser information be used maliciously?</h4>
+                        <p id="browser-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="browser-accuracy">—</p>
+                        <h4>Can I hide my browser information?</h4>
+                        <p id="browser-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Operating system</span><span class="info-value" aria-live="polite" id="os">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your operating system?</h4>
+                        <p id="os-explanation">—</p>
+                        <h4>How is your operating system information used legitimately?</h4>
+                        <p id="os-legal">—</p>
+                        <h4>How could your operating system information be used maliciously?</h4>
+                        <p id="os-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="os-accuracy">—</p>
+                        <h4>Can I hide my operating system information?</h4>
+                        <p id="os-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Preferred languages</span><span class="info-value" aria-live="polite" id="languages">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What are your preferred languages?</h4>
+                        <p id="languages-explanation">—</p>
+                        <h4>How are your preferred languages used legitimately?</h4>
+                        <p id="languages-legal">—</p>
+                        <h4>How could your preferred languages be used maliciously?</h4>
+                        <p id="languages-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="languages-accuracy">—</p>
+                        <h4>Can I hide my preferred languages?</h4>
+                        <p id="languages-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Time zone</span><span class="info-value" aria-live="polite" id="timezone">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your time zone?</h4>
+                        <p id="timezone-explanation">—</p>
+                        <h4>How is your time zone used legitimately?</h4>
+                        <p id="timezone-legal">—</p>
+                        <h4>How could your time zone be used maliciously?</h4>
+                        <p id="timezone-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="timezone-accuracy">—</p>
+                        <h4>Can I hide my time zone?</h4>
+                        <p id="timezone-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Local time</span><span class="info-value" aria-live="polite" id="local-time">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your local time?</h4>
+                        <p id="local-time-explanation">—</p>
+                        <h4>How is your local time used legitimately?</h4>
+                        <p id="local-time-legal">—</p>
+                        <h4>How could your local time be used maliciously?</h4>
+                        <p id="local-time-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="local-time-accuracy">—</p>
+                        <h4>Can I hide my local time?</h4>
+                        <p id="local-time-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Device type</span><span class="info-value" aria-live="polite" id="device-type">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your device type?</h4>
+                        <p id="device-type-explanation">—</p>
+                        <h4>How is your device type used legitimately?</h4>
+                        <p id="device-type-legal">—</p>
+                        <h4>How could your device type be used maliciously?</h4>
+                        <p id="device-type-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="device-type-accuracy">—</p>
+                        <h4>Can I hide my device type?</h4>
+                        <p id="device-type-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Screen size</span><span class="info-value" aria-live="polite" id="screen-size">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your screen size?</h4>
+                        <p id="screen-size-explanation">—</p>
+                        <h4>How is your screen size used legitimately?</h4>
+                        <p id="screen-size-legal">—</p>
+                        <h4>How could your screen size be used maliciously?</h4>
+                        <p id="screen-size-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="screen-size-accuracy">—</p>
+                        <h4>Can I hide my screen size?</h4>
+                        <p id="screen-size-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Viewport</span><span class="info-value" aria-live="polite" id="viewport">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your viewport size?</h4>
+                        <p id="viewport-explanation">—</p>
+                        <h4>How is your viewport size used legitimately?</h4>
+                        <p id="viewport-legal">—</p>
+                        <h4>How could your viewport size be used maliciously?</h4>
+                        <p id="viewport-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="viewport-accuracy">—</p>
+                        <h4>Can I hide my viewport size?</h4>
+                        <p id="viewport-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Pixel ratio</span><span class="info-value" aria-live="polite" id="pixel-ratio">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your device pixel ratio?</h4>
+                        <p id="pixel-ratio-explanation">—</p>
+                        <h4>How is your device pixel ratio used legitimately?</h4>
+                        <p id="pixel-ratio-legal">—</p>
+                        <h4>How could your device pixel ratio be used maliciously?</h4>
+                        <p id="pixel-ratio-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="pixel-ratio-accuracy">—</p>
+                        <h4>Can I hide my device pixel ratio?</h4>
+                        <p id="pixel-ratio-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Color depth</span><span class="info-value" aria-live="polite" id="color-depth">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your color depth?</h4>
+                        <p id="color-depth-explanation">—</p>
+                        <h4>How is your color depth used legitimately?</h4>
+                        <p id="color-depth-legal">—</p>
+                        <h4>How could your color depth be used maliciously?</h4>
+                        <p id="color-depth-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="color-depth-accuracy">—</p>
+                        <h4>Can I hide my color depth?</h4>
+                        <p id="color-depth-hide">—</p></div></details>
+            </div>
+        </section>
+
+        <!-- System Section -->
+        <section class="info-card" aria-labelledby="system-heading">
+            <div class="info-card__intro info-card__intro--split">
+                <div class="info-card__intro-content">
+                    <h2 id="system-heading" data-section-number="03">System <span class="section-subtitle">Hardware information (best available)</span></h2>
+                </div>
+                <!-- <div class="info-card__intro-highlight">
+                    <p class="section-intro">See the hardware identifiers—CPU threads, RAM, and GPU—that power device fingerprinting checks and performance tuning decisions.</p>
+                </div> -->
+            </div>
+            <div class="info-item">
+                <span class="info-label">CPU threads</span><span class="info-value" aria-live="polite" id="cpu-threads">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your CPU thread count?</h4>
+                        <p id="cpu-threads-explanation">—</p>
+                        <h4>How is your CPU thread count used legitimately?</h4>
+                        <p id="cpu-threads-legal">—</p>
+                        <h4>How could your CPU thread count be used maliciously?</h4>
+                        <p id="cpu-threads-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="cpu-threads-accuracy">—</p>
+                        <h4>Can I hide my CPU thread count?</h4>
+                        <p id="cpu-threads-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">RAM estimate</span><span class="info-value" aria-live="polite" id="ram">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your estimated RAM?</h4>
+                        <p id="ram-explanation">—</p>
+                        <h4>How is your RAM estimate used legitimately?</h4>
+                        <p id="ram-legal">—</p>
+                        <h4>How could your RAM estimate be used maliciously?</h4>
+                        <p id="ram-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="ram-accuracy">—</p>
+                        <h4>Can I hide my RAM estimate?</h4>
+                        <p id="ram-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Graphics</span><span class="info-value" aria-live="polite" id="graphics">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your graphics hardware?</h4>
+                        <p id="graphics-explanation">—</p>
+                        <h4>How is your graphics hardware information used legitimately?</h4>
+                        <p id="graphics-legal">—</p>
+                        <h4>How could your graphics hardware information be used maliciously?</h4>
+                        <p id="graphics-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="graphics-accuracy">—</p>
+                        <h4>Can I hide my graphics hardware information?</h4>
+                        <p id="graphics-hide">—</p></div></details>
+            </div>
+        </section>
+
+        <!-- Peripherals & Features Section -->
+        <section class="info-card" aria-labelledby="features-heading">
+            <div class="info-card__intro info-card__intro--split">
+                <div class="info-card__intro-content">
+                    <h2 id="features-heading" data-section-number="04">Peripherals &amp; Features <span class="section-subtitle">What else your browser shares automatically</span></h2>
+                </div>
+                <!-- <div class="info-card__intro-highlight">
+                    <p class="section-intro">Peripherals &amp; Features exposes microphones, cameras, sensors, and font access that can amplify a device fingerprint without asking permission.</p>
+                </div> -->
+            </div>
+            <div class="info-item">
+                <span class="info-label">Microphones detected</span><span class="info-value" aria-live="polite" id="microphones">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What microphones are detected on your device?</h4>
+                        <p id="microphones-explanation">—</p>
+                        <h4>How are your microphone details used legitimately?</h4>
+                        <p id="microphones-legal">—</p>
+                        <h4>How could your microphone details be used maliciously?</h4>
+                        <p id="microphones-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="microphones-accuracy">—</p>
+                        <h4>Can I hide my microphone details?</h4>
+                        <p id="microphones-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Audio outputs detected</span><span class="info-value" aria-live="polite" id="speakers">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What audio outputs are detected on your device?</h4>
+                        <p id="speakers-explanation">—</p>
+                        <h4>How are your audio outputs used legitimately?</h4>
+                        <p id="speakers-legal">—</p>
+                        <h4>How could your audio outputs be used maliciously?</h4>
+                        <p id="speakers-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="speakers-accuracy">—</p>
+                        <h4>Can I hide my audio outputs?</h4>
+                        <p id="speakers-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Cameras detected</span><span class="info-value" aria-live="polite" id="webcams">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What cameras are detected on your device?</h4>
+                        <p id="webcams-explanation">—</p>
+                        <h4>How are your cameras used legitimately?</h4>
+                        <p id="webcams-legal">—</p>
+                        <h4>How could your cameras be used maliciously?</h4>
+                        <p id="webcams-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="webcams-accuracy">—</p>
+                        <h4>Can I hide my camera details?</h4>
+                        <p id="webcams-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Geolocation API</span><span class="info-value" aria-live="polite" id="geolocation-support">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your Geolocation API support?</h4>
+                        <p id="geolocation-support-explanation">—</p>
+                        <h4>How is your Geolocation API support used legitimately?</h4>
+                        <p id="geolocation-support-legal">—</p>
+                        <h4>How could your Geolocation API support be used maliciously?</h4>
+                        <p id="geolocation-support-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="geolocation-support-accuracy">—</p>
+                        <h4>Can I hide my Geolocation API support?</h4>
+                        <p id="geolocation-support-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Device geolocation</span><span class="info-value" aria-live="polite" id="geolocation-precise">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your precise device geolocation?</h4>
+                        <p id="geolocation-precise-explanation">—</p>
+                        <h4>How is your precise device geolocation used legitimately?</h4>
+                        <p id="geolocation-precise-legal">—</p>
+                        <h4>How could your precise device geolocation be used maliciously?</h4>
+                        <p id="geolocation-precise-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="geolocation-precise-accuracy">—</p>
+                        <h4>Can I hide my precise device geolocation?</h4>
+                        <p id="geolocation-precise-hide">—</p>
+                        <details class="geo-list-collapsible">
+                            <summary>Show precise location details</summary>
+                            <ul class="geo-list" id="geolocation-precise-list">
+                                <li class="geo-list-empty">Precise geolocation results will appear here.</li>
+                            </ul>
+                        </details>
+                    </div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Touch support</span><span class="info-value" aria-live="polite" id="touch-support">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your touch support?</h4>
+                        <p id="touch-support-explanation">—</p>
+                        <h4>How is your touch support used legitimately?</h4>
+                        <p id="touch-support-legal">—</p>
+                        <h4>How could your touch support be used maliciously?</h4>
+                        <p id="touch-support-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="touch-support-accuracy">—</p>
+                        <h4>Can I hide my touch support?</h4>
+                        <p id="touch-support-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Pointer input</span><span class="info-value" aria-live="polite" id="pointer-support">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your pointer input support?</h4>
+                        <p id="pointer-support-explanation">—</p>
+                        <h4>How is your pointer input support used legitimately?</h4>
+                        <p id="pointer-support-legal">—</p>
+                        <h4>How could your pointer input support be used maliciously?</h4>
+                        <p id="pointer-support-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="pointer-support-accuracy">—</p>
+                        <h4>Can I hide my pointer input support?</h4>
+                        <p id="pointer-support-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Fonts (tested set)</span><span class="info-value" aria-live="polite" id="fonts">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What fonts are detected on your device?</h4>
+                        <p id="fonts-explanation">—</p>
+                        <h4>How are your detected fonts used legitimately?</h4>
+                        <p id="fonts-legal">—</p>
+                        <h4>How could your detected fonts be used maliciously?</h4>
+                        <p id="fonts-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="fonts-accuracy">—</p>
+                        <h4>Can I hide my detected fonts?</h4>
+                        <p id="fonts-hide">—</p>
+                        <details class="font-list-collapsible">
+                            <summary>Show detected fonts</summary>
+                            <ul class="font-list" id="fonts-installed-list">
+                                <li class="font-list-empty">Font detection results will appear here.</li>
+                            </ul>
+                        </details>
+                    </div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Java plugin</span><span class="info-value" aria-live="polite" id="java-enabled">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your Java plugin status?</h4>
+                        <p id="java-enabled-explanation">—</p>
+                        <h4>How is your Java plugin status used legitimately?</h4>
+                        <p id="java-enabled-legal">—</p>
+                        <h4>How could your Java plugin status be used maliciously?</h4>
+                        <p id="java-enabled-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="java-enabled-accuracy">—</p>
+                        <h4>Can I hide my Java plugin status?</h4>
+                        <p id="java-enabled-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Browser plugins</span><span class="info-value" aria-live="polite" id="plugins">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What browser plugins are detected?</h4>
+                        <p id="plugins-explanation">—</p>
+                        <h4>How are your browser plugins used legitimately?</h4>
+                        <p id="plugins-legal">—</p>
+                        <h4>How could your browser plugins be used maliciously?</h4>
+                        <p id="plugins-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="plugins-accuracy">—</p>
+                        <h4>Can I hide my browser plugins?</h4>
+                        <p id="plugins-hide">—</p>
+                        <details class="plugin-list-collapsible">
+                            <summary>Show detected plugins</summary>
+                            <ul class="plugin-list" id="plugins-list">
+                                <li class="plugin-list-empty">Plugin detection results will appear here.</li>
+                            </ul>
+                        </details>
+                    </div></details>
+            </div>
+        </section>
+
+        <!-- Connection Section -->
+        <section class="info-card" aria-labelledby="connection-heading">
+            <div class="info-card__intro info-card__intro--split">
+                <div class="info-card__intro-content">
+                    <h2 id="connection-heading" data-section-number="05">Connection <span class="section-subtitle">Network speed and quality estimates</span></h2>
+                </div>
+                <!-- <div class="info-card__intro-highlight">
+                    <p class="section-intro">These lightweight speed-test metrics show the connection type, downlink estimate, latency, and data saver preference ad tech can infer in milliseconds.</p>
+                </div> -->
+            </div>
+            <div class="info-item">
+                <span class="info-label">Connection type</span><span class="info-value" aria-live="polite" id="connection-type">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your connection type?</h4>
+                        <p id="connection-type-explanation">—</p>
+                        <h4>How is your connection type used legitimately?</h4>
+                        <p id="connection-type-legal">—</p>
+                        <h4>How could your connection type be used maliciously?</h4>
+                        <p id="connection-type-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="connection-type-accuracy">—</p>
+                        <h4>Can I hide my connection type?</h4>
+                        <p id="connection-type-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Effective type</span><span class="info-value" aria-live="polite" id="effective-type">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your effective connection type?</h4>
+                        <p id="effective-type-explanation">—</p>
+                        <h4>How is your effective connection type used legitimately?</h4>
+                        <p id="effective-type-legal">—</p>
+                        <h4>How could your effective connection type be used maliciously?</h4>
+                        <p id="effective-type-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="effective-type-accuracy">—</p>
+                        <h4>Can I hide my effective connection type?</h4>
+                        <p id="effective-type-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Download speed</span><span class="info-value" aria-live="polite" id="downlink">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your estimated download speed?</h4>
+                        <p id="downlink-explanation">—</p>
+                        <h4>How is your download speed used legitimately?</h4>
+                        <p id="downlink-legal">—</p>
+                        <h4>How could your download speed be used maliciously?</h4>
+                        <p id="downlink-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="downlink-accuracy">—</p>
+                        <h4>Can I hide my download speed?</h4>
+                        <p id="downlink-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Round-trip time</span><span class="info-value" aria-live="polite" id="rtt">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your estimated round-trip time?</h4>
+                        <p id="rtt-explanation">—</p>
+                        <h4>How is your round-trip time used legitimately?</h4>
+                        <p id="rtt-legal">—</p>
+                        <h4>How could your round-trip time be used maliciously?</h4>
+                        <p id="rtt-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="rtt-accuracy">—</p>
+                        <h4>Can I hide my round-trip time?</h4>
+                        <p id="rtt-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Data saver mode</span><span class="info-value" aria-live="polite" id="save-data">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your data saver mode?</h4>
+                        <p id="save-data-explanation">—</p>
+                        <h4>How is your data saver mode used legitimately?</h4>
+                        <p id="save-data-legal">—</p>
+                        <h4>How could your data saver mode be used maliciously?</h4>
+                        <p id="save-data-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="save-data-accuracy">—</p>
+                        <h4>Can I hide my data saver mode?</h4>
+                        <p id="save-data-hide">—</p></div></details>
+            </div>
+        </section>
+
+        <!-- Privacy Signals Section -->
+        <section class="info-card" aria-labelledby="privacy-heading">
+            <div class="info-card__intro info-card__intro--split">
+                <div class="info-card__intro-content">
+                    <h2 id="privacy-heading" data-section-number="06">Privacy Signals <span class="section-subtitle">Your browser's privacy preferences</span></h2>
+                </div>
+                <!-- <div class="info-card__intro-highlight">
+                    <p class="section-intro">Review privacy headers such as Do Not Track, Global Privacy Control, cookie access, and dark mode preferences that compliance tools read instantly.</p>
+                </div> -->
+            </div>
+            <div class="info-item">
+                <span class="info-label">Do Not Track</span><span class="info-value" aria-live="polite" id="dnt">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your Do Not Track setting?</h4>
+                        <p id="dnt-explanation">—</p>
+                        <h4>How is your Do Not Track setting used legitimately?</h4>
+                        <p id="dnt-legal">—</p>
+                        <h4>How could your Do Not Track setting be used maliciously?</h4>
+                        <p id="dnt-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="dnt-accuracy">—</p>
+                        <h4>Can I hide my Do Not Track setting?</h4>
+                        <p id="dnt-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Global Privacy Control</span><span class="info-value" aria-live="polite" id="gpc">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your Global Privacy Control status?</h4>
+                        <p id="gpc-explanation">—</p>
+                        <h4>How is your Global Privacy Control status used legitimately?</h4>
+                        <p id="gpc-legal">—</p>
+                        <h4>How could your Global Privacy Control status be used maliciously?</h4>
+                        <p id="gpc-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="gpc-accuracy">—</p>
+                        <h4>Can I hide my Global Privacy Control status?</h4>
+                        <p id="gpc-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Cookies enabled</span><span class="info-value" aria-live="polite" id="cookies">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What are your cookie settings?</h4>
+                        <p id="cookies-explanation">—</p>
+                        <h4>How are your cookie settings used legitimately?</h4>
+                        <p id="cookies-legal">—</p>
+                        <h4>How could your cookie settings be used maliciously?</h4>
+                        <p id="cookies-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="cookies-accuracy">—</p>
+                        <h4>Can I hide my cookie settings?</h4>
+                        <p id="cookies-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Local storage</span><span class="info-value" aria-live="polite" id="local-storage">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your local storage availability?</h4>
+                        <p id="local-storage-explanation">—</p>
+                        <h4>How is your local storage availability used legitimately?</h4>
+                        <p id="local-storage-legal">—</p>
+                        <h4>How could your local storage availability be used maliciously?</h4>
+                        <p id="local-storage-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="local-storage-accuracy">—</p>
+                        <h4>Can I hide my local storage availability?</h4>
+                        <p id="local-storage-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Dark mode preference</span><span class="info-value" aria-live="polite" id="dark-mode">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your dark mode preference?</h4>
+                        <p id="dark-mode-explanation">—</p>
+                        <h4>How is your dark mode preference used legitimately?</h4>
+                        <p id="dark-mode-legal">—</p>
+                        <h4>How could your dark mode preference be used maliciously?</h4>
+                        <p id="dark-mode-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="dark-mode-accuracy">—</p>
+                        <h4>Can I hide my dark mode preference?</h4>
+                        <p id="dark-mode-hide">—</p></div></details>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Reduced motion</span><span class="info-value" aria-live="polite" id="reduced-motion">—</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your reduced motion preference?</h4>
+                        <p id="reduced-motion-explanation">—</p>
+                        <h4>How is your reduced motion preference used legitimately?</h4>
+                        <p id="reduced-motion-legal">—</p>
+                        <h4>How could your reduced motion preference be used maliciously?</h4>
+                        <p id="reduced-motion-malicious">—</p>
+                        <h4>Is this accurate?</h4>
+                        <p id="reduced-motion-accuracy">—</p>
+                        <h4>Can I hide my reduced motion preference?</h4>
+                        <p id="reduced-motion-hide">—</p></div></details>
+            </div>
+        </section>
+
+        <!-- Advertising Insights Section -->
+
+        <!-- Behavioral Leakables Section -->
+
+        <!-- FAQ Schema -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Can websites see my email address?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Websites cannot see your email address unless you sign in to an account or enter it in a form. This site shows only information that websites can access without any permissions."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is this my exact address?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. The location shown is a rough estimate based on your IP address, typically accurate to the city or region level. Websites cannot see your precise street address without your explicit permission."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does this site track me?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. This site does not use cookies, trackers, or server-side logging. All checks run entirely in your browser. We never store or transmit your data to our servers."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can websites see my computer username?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Your computer's username is private and cannot be accessed by websites. Only information that browsers expose by default is shown here."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why does my IP show a different city?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "IP-based location is often approximate. Your ISP may route traffic through a data center in a different city, or the IP geolocation database may be outdated. This is normal and expected."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is Do Not Track?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Do Not Track (DNT) is a browser setting that sends a signal to websites indicating you prefer not to be tracked. However, websites are not required to honor this signal, so its effectiveness varies."
+              }
+            }
+          ]
+        }
+        </script>
+
+        <!-- Reassurance Section -->
+        <section class="info-card" aria-labelledby="reassurance-heading">
+            <h2 id="reassurance-heading">What Websites <em>Can't</em> See <span class="section-subtitle">Information that remains private without your permission</span></h2>
+            <div class="info-item reassurance-content">
+                <div class="info-explanation" style="grid-column: 1 / -1;">
+                    <p>Websites cannot see the following without your explicit permission:</p>
+                    <ul>
+                        <li><strong>Your computer username</strong> — Your device's user account name is private</li>
+                        <li><strong>Your email address</strong> — Unless you sign in or enter it, websites don't know your email</li>
+                        <li><strong>Your keyboard, mouse, speakers, or printer models</strong> — Browsers do not reveal the make or model of connected peripherals</li>
+                        <li><strong>Your storage type or drive health</strong> — Websites can't tell if you're using an SSD, HDD, or anything else</li>
+                        <li><strong>Your files or personal documents</strong> — Your device's files remain private</li>
+                    </ul>
+                    <p class="reassurance-note__highlight">This site never asks for any permissions. Everything shown here is available to any website without asking.</p>
+                </div>
+            </div>
+        </section>
+        <section class="info-card" aria-labelledby="insights-hub-heading">
+            <h2 id="insights-hub-heading">Strengthen Your Privacy Foundations <span class="section-subtitle">Work through the key pillars, then dive deeper in the <a href="/privacy-insights/" style="color: #1a1a1a;">Privacy Insights library</a>.</span></h2>
+            <div class="info-item insights-hub-content">
+                <div class="info-explanation insights-hub-card__body" style="grid-column: 1 / -1;">
+                    <div class="insights-hub-card__grid">
+                        <article class="insights-hub-card__pillar">
+                            <h3>Network &amp; IP</h3>
+                            <ul>
+                                <li><a href="/privacy-insights/what-is-ip-address/">What is an IP Address?</a> — Understand what your IP reveals.</li>
+                                <li><a href="/privacy-insights/what-is-asn/">What is an ASN?</a> — See how networks identify and route traffic.</li>
+                                <li><a href="/privacy-insights/ip-geolocation-accuracy/">IP Geolocation Accuracy</a> — Learn how precisely sites can place you.</li>
+                            </ul>
+                        </article>
+                        <article class="insights-hub-card__pillar">
+                            <h3>Fingerprinting</h3>
+                            <ul>
+                                <li><a href="/privacy-insights/what-is-browser-fingerprinting/">What is Browser Fingerprinting?</a> — Spot the traits that make you unique.</li>
+                                <li><a href="/privacy-insights/font-fingerprinting/">Font Fingerprinting</a> — See how typography becomes a tracker.</li>
+                                <li><a href="/privacy-insights/service-workers-and-privacy/">Service Workers &amp; Privacy</a> — Check the hidden ways sites persist identifiers.</li>
+                            </ul>
+                        </article>
+                        <article class="insights-hub-card__pillar">
+                            <h3>VPN &amp; Shields</h3>
+                            <ul>
+                                <li><a href="/privacy-insights/how-to-hide-ip-address/">How do I Hide My IP?</a> — Compare VPNs, proxies, and Tor.</li>
+                                <li><a href="/privacy-insights/should-i-use-vpn/">Should I Use a VPN?</a> — Decide when a tunnel helps (and when it doesn’t).</li>
+                                <li><a href="/privacy-insights/test-for-ip-leaks/">Test for IP Leaks</a> — Verify your setup with step-by-step checks.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">© 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/privacy-insights/">Privacy Insights</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/explanations.js"></script>
+    <script src="/ad_insights.js" defer></script>
+    <script src="/app.js" defer></script>
+</body>
+</html>
+

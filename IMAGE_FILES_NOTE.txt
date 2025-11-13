@@ -1,0 +1,19 @@
+NOTE: Binary Image Files Needed
+
+The following binary image files need to be created separately:
+
+1. favicon.ico
+   - Convert favicon.svg to ICO format
+   - Recommended sizes: 16x16, 32x32, 48x48
+   - Can use online tools like: https://convertio.co/svg-ico/ or https://favicon.io/
+
+2. og-image.png
+   - Open Graph image for social media sharing
+   - Recommended size: 1200x630 pixels
+   - Should include site name "The Web Knows" and tagline
+   - Can be created from the favicon.svg design or a custom design
+
+Both files are referenced in the HTML but the site will work without them (browsers will just show default icons).
+
+
+

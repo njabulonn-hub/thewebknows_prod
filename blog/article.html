@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=()" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Privacy Insights | Article Detail | The Web Knows</title>
+    <meta name="description" content="Catch up on Privacy Insights articles from The Web Knows. Explore plain-English guides to stay in control of your digital footprint." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://thewebknows.pages.dev/privacy-insights/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.pages.dev/privacy-insights/" />
+    <meta property="og:title" content="Privacy Insights | Article Detail" />
+    <meta property="og:description" content="Explore plain-English privacy guides covering IP addresses, VPNs, browser fingerprinting, and more." />
+    <meta property="og:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Privacy Insights | Article Detail" />
+    <meta name="twitter:description" content="Explore plain-English privacy guides covering IP addresses, VPNs, browser fingerprinting, and more." />
+    <meta name="twitter:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta name="twitter:url" content="https://thewebknows.pages.dev/privacy-insights/" />
+
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/privacy-insights/">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <article id="article-root" class="blog-article placeholder-article" aria-live="polite" aria-busy="true">
+            <div class="blog-loading">Loading article…</div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/privacy-insights/">Privacy Insights</a>
+            </nav>
+            
+        </div>
+    </footer>
+
+    <script src="../app.js" defer></script>
+    <script src="../glossary-data.js"></script>
+    <script src="../glossary-utils.js"></script>
+    <script src="./articles-data.js"></script>
+    <script src="./article.js"></script>
+</body>
+</html>
+
+
+
+
+

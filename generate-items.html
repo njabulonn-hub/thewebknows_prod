@@ -1,0 +1,25 @@
+<!-- Template for generating info-item HTML -->
+<!-- Copy this template and replace {id} and {label} -->
+
+<div class="info-item">
+    <div class="info-header">
+        <span class="info-label">{label}</span>
+        <span class="info-value" aria-live="polite" id="{id}">—</span>
+    </div>
+    <details class="info-expanded">
+        <summary>Learn more about this</summary>
+        <div class="info-explanation">
+            <h4>What is this?</h4>
+            <p id="{id}-explanation">—</p>
+            <h4>How is it used legally?</h4>
+            <p id="{id}-legal">—</p>
+            <h4>How could it be used maliciously?</h4>
+            <p id="{id}-malicious">—</p>
+            <h4>Is this accurate?</h4>
+            <p id="{id}-accuracy">—</p>
+            <h4>Can I hide this?</h4>
+            <p id="{id}-hide">—</p>
+        </div>
+    </details>
+</div>
+

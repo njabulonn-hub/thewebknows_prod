@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>WebRTC Leaks Explained: STUN/TURN and Real Fixes | Privacy Insights | The Web Knows</title>
+    <meta name="description" content="Why WebRTC can expose local and public IPs, how ICE, STUN, and TURN behave, and the browser-level mitigation that keeps video calls working." />
+    <link rel="canonical" href="https://thewebknows.pages.dev/privacy-insights/webrtc-leaks/" />
+
+<meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.pages.dev/privacy-insights/webrtc-leaks/" />
+    <meta property="og:title" content="WebRTC Leaks Explained: STUN/TURN and Real Fixes" />
+    <meta property="og:description" content="Why WebRTC can expose local and public IPs, how ICE, STUN, and TURN behave, and the browser-level mitigation that keeps video calls working." />
+    <meta property="og:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="article:section" content="Privacy Settings &amp; Hardening" />
+    <meta property="article:published_time" content="2025-11-11T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2025-11-11T00:00:00.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="WebRTC Leaks Explained: STUN/TURN and Real Fixes" />
+    <meta name="twitter:description" content="Why WebRTC can expose local and public IPs, how ICE, STUN, and TURN behave, and the browser-level mitigation that keeps video calls working." />
+    <meta name="twitter:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta name="twitter:image:alt" content="WebRTC Leaks Explained: STUN/TURN and Real Fixes" />
+    <meta name="twitter:url" content="https://thewebknows.pages.dev/privacy-insights/webrtc-leaks/" />
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://thewebknows.pages.dev/privacy-insights/webrtc-leaks/#article",
+          "headline": "WebRTC Leaks Explained: STUN/TURN and Real Fixes",
+          "description": "Why WebRTC can expose local and public IPs, how ICE, STUN, and TURN behave, and the browser-level mitigation that keeps video calls working.",
+          "inLanguage": "en-GB",
+          "isPartOf": {
+            "@id": "https://thewebknows.pages.dev/privacy-insights/#page"
+          },
+          "mainEntityOfPage": {
+            "@id": "https://thewebknows.pages.dev/privacy-insights/webrtc-leaks/"
+          },
+          "articleSection": "Privacy Settings & Hardening",
+          "image": "https://thewebknows.pages.dev/og-image.png",
+          "author": {
+            "@type": "Organization",
+            "name": "The Web Knows"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Web Knows",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://thewebknows.pages.dev/favicon.svg"
+            }
+          },
+          "datePublished": "2025-11-11T00:00:00.000Z",
+          "dateModified": "2025-11-11T00:00:00.000Z"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://thewebknows.pages.dev/privacy-insights/webrtc-leaks/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://thewebknows.pages.dev/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Privacy Insights",
+              "item": "https://thewebknows.pages.dev/privacy-insights/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "WebRTC Leaks Explained: STUN/TURN and Real Fixes",
+              "item": "https://thewebknows.pages.dev/privacy-insights/webrtc-leaks/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/privacy-insights/" aria-current="page">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/privacy-insights/">Insights</a></li>
+                <li aria-current="page">WebRTC Leaks Explained: STUN/TURN and Real Fixes</li>
+            </ol>
+        </nav>
+
+    <article class="blog-article">
+        <header class="blog-article__header">
+            <p class="blog-article__category">Privacy Settings &amp; Hardening</p>
+            <h1 class="blog-article__title">WebRTC Leaks Explained: STUN/TURN and Real Fixes</h1>
+            <div class="blog-article__meta">
+                <time datetime="2025-11-11">11 November 2025</time>
+                <span class="blog-article__reading-time">11 min read</span>
+            </div>
+        </header>
+        <section class="blog-article__content">
+            <p><strong>Overview:</strong> WebRTC powers video calls and low-latency data flows inside the browser. Its ability to pierce NATs is precisely why privacy-conscious users worry: the process of discovering viable connection paths can reveal your local network addresses and, in some cases, your real public IP even when you are on a VPN. This guide explains the plumbing, showcases realistic leak scenarios, and provides mitigation steps that preserve functionality.</p>
+
+            <h2>Overview (TL;DR)</h2>
+            <p>WebRTC’s ICE framework gathers candidate IP addresses from your interfaces and from STUN/TURN servers. VPNs do not always intercept these discovery packets, so a determined website can scrape them to deanonymise you. Modern browsers offer mitigations—Firefox’s proxy-only mode, Brave’s “Disable non-proxied UDP”, Chrome’s privacy toggles—but heavy-handed blocking can break video calls and collaborative tools. Adopt targeted settings, verify with leak tests, and maintain a whitelist for critical services.</p>
+
+            <h2>WebRTC Architecture in Plain English</h2>
+            <p>WebRTC (Web Real-Time Communication) enables peer-to-peer connections for audio, video, and arbitrary data channels. Three components matter for privacy:</p>
+            <ul>
+                <li><strong>ICE (Interactive Connectivity Establishment):</strong> A framework that collates potential network routes between peers, scores them, and tries each in turn until one succeeds.</li>
+                <li><strong>STUN (Session Traversal Utilities for NAT):</strong> Lightweight servers that tell a device “this is the IP and port you appear to have from the outside”. They help peers understand how NAT routers are rewriting packets.</li>
+                <li><strong>TURN (Traversal Using Relays around NAT):</strong> Full relay servers that carry traffic if a direct path fails, acting as a middleman. They are reliable but add cost and latency.</li>
+            </ul>
+            <p>When your browser initialises an ICE session, it performs local discovery (enumerating network interfaces), queries STUN servers, and, if configured, secures TURN credentials. The resulting list of candidates is exposed to JavaScript via the <code>RTCIceCandidate</code> API, meaning a hostile page can read it without needing permission prompts.</p>
+
+            <h2>How Leaks Happen Behind a VPN</h2>
+            <p>In an ideal world, your VPN routes all traffic—including STUN requests—through the secure tunnel. In practice, several failure modes arise:</p>
+            <ul>
+                <li><strong>Split tunnelling defaults:</strong> Some VPNs only capture TCP traffic, leaving UDP (used by STUN) on the native interface. The STUN server then sees your real ISP IP.</li>
+                <li><strong>Race conditions:</strong> WebRTC may start gathering candidates before the VPN fully initialises or reconnects, creating a brief window where local addresses leak.</li>
+                <li><strong>IPv6 gaps:</strong> The VPN may tunnel IPv4 but leave IPv6 untouched. WebRTC reports both v4 and v6 candidates, exposing your ISP-assigned IPv6 address.</li>
+                <li><strong>Misbehaving browser implementations:</strong> Some browsers historically preferred direct UDP paths even when a proxy or VPN was configured, especially on mobile.</li>
+            </ul>
+            <p>Once a malicious page collects these addresses, it can triangulate your approximate location, correlate sessions across VPN servers, or feed the data into fingerprinting profiles.</p>
+
+            <h2>Recognising Leak Signatures</h2>
+            <p>Typical leak readouts list multiple candidate types:</p>
+            <ul>
+                <li><code>host</code> candidates expose local/private IPs (e.g., 192.168.1.25, fd12:3456::1). These reveal your internal network structure but not your location.</li>
+                <li><code>srflx</code> candidates (server-reflexive) show public IPs obtained via STUN. If they match your ISP-assigned address rather than the VPN IP, you have a leak.</li>
+                <li><code>relay</code> candidates indicate TURN usage and generally point to your VPN server or TURN provider.</li>
+            </ul>
+            <p>If your leak test reports only the VPN’s public IP (for both IPv4 and IPv6) and optional relay addresses, you are safe. Seeing your broadband or mobile IP is a red flag.</p>
+
+            <h2>Browser-Specific Mitigations</h2>
+            <h3>Firefox</h3>
+            <ol>
+                <li>Visit <code>about:config</code>.</li>
+                <li>Set <code>media.peerconnection.ice.proxy_only</code> to <code>true</code>. This instructs WebRTC to reuse the proxy/VPN interface exclusively.</li>
+                <li>If you need a nuclear option, set <code>media.peerconnection.enabled</code> to <code>false</code> to disable WebRTC entirely (breaks most video services).</li>
+                <li>Consider <code>media.peerconnection.ice.default_address_only = true</code> to limit ICE candidates to the default route.</li>
+            </ol>
+            <h3>Chrome / Edge / Chromium</h3>
+            <ul>
+                <li>Navigate to <code>chrome://flags/#enable-webrtc-hide-local-ips-with-mdns</code> and ensure it is enabled (now default). This obscures local IPs via mDNS hostnames.</li>
+                <li>Under <code>chrome://settings/system</code>, disable “Use hardware acceleration” if you encounter renegade UDP behaviour (rare but occasionally helps).</li>
+                <li>Install a trusted extension such as <strong>WebRTC Network Limiter</strong> (deprecated but forked variants exist) or configure your VPN app to enforce “Disable non-proxied UDP”.</li>
+            </ul>
+            <h3>Brave</h3>
+            <ul>
+                <li>Visit <code>brave://settings/extensions</code>.</li>
+                <li>Under “WebRTC IP Handling Policy”, choose “Disable non-proxied UDP”. This forces all WebRTC traffic through the VPN interface.</li>
+            </ul>
+            <h3>Safari</h3>
+            <p>Safari already randomises local addresses and routes them through the active interface. Ensure you are on the latest macOS/iOS version; WebRTC leaks are rare in Safari unless the VPN itself misbehaves.</p>
+
+            <h2>Mitigations on the VPN Side</h2>
+            <p>Choose providers that advertise WebRTC leak protection. They typically implement:</p>
+            <ul>
+                <li><strong>Firewall rules</strong> to block outbound STUN traffic outside the tunnel.</li>
+                <li><strong>IPv6 support</strong> (or reliable IPv6 disabling) so dual-stack leaks cannot occur.</li>
+                <li><strong>Kill switches</strong> that cut all traffic if the tunnel drops, preventing ICE from renegotiating via your ISP.</li>
+            </ul>
+            <p>If your provider lacks these features, you can manually add firewall rules (e.g., block UDP 3478/5349) or run the VPN at the router level to force all traffic, including WebRTC, through the tunnel.</p>
+
+            <h2>Testing and Verification</h2>
+            <ol>
+                <li><strong>Connect your VPN.</strong></li>
+                <li><strong>Run multiple leak tests:</strong> Use The Web Knows leak suite, <code>ipleak.net</code>, and <code>browserleaks.com/webrtc</code>. Compare results to your VPN’s advertised IP.</li>
+                <li><strong>Tweak settings:</strong> Apply browser or VPN mitigations.</li>
+                <li><strong>Retest after every change.</strong> Some settings require browser restarts.</li>
+                <li><strong>Validate functionality:</strong> Join a WebRTC service (Jitsi, Google Meet) to ensure calls still work. If breakage occurs, loosen restrictions selectively.</li>
+            </ol>
+            <p>Keep a change log. If a browser update reintroduces leaks, you will know which version to blame when contacting support.</p>
+
+            <h2>Advanced Hardening for Power Users</h2>
+            <ul>
+                <li><strong>WebRTC permission prompts:</strong> Extensions like <strong>NoScript</strong> or <strong>uMatrix</strong> can gatekeep the creation of WebRTC peer connections per site.</li>
+                <li><strong>Network namespaces:</strong> On Linux, run browsers in network namespaces bound to the VPN interface, ensuring no other route exists.</li>
+                <li><strong>Sandboxed profiles:</strong> Use container browsers or virtual machines for sensitive tasks that must avoid leaks entirely.</li>
+                <li><strong>Custom TURN servers:</strong> If you self-host WebRTC apps, configure TURN to require authentication and log minimal data to respect users’ privacy expectations.</li>
+            </ul>
+
+            <h2>Balancing Privacy and Usability</h2>
+            <p>Disabling WebRTC altogether removes leak risk but cripples video conferencing, remote assistance tools, and live collaboration apps. A more pragmatic stance is to enable leak protection profiles for everyday browsing and maintain a separate profile/browser dedicated to video calls with less aggressive settings. Communicate this split to family members or colleagues sharing devices to avoid “why doesn’t my call connect?” frustration.</p>
+
+            <h2>Key Takeaway</h2>
+            <p>WebRTC leaks are manageable. Understand how ICE gathers candidates, configure your browser and VPN to shepherd traffic through the secure tunnel, and verify regularly. With thoughtful setup, you can enjoy smooth calls without granting websites a peek behind your privacy curtain.</p>
+
+            <h2>FAQ</h2>
+            <h3>Does disabling WebRTC stop all leaks?</h3>
+            <p>Yes, but it also breaks any site that relies on WebRTC. Instead of a blanket disable, prefer targeted settings that keep traffic on the VPN interface while allowing genuine uses.</p>
+
+            <h3>Are WebRTC leaks a security vulnerability?</h3>
+            <p>They are primarily a privacy concern. Knowing your local or ISP IP does not allow remote access on its own, but it can de-anonymise you or aid targeted attacks.</p>
+
+            <h3>Why do some tests still show my local IP after mitigation?</h3>
+            <p>Many browsers now replace local IPs with mDNS hostnames (e.g., <code>acb123.local</code>). Tests that decode those hostnames may still display the addresses, but the values are no longer exposed to arbitrary scripts. Focus on whether your public ISP IP appears.</p>
+
+            <h3>Do native apps like Zoom or Teams leak the same way?</h3>
+            <p>Desktop WebRTC applications manage their own network stacks. Most respect system-wide VPN routes, but some may use split tunnelling. Test them separately if you require strict privacy.</p>
+        </section>
+    </article>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-column">
+            <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+            <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/about/">About</a>
+            <a href="/glossary/">Glossary</a>
+            <a href="/privacy-insights/">Privacy Insights</a>
+        </nav>
+        
+    </div>
+</footer>
+<script src="/app.js" defer></script>
+</body>
+</html>
+

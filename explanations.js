@@ -1,0 +1,422 @@
+/**
+ * Explanations data for all info items
+ * Plain-language explanations with real-world examples.
+ */
+
+const EXPLANATIONS = {
+    'ipv4': {
+        what: 'An IPv4 address is a set of four numbers like 192.168.0.1—think of it as the street address for your device on the internet. From a technical angle it is a 32-bit identifier broken into four octets that routers use to forward packets.',
+        legal: 'Websites need it so pages, videos, and emails know where to go, to follow regional rules, and to spot fraud. Network teams also log IPv4 addresses for routing tables, firewall rules, and compliance reports.',
+        malicious: 'Bad actors can pair it with other clues to guess your area, follow you around the web, or launch attacks. Security researchers know that exposed IPv4 ranges invite port scans, DDoS probes, and credential stuffing attempts.',
+        accuracy: 'This is KNOWN because your connection sends it out every time you go online. Technically the address comes directly from the TCP/IP stack and is confirmed by upstream routers.',
+        hide: 'Use a VPN or privacy service to borrow a different address; the VPN company can still see the real one and some sites may block VPN traffic. Administrators sometimes rely on carrier-grade NAT or Tor to rotate visible IPv4 endpoints.'
+    },
+    'ipv6': {
+        what: 'An IPv6 address is a longer version of an IP address, written as eight groups like 2001:0db8:85a3::7334, giving every gadget more room online. Technically it is a 128-bit identifier that supports autoconfiguration, hierarchical routing, and modern security extensions.',
+        legal: 'It keeps the internet running by letting billions of devices have their own address and by helping companies route traffic. Network architects depend on IPv6 for address planning, QoS policies, and future-proofing compliance requirements.',
+        malicious: 'The risks mirror IPv4—an exposed address can feed tracking or attacks. Penetration testers note that IPv6 expands the attack surface with neighbour discovery abuse, poorly filtered ICMPv6, and exposed services on unique interface identifiers.',
+        accuracy: 'This is KNOWN when your internet provider has turned IPv6 on; if nothing shows up your connection simply is not using it. In networking terms it comes from router advertisements or DHCPv6 leases and is validated end-to-end.',
+        hide: 'Choose a VPN that supports IPv6 or turn IPv6 off on your router or device to avoid leaks. Enterprise teams sometimes deploy IPv6 firewalls or prefix translation (NPTv6) to mask internal structure.'
+    },
+    'isp': {
+        what: 'ISP means Internet Service Provider—the company that gives you internet access—while ASN is the ID number for the network they run. Technically the ASN references a registered autonomous system that advertises IP prefixes through BGP.',
+        legal: 'Sites look at this to understand where visitors come from, follow licensing rules, and tailor security. Compliance teams audit ASN data for content distribution agreements, fraud detection, and geo-fencing policies.',
+        malicious: 'Scammers can use it to guess your region, spot weak providers, or build profiles of people using the same company. Threat actors track ASNs to target misconfigured routers, hijack routes, or launch large-scale phishing campaigns.',
+        accuracy: 'This is KNOWN because databases map each IP range to an ISP, though it may lag if you recently switched providers. Engineers maintain these mappings via Regional Internet Registries and cross-check with live BGP announcements.',
+        hide: 'A VPN replaces your ISP name with theirs, although the VPN still knows the truth and some sites block those ranges. Enterprise solutions may use private ASNs, MPLS, or zero trust proxies to abstract the original provider.'
+    },
+    'location': {
+        what: 'This is a city-level guess based on your IP address, like reading the postmark on a letter—it points to the right area but not your exact home. Technically it comes from GeoIP databases that map IP ranges to latitude and longitude centroids.',
+        legal: 'Websites use it to show local news, prices, or weather, follow regional laws, and block suspicious logins. Fraud teams correlate IP geolocation with billing records and velocity checks to comply with AML and KYC controls.',
+        malicious: 'Harassers or stalkers could combine it with other data to zero in on you. Attackers also pivot from coarse IP geolocation to wardriving maps, Wi-Fi SSID lookups, or cellular data to refine your whereabouts.',
+        accuracy: 'This is INFERRED from public IP databases and is usually right about the city but can be off if your provider routes traffic elsewhere. Technologists know the accuracy depends on database freshness, carrier NAT, and ISP routing policies.',
+        hide: 'A VPN can make you appear somewhere else, but signed-in apps or GPS on your phone can still reveal where you are, and some regional content may disappear while using a VPN. Security-conscious users pair VPNs with browser containers or mock location services for extra cover.'
+    },
+    'referrer': {
+        what: 'The referrer tells a site which page you visited just before—imagine walking into a shop and saying “I saw your ad on Main Street.” Technically it is the HTTP Referer header that browsers attach to navigation requests.',
+        legal: 'It helps owners learn how people find them, credit partners, and fix broken links. Marketing and DevOps teams parse referrer logs to monitor campaign performance, A/B tests, and incident timelines.',
+        malicious: 'It can leak what you were reading, especially if the URL contains private details. Security folks worry about referrers exposing tokens, search queries, or internal hostnames through open redirects.',
+        accuracy: 'This is KNOWN because your browser sends it automatically unless it has been blocked. Web engineers control it with the Referrer-Policy header, meta tags, or fetch API options.',
+        hide: 'Most modern browsers and privacy add-ons can trim or block referrers; some sites may lose analytics data or break tracking links when it is hidden. Developers sometimes set policies like no-referrer-when-downgrade or strict-origin to balance privacy and debugging.'
+    },
+    'network-type': {
+        what: 'This is a guess about whether you are on a home network or using a VPN or data center by looking at the ISP name for clues. Behind the scenes it cross-references autonomous systems, WHOIS data, and hosting provider lists.',
+        legal: 'Websites use it to enforce rules about VPNs, stop bots, or adjust security steps. Security operations teams combine these labels with risk engines and fraud scores when gating high-value actions.',
+        malicious: 'Attackers might target known VPN traffic or treat home users as easier prey. Advanced campaigns fingerprint network types to decide whether to deliver payloads, proxies, or bypass controls.',
+        accuracy: 'This is GUESSED by matching your ISP name against known lists, so it can be wrong. Analysts maintain these heuristics with ASN metadata, reverse DNS patterns, and paid intelligence feeds.',
+        hide: 'To appear as a home user, disconnect from VPNs and use your regular connection; some services block VPN ranges even when you have a good reason to use them. Admins can rotate exit nodes, configure residential proxies, or register dedicated IPs to improve trust.'
+    },
+    'reverse-dns': {
+        what: 'Reverse DNS turns an IP address into a readable name, like looking up a phone number in reverse. For technicians it resolves PTR records via DNS to map addresses to hostnames.',
+        legal: 'It helps with spam filtering, network troubleshooting, and logging. Admins rely on reverse lookups for SMTP reputation checks, traceroutes, and SIEM correlation.',
+        malicious: 'It can reveal your provider and rough location or help someone scout other devices nearby. Attackers automate reverse DNS sweeps to find naming conventions, exposed services, or high-value hosts.',
+        accuracy: 'This is KNOWN only if your ISP created a reverse DNS record—many home connections do not have one. From a DNS perspective it depends on delegations in the in-addr.arpa or ip6.arpa zones being maintained.',
+        hide: 'You cannot change this yourself; using a VPN swaps in the VPN’s reverse DNS instead. Network teams change PTR records only at the ISP level or by running their own authoritative zones.'
+    },
+    'browser': {
+        what: 'This shows the browser and version you are using—like telling a mechanic which car you drove in. Technically it reads the User-Agent string and related Client Hints headers that describe rendering engines.',
+        legal: 'Sites rely on it to show compatible features, fix bugs, and block unsafe, outdated versions. Release managers watch these signals to phase in new JavaScript APIs or deprecate insecure TLS stacks.',
+        malicious: 'Hackers look for known holes in specific browser versions. Exploit kits fingerprint the user agent to deliver CVEs tailored to that engine or to test for automation frameworks.',
+        accuracy: 'This is KNOWN because your browser reports it, unless a privacy tool rewrites the string. Modern browsers may provide high-entropy hints only to trusted origins using User-Agent Client Hints negotiation.',
+        hide: 'Extensions can change it, but faking it may break websites or trigger security checks. QA teams often run controlled spoofing through Selenium or Playwright to simulate older browsers.'
+    },
+    'os': {
+        what: 'This is your operating system—Windows, macOS, Android, iOS, or another platform—which is the main software that runs your device. Under the hood it is derived from the user agent string, platform APIs, or client-hint headers that reveal kernel families.',
+        legal: 'Websites use it to show the right downloads, shortcuts, or help guides. IT teams evaluate OS stats to enforce compatibility matrices, MDM policies, and security baselines.',
+        malicious: 'Attackers tailor scams or malware to the system you are on. Exploits often rely on OS-specific privilege escalations, kernel drivers, or package managers.',
+        accuracy: 'This is KNOWN because your browser shares it, and even when spoofed many sites can still guess correctly using feature detection and TLS fingerprinting.',
+        hide: 'Privacy tools can mask it, yet that can confuse websites or block the right app versions from installing. Security pros prefer virtual machines or containerized browsers when they need to disguise an operating system.'
+    },
+    'languages': {
+        what: 'These are the languages your browser says you prefer, such as English or Spanish—like telling a restaurant which menu to bring. Technically it surfaces the navigator.languages array and Accept-Language headers sent with each request.',
+        legal: 'Sites use it to show the right language, currency, or regional content. Localization teams map these codes to translation bundles, time formats, and payment options.',
+        malicious: 'It can help build a profile of where you live or the communities you follow. Ad-tech vendors merge language preferences with device fingerprints to infer culture or migration patterns.',
+        accuracy: 'This is KNOWN because it comes straight from your browser settings. Developers know that HTTP negotiation falls back through the language list until a supported locale is found.',
+        hide: 'You can change your language list, but it will change the language on every site and app you visit. Privacy modes sometimes randomize Accept-Language while power users edit about:config or command-line flags to limit leaks.'
+    },
+    'timezone': {
+        what: 'The timezone shows how your clock is set, such as Eastern Time or Central European Time—like telling someone which time zone you live in. Behind the scenes it uses Intl.DateTimeFormat APIs to read offsets from UTC and daylight-saving rules.',
+        legal: 'Sites rely on it for meeting times, schedules, and accurate timestamps. Compliance teams normalize logs across time zones to satisfy auditing and chain-of-custody requirements.',
+        malicious: 'Combined with other hints, it can reveal your likely region or work hours. Threat hunters tie timezone fingerprints to keyboard layouts and login habits when profiling intrusions.',
+        accuracy: 'This is KNOWN because it comes from your device clock. Programmers often treat it as the browser’s resolved IANA timezone name, which updates automatically as you travel.',
+        hide: 'You can change the timezone on your device, but then every clock and calendar will look wrong. Advanced users sometimes virtualize systems or run containerized browsers with fixed timezones for testing.'
+    },
+    'local-time': {
+        what: 'This shows the current time according to your device, updating every second so you can compare clocks. Technically it reads Date.now() from your system clock and applies the resolved timezone offset.',
+        legal: 'Websites use it to time-stamp actions or show local schedules. Operations teams reconcile client timestamps with server logs to debug latency and ordering issues.',
+        malicious: 'Shared with other clues, it can confirm when you are active online. Coordinated attackers monitor time windows to predict when you are asleep or when scheduled jobs run.',
+        accuracy: 'This is KNOWN and calculated directly from your timezone settings, though skewed system clocks can throw it off. Engineers sync devices with NTP or chrony to keep offsets within milliseconds.',
+        hide: 'Only changing your device clock will alter this, which can break reminders, alarms, and other apps. Researchers may run sandboxed browsers with synthetic clocks to test time-based fingerprinting.'
+    },
+    'device-type': {
+        what: 'This estimates whether you are on a phone, tablet, or computer by checking screen size and other signals. Engineers infer it from user agent hints, input capabilities, and responsive design breakpoints.',
+        legal: 'Sites use it to switch between mobile and desktop layouts and size buttons correctly. Product teams watch these stats to prioritize mobile-first design, progressive web apps, or desktop power features.',
+        malicious: 'Scammers may send phone-targeted or desktop-targeted traps. Malvertising kits change payloads based on device class to exploit mobile OS flaws or desktop macros.',
+        accuracy: 'This is GUESSED and can be fooled by unusual screen setups or developer tools. It typically uses heuristics like pointer precision, screen diagonal, and hardware concurrency.',
+        hide: 'Spoofing device type can make sites show the wrong layout or hide features you need. Testers rely on responsive emulation, headless browsers, or user agent spoofing to verify alternate experiences.'
+    },
+    'screen-size': {
+        what: 'This is the pixel size of your whole screen—like measuring a TV by its width and height in tiny dots. Technically it reads the screen.width and screen.height APIs straight from your display driver.',
+        legal: 'Designers use it to send images and layouts that fit without stretching or clipping. UX teams match screen classes to responsive breakpoints, asset pipelines, and accessibility testing matrices.',
+        malicious: 'Unique screen sizes help trackers recognise your device. Fingerprinting scripts mix pixel dimensions with color depth and GPU IDs to build stable signatures.',
+        accuracy: 'This is KNOWN because your browser reports the real size unless you are faking it, though multi-monitor scaling can cause subtle shifts. Front-end engineers account for devicePixelRatio and OS scaling when interpreting results.',
+        hide: 'Changing it with tools can break layouts or make text and images look odd. Professionals sometimes rely on virtual displays or RDP sessions to simulate alternate resolutions safely.'
+    },
+    'viewport': {
+        what: 'The viewport is the size of the browser window you have open right now, shifting whenever you resize or rotate the screen. Technically it references window.innerWidth and innerHeight along with device pixel ratio for layout calculations.',
+        legal: 'Sites adjust layouts and columns so everything fits the current window. Front-end frameworks use viewport metrics to trigger responsive media queries and adapt component density.',
+        malicious: 'Like screen size, it can become one more fingerprint clue. Tracking scripts log viewport changes to detect automation, bot activity, or virtual machines.',
+        accuracy: 'This is KNOWN and updates in real time as you resize, sourced from the rendering engine’s layout tree. Developers use ResizeObserver and matchMedia to react to the same numbers.',
+        hide: 'Spoofing it can cause overlapping content or missing buttons. Automated testing suites sometimes simulate viewports via headless browser flags or CSS overrides.'
+    },
+    'pixel-ratio': {
+        what: 'Pixel ratio shows how sharp your screen is—if it is 2, your device squeezes twice as many pixels into the same space like a high-definition TV. Under the hood it is the window.devicePixelRatio value derived from physical DPI and scaling settings.',
+        legal: 'Sites use it to send crisp images to fancy displays and lighter images to regular ones. Designers export multiple asset densities, while developers configure srcset and responsive canvases based on this number.',
+        malicious: 'It can help identify your exact device model. Fingerprinters correlate uncommon ratios with GPU models, viewport sizes, and font metrics.',
+        accuracy: 'This is KNOWN because it comes from your hardware, although zoom levels and OS scaling can tweak it slightly. Canvas rendering APIs reveal the same ratio when measuring backing store pixels.',
+        hide: 'Changing it usually makes text blurry or images fuzzy, so most people leave it alone. Test labs sometimes adjust it through emulator settings or CSS transforms when validating adaptive designs.'
+    },
+    'color-depth': {
+        what: 'Color depth says how many different colours your screen can show, keeping photos and videos true to life. Technically it reads screen.colorDepth or pixelDepth, reporting bits per channel supported by the display pipeline.',
+        legal: 'Websites adjust images and videos so colours stay accurate. Media teams tailor HDR streams, dithering, and gamma correction based on these capabilities.',
+        malicious: 'Older or unusual colour depths can help fingerprint a device. Analysts correlate rare values with kiosk machines, virtual desktops, or remote sessions.',
+        accuracy: 'This is KNOWN because it reports your real display capability, though virtualization layers can cap it. Graphics programmers inspect the same value when tuning WebGL contexts and canvas rendering.',
+        hide: 'Spoofing it can make colours look dull or wrong on every site. Professionals typically change it only through GPU control panels or RDP settings when diagnosing display issues.'
+    },
+    'cpu-threads': {
+        what: 'CPU threads are like the number of workers your device has for handling tasks at once—more workers mean faster multitasking. Technologists know it reflects navigator.hardwareConcurrency, which surfaces logical cores reported by the OS scheduler.',
+        legal: 'Web apps use it to decide how much work to hand your device so pages stay smooth. Performance engineers allocate Web Workers, WASM threads, and media encoders based on this value.',
+        malicious: 'Unique counts can hint at your exact model or make resource-heavy attacks easier. Attackers profile thread counts to guess whether they are on a VM, a mobile chipset, or a powerful workstation.',
+        accuracy: 'This is KNOWN because the browser reads it straight from your hardware, though some browsers round it for privacy. Kernel-level APIs expose the same logical processor count for native apps.',
+        hide: 'Tools can spoof it, but that may slow sites down or cause glitches when they expect more power. Researchers run throttled containers or virtualization layers to present safer thread numbers when testing exploits.'
+    },
+    'ram': {
+        what: 'RAM is your device’s short-term memory—like desk space where you keep active work without a mess. Underneath it exposes navigator.deviceMemory, which reports coarse gigabyte buckets rather than exact totals.',
+        legal: 'Sites use rough RAM buckets to decide how much data to load at once. Progressive web apps tune cache sizes, media buffer limits, and prefetch strategies from this signal.',
+        malicious: 'It can support fingerprinting or hint at what kind of device you own. Threat models tie higher RAM buckets to premium devices worth targeting with crypto-miners or GPU-heavy payloads.',
+        accuracy: 'This is ESTIMATED because many browsers share only rounded buckets such as 4 GB or 8 GB. Internally it is derived from hardware telemetry but intentionally coarsened for privacy.',
+        hide: 'Most browsers already limit this number, so changing it rarely helps and can confuse complex web apps. Lab environments sometimes clamp it via command-line flags or container quotas when benchmarking.'
+    },
+    'graphics': {
+        what: 'Graphics info describes your graphics card—the part that makes video and games look good, like the engine powering visuals. Technically it reads WebGL renderer strings, GPU vendor IDs, and shader precision data.',
+        legal: 'Sites use it to serve the right video quality or enable 3D features only when your device can handle them. Video platforms monitor GPU capabilities to unlock hardware acceleration, HDR, or WebGPU paths.',
+        malicious: 'Because graphics cards are distinct, they are a strong clue for tracking. Advanced fingerprinting inspects WebGL extensions, frame timings, and shader outputs to link sessions.',
+        accuracy: 'This is KNOWN and usually exact unless the browser masks the vendor. Developers rely on the same info in graphics debugging consoles and driver compatibility checks.',
+        hide: 'Spoofing it is hard and often breaks video, games, or 3D content. Professionals sometimes route traffic through virtual GPUs or remote rendering farms when they need anonymity.'
+    },
+    'microphones': {
+        what: 'This counts how many microphones your browser sees, such as a laptop mic or headset boom—no audio is recorded without permission. Technically it queries navigator.mediaDevices.enumerateDevices() for audioinput endpoints.',
+        legal: 'Video chat apps use it so you can pick the right microphone or see if nothing is connected. IT teams check the same list when diagnosing conferencing issues or enforcing hardware standards.',
+        malicious: 'It can add one more detail to a fingerprint before a scammer asks for mic access. Red teams probe device lists to plan social engineering or to confirm they are on a real user’s machine.',
+        accuracy: 'This is GUESSED because some browsers hide the full list until you have granted permission before, and device IDs may be randomized. Media APIs expose only hashed identifiers unless the origin is trusted.',
+        hide: 'Block microphone access in your browser or device settings, or unplug external mics so nothing shows up. Privacy tools also revoke enumerateDevices permission or run in isolated profiles.'
+    },
+    'speakers': {
+        what: 'This shows how many audio outputs are available, like speakers or headphones, reporting only counts and basic names. Technically it reads audiooutput devices from the same enumerateDevices API when permissions allow.',
+        legal: 'Websites use it to let you choose where sound should play. AV support desks reference these device lists when troubleshooting echo, stereo issues, or room conferencing setups.',
+        malicious: 'It is another small clue that can be added to a tracking profile. Fingerprinters combine audio device hashes with canvas and WebRTC metrics to strengthen identification.',
+        accuracy: 'This is GUESSED because many browsers reveal only limited information and may obfuscate labels. Browser makers sometimes require secure contexts or user gestures to expose full device metadata.',
+        hide: 'Disable or unplug unused devices, or block audio permissions—most people can ignore this safely. Security-conscious users maintain separate audio profiles or virtual audio cables when testing suspicious sites.'
+    },
+    'webcams': {
+        what: 'This tells whether cameras are connected, such as a built-in webcam or USB camera, and names stay blank until you give permission. Technically it reads videoinput devices from enumerateDevices and honours permission prompts or hardware mutes.',
+        legal: 'Video call tools need this to help you switch cameras or warn you if no camera is found. AV admins reference the same list to enforce conference-room standards or troubleshoot firmware issues.',
+        malicious: 'A shady site could learn that a camera exists and try to trick you into turning it on. Attack simulations check for webcams before launching fake verification calls or remote session scams.',
+        accuracy: 'This is GUESSED because many browsers hide the exact count until permission is granted, and identifiers may rotate. Under privacy sandboxing, device IDs are ephemeral to stop cross-site tracking.',
+        hide: 'Cover or unplug cameras, keep permissions revoked, or disable them in system settings. Security teams sometimes deploy hardware shutters or USB data blockers in sensitive areas.'
+    },
+    'geolocation-support': {
+        what: 'This simply shows whether your browser allows sites to ask for your precise location—it does not share the coordinates itself. Under the hood it checks if the Geolocation API is enabled and whether the page is delivered over HTTPS.',
+        legal: 'Maps, delivery apps, and ride shares check this to see if they can request your location. Compliance and accessibility teams also verify that permission flows respect regional consent rules.',
+        malicious: 'Pushy sites may nag you for access in order to log where you are. Suspicious scripts repeatedly probe navigator.geolocation to trigger prompts and trick distracted users.',
+        accuracy: 'This is KNOWN because the browser knows if the feature is available, usually only on secure pages and some embedded browsers. Engineers confirm it via feature detection or permissions.query().',
+        hide: 'Keep location permissions blocked or browse in modes that never allow geolocation. Mobile device managers disable the API entirely for high-security profiles or kiosk deployments.'
+    },
+    'geolocation-precise': {
+        what: 'If you already granted permission, this shows the latitude and longitude your device reports—much like sharing exact GPS coordinates. Technically it calls navigator.geolocation.getCurrentPosition or watchPosition to stream sensor data.',
+        legal: 'Navigation, deliveries, and emergency helpers depend on this accuracy to reach you. Urban planners and fleet managers combine these readings with mapping APIs and regulatory geofences.',
+        malicious: 'A hostile site could learn your home, workplace, or travel routine. Threat actors pair precise coordinates with Wi-Fi SSIDs, Bluetooth beacons, or cell IDs to build surveillance maps.',
+        accuracy: 'This is MEASURED and can be very close, especially on phones with GPS, assisted GNSS, or Wi-Fi triangulation. Engineers inspect accuracy and timestamp fields to gauge sensor quality.',
+        hide: 'Revoke location permissions in your browser or device settings, or use privacy modes that block the request. Security teams recommend mock-location apps or dual-profile devices for sensitive work.'
+    },
+    'touch-support': {
+        what: 'This says whether your device supports touch and how many fingers it can track. Technically it queries window.navigator.maxTouchPoints and evaluates pointer events for touch-capable hardware.',
+        legal: 'Sites switch to bigger buttons or swipe gestures when touch is present. Accessibility experts map these settings to WCAG touch targets and gesture alternatives.',
+        malicious: 'It is another piece of the fingerprint puzzle for trackers. Bot detectors analyze touch signals to spot emulators or desktop automation posing as mobile.',
+        accuracy: 'This is GUESSED and can be wrong if drivers misreport touch support or if remote desktops translate input. Web runtimes often cache maxTouchPoints and fall back to zero when uncertain.',
+        hide: 'Privacy tools can spoof it, but touch-friendly layouts may disappear even if you need them. Developers toggle it via browser flags or responsive design mode when testing gestures.'
+    },
+    'pointer-support': {
+        what: 'This explains what pointing tools you have, such as a precise mouse, a finger, or both. Internally it reflects the CSS pointer and any-pointer media queries that categorize fine versus coarse inputs.',
+        legal: 'Websites use it to size menus and hover effects so they are easy to use. Interaction designers use pointer data to enable hover states, keyboard fallbacks, or gesture hints.',
+        malicious: 'Combined with other data, it can help identify your device. Anti-fraud systems compare pointer patterns to confirm whether traffic is touch automation or human mouse movement.',
+        accuracy: 'This is GUESSED based on what the browser knows, aggregating device capabilities and fallback heuristics.',
+        hide: 'Spoofing it can make sites assume the wrong controls and feel awkward to use. QA teams override pointer media queries with dev tools when validating adaptive components.'
+    },
+    'fonts': {
+        what: 'This checks which fonts from a sample list are installed by quietly drawing text in the background. Technically it renders hidden characters to canvas or uses the Local Font Access API to compare measurements.',
+        legal: 'Designers use similar checks to pick safe fallback fonts when your favourite is missing. Publishing workflows also use font detection to enforce brand typography or substitute system fonts.',
+        malicious: 'Fingerprinting scripts probe fonts to help recognise you even without cookies. Attackers combine font metrics with canvas hashes and plugin data to persistently identify devices.',
+        accuracy: 'This is ESTIMATED because it only tests a limited list and some browsers block the check entirely, returning generic metrics. Privacy-first browsers randomize or disable local font enumeration.',
+        hide: 'Enable anti-fingerprinting modes or disable sharing of local fonts so sites cannot read the list. Professionals often run privacy-respecting browsers or remote desktops when opening unknown documents.'
+    },
+    'java-enabled': {
+        what: 'This reports whether the old Java browser plugin is turned on—almost every modern browser keeps it off for safety. Technically it reflects navigator.javaEnabled() which checks for NPAPI-era plugin support.',
+        legal: 'Legacy business tools once needed to know this before loading Java applets. Regulated industries sometimes maintain intranet sites that still depend on signed applets for smart cards or KVM control.',
+        malicious: 'Attackers targeted outdated Java plugins to install malware, which is why they are now disabled. Historical exploits like CVE-2013-0422 spread widely through compromised ad networks.',
+        accuracy: 'This is KNOWN because the browser simply says yes, no, or unsupported, mapping to plugin availability.',
+        hide: 'Leave Java disabled or remove it entirely; modern sites do not need it. Enterprises migrate to standalone Java Web Start replacements or remote desktops when legacy workflows persist.'
+    },
+    'plugins': {
+        what: 'This lists any classic browser plugins, like old video helpers, though modern browsers normally show an empty list. Historically it enumerated NPAPI or PPAPI modules exposed by navigator.plugins.',
+        legal: 'Websites once used this to confirm you could open certain media formats. IT departments tracked plugin presence to ensure Flash, Silverlight, or PDF readers met licensing terms.',
+        malicious: 'Plugins gave attackers easy targets and helped trackers identify you. Exploit kits harvested plugin version strings to deliver CVEs or to fingerprint corporate environments.',
+        accuracy: 'This is GUESSED because many browsers block the list or show only built-in entries, making the data incomplete. Chromium-based browsers now gate plugin enumeration behind feature policies.',
+        hide: 'Stay on modern browsers and avoid installing legacy plugins so nothing appears here. Digital forensics teams often run sensitive sessions inside locked-down browsers with plugin support disabled.'
+    },
+    'connection-type': {
+        what: 'This tells whether you are on Wi-Fi, mobile data, or a wired connection—similar to saying if you drove, biked, or walked to a store. Technically it relies on the Network Information API and modem heuristics when the browser exposes them.',
+        legal: 'Sites adjust downloads to save your data plan or keep videos smooth. CDN operators and streaming services use connection types to select bitrate ladders, buffer thresholds, and prefetch budgets.',
+        malicious: 'It can hint that you are travelling or on a possibly weaker connection. Fraud rings monitor connection shifts to detect roaming users worth phishing or to choose low-bandwidth payloads.',
+        accuracy: 'This is KNOWN only when the browser shares it, and many do not, because the specification is still experimental. Engineers treat the value as advisory since desktop browsers often return “unknown.”',
+        hide: 'Most browsers already hide it; the only true change comes from switching networks in real life. Pentesters sometimes tunnel traffic through proxies or Tor to mask mobile versus wired distinctions.'
+    },
+    'effective-type': {
+        what: 'This is a rough label for your connection speed, such as “4G” or “slow-2g,” so sites know if they should send lighter pages. It comes from the Network Information API, which buckets throughput and latency into named profiles.',
+        legal: 'Streaming sites and big downloads use it to pick the right quality automatically. SRE teams monitor effectiveType changes to trigger adaptive bitrate algorithms or offline fallbacks.',
+        malicious: 'It can reveal when your connection is sluggish and make you a target for fake speed-boost offers. Attackers also test bandwidth to decide whether to deliver large malware packages or stealthy beacons.',
+        accuracy: 'This is ESTIMATED based on recent activity and can change quickly, especially as radio conditions fluctuate. Developers know it is derived from moving averages of RTT and downlink measurements.',
+        hide: 'Spoofing it may cause videos to look bad or pages to load the wrong quality, and your true speed is still measurable via dedicated tests. Lab environments override it with Chrome flags during performance tuning.'
+    },
+    'downlink': {
+        what: 'Downlink is an estimated download speed in megabits per second, similar to how fast water flows through a hose. The API exposes navigator.connection.downlink, which is a rounded megabit figure derived from network sampling.',
+        legal: 'Sites use it to manage video quality and loading times. Performance monitoring tools log it alongside throughput metrics to tune caching, CDN selection, and progressive loading strategies.',
+        malicious: 'It can hint at your internet plan or help time attacks for when you are slow. Intruders may launch data-heavy exfiltration when downlink is high or send phishing that claims you need a speed upgrade when it is low.',
+        accuracy: 'This is ESTIMATED and updates as your real-world speed changes, but it is not a certified speed test. Browser engines smooth the value using rolling averages to avoid constant jitter.',
+        hide: 'Changing it fools only the estimate; sites can still run their own speed tests. Security testers manipulate it via Chrome DevTools throttling or proxy shapers to emulate slow networks.'
+    },
+    'rtt': {
+        what: 'RTT (round-trip time) measures how long it takes for data to make a round trip between you and a site, measured in milliseconds. Network stacks approximate it using TCP handshake timings and recent request samples.',
+        legal: 'It helps sites decide when to show loading spinners or simplify features for slow links. Observability teams correlate RTT with CDN health, last-mile latency, and SLA dashboards.',
+        malicious: 'It can hint at your location or when you have a laggy connection ripe for scams. Adversaries leverage RTT to detect VPN usage, geolocate targets, or tune command-and-control beacons.',
+        accuracy: 'This is ESTIMATED from recent network activity and can fluctuate with congestion. Engineers often compare it against ICMP ping or synthetic monitoring results for validation.',
+        hide: 'You cannot easily hide real delays; a VPN might change the number slightly but adds its own lag. Pen testers sometimes route through multi-hop proxies to blur RTT fingerprints at the cost of speed.'
+    },
+    'save-data': {
+        what: 'The Save-Data flag means you asked your browser to use less data, much like telling a restaurant “small portions, please.” It is exposed through the Save-Data request header and the Client Hints API when enabled.',
+        legal: 'Sites honour it by sending smaller images or turning off heavy effects. Accessibility and performance teams treat it as a consent signal to disable autoplay or heavy analytics scripts.',
+        malicious: 'Few threats here, though it can tip off marketers that you are on mobile or limited data. Some ad networks use it to pivot toward lightweight creatives or to infer prepaid users.',
+        accuracy: 'This is KNOWN because it comes straight from your browser setting and does not change mid-session unless you toggle it.',
+        hide: 'Turn the setting off to get full-quality content, knowing you will use more data. Developers simulate it with Chrome DevTools network throttling when testing low-data experiences.'
+    },
+    'dnt': {
+        what: 'Do Not Track (DNT) is a polite request your browser sends asking sites not to track you—like a “no junk mail” sign. Technically it sets the DNT header to 1, signalling a user preference against profiling.',
+        legal: 'Some regions encourage honouring it, but most sites are free to ignore it. Privacy policies often cite DNT explicitly to explain whether the signal is respected under local law.',
+        malicious: 'Attackers rarely care about DNT, though it may mark you as someone who values privacy. Analysts sometimes treat DNT visitors as more privacy-aware, adjusting outreach or consent prompts.',
+        accuracy: 'This is KNOWN because it is either on, off, or unset and is read directly from browser settings.',
+        hide: 'You either enable it or not—turning it on does not break sites but also does not guarantee privacy. Security professionals pair it with tracker blockers or VPNs for meaningful protection.'
+    },
+    'gpc': {
+        what: 'Global Privacy Control (GPC) is a newer signal that says “do not sell or share my data,” carrying more legal weight than DNT in places like California. It is implemented via the Sec-GPC header and JavaScript navigator.globalPrivacyControl flag.',
+        legal: 'In regions with strong privacy laws, companies must respect it or face penalties. Compliance officers wire GPC support into consent management platforms and audit logs.',
+        malicious: 'It is a protection, not a risk. From a security perspective it reduces data exposure by enforcing opt-out rights automatically.',
+        accuracy: 'This is KNOWN when your browser supports it and sets the value to true.',
+        hide: 'You cannot hide it except by turning it off; leave it on if you want the extra protection. Privacy advocates recommend enabling it alongside regional opt-out forms for redundancy.'
+    },
+    'cookies': {
+        what: 'Cookies are small notes a site saves on your device to remember things like logins or shopping carts. Technically they are key-value pairs stored per domain and shared through HTTP headers and the document.cookie API.',
+        legal: 'They keep you signed in, remember preferences, and support basic site features. Privacy regulations such as GDPR require clear consent for non-essential cookies, so compliance teams map purposes to consent banners.',
+        malicious: 'They can also follow you across sites or store stolen session tokens. Attackers hijack cookies via XSS, session fixation, or overbroad third-party domains to impersonate users.',
+        accuracy: 'This is KNOWN because the browser knows whether cookies are allowed, taking into account third-party restrictions, SameSite rules, and partitioned storage.',
+        hide: 'You can block cookies, but many sites will forget who you are, lose carts, or stop working correctly. Security-savvy users clear cookies regularly or use separate browser profiles to compartmentalize activity.'
+    },
+    'local-storage': {
+        what: 'Local storage is a bigger notepad than cookies where web apps can save settings or game progress on your device. It uses the Web Storage API to store key-value data that persists until cleared.',
+        legal: 'It makes sites faster and lets apps work offline. Developers pair it with IndexedDB and service workers to cache assets, queue offline work, and comply with resilience SLAs.',
+        malicious: 'Trackers or malware can stash data there without your knowledge. Security auditors inspect localStorage for leftover tokens, PII, or malicious scripts dropped by compromised sites.',
+        accuracy: 'This is KNOWN because the browser decides whether the feature is available, respecting private-browsing modes and storage partitions.',
+        hide: 'Disabling it breaks many modern sites that rely on saved settings or drafts. Privacy tools clear or sandbox storage per site to limit long-term tracking.'
+    },
+    'dark-mode': {
+        what: 'This reports whether you prefer dark backgrounds or light ones—similar to telling a cafe if you like the lights dim or bright. The browser exposes it through the prefers-color-scheme media query and color-scheme client hint.',
+        legal: 'Sites use it to match your visual preference automatically. Accessibility standards encourage respecting this signal to reduce eye strain and meet WCAG contrast guidance.',
+        malicious: 'Alone it is harmless, but it can be one more fingerprint clue. Analytics teams sometimes correlate dark-mode usage with device categories or nighttime browsing habits.',
+        accuracy: 'This is KNOWN from your system settings and updates instantly when you toggle the theme at the OS or browser level.',
+        hide: 'Changing it alters every app, so pick whichever keeps your eyes comfortable. Designers switch themes in dev tools to verify both light and dark palettes render correctly.'
+    },
+    'ad-topics': {
+        what: 'Chrome’s Topics API shares a few broad interests such as “Sports” or “Finance,” rotating each week to provide a hint instead of a full browsing history. Underneath, the browser classifies your recent sites into taxonomy IDs and surfaces only a small rotating sample.',
+        legal: 'Ad platforms use it to keep ads somewhat relevant without storing detailed profiles. Regulators review the API as part of Google’s Privacy Sandbox commitments to balance competition and privacy.',
+        malicious: 'On its own it is weak, but combined with tracking it can support a richer profile. Adversaries could correlate topics with other identifiers to rebuild behavioural segments.',
+        accuracy: 'This is KNOWN only in browsers that support Topics—most others return nothing. Developers can inspect chrome://topics-internals to see how the labels are generated.',
+        hide: 'Turn off Ad Topics in Chrome settings or choose a browser that does not offer the feature. Enterprise policies can disable the API fleet-wide via managed configuration.'
+    },
+    'ad-status': {
+        what: 'Ad status summarises which signals about you are wide open, partly hidden, or blocked—like a dashboard of what advertisers can see right now. It compiles all the measurements on this page into tiers so both everyday users and analysts can gauge exposure.',
+        legal: 'Marketing teams use the same cues to decide how precisely they can target ads. Compliance and data-governance groups audit similar dashboards to ensure privacy preferences are honoured.',
+        malicious: 'Trackers might focus on the “high” items to profile you faster or notice when protections disappear. Offensive teams monitor changes in signal strength to time re-identification or fingerprint regeneration.',
+        accuracy: 'It mixes KNOWN facts (like IP) with guesses (like location) and labels each accordingly so technical users can assess data quality.',
+        hide: 'Use VPNs, privacy settings, or disable topics and cookies to push more items into the protected bucket. Power users layer network-level blockers, hardened browsers, and containerised sessions to reduce exposure further.'
+    },
+    'ad-categories': {
+        what: 'These are local guesses about which ad buckets you fit, such as “Local offers” or “Video-friendly,” based only on the signals shown on this page. The scoring engine weights attributes like IP, language, and device type to label likely interest groups.',
+        legal: 'Advertisers use similar groups to avoid showing the wrong ads to the wrong people. Product marketers analyse category overlap to comply with sensitive-ad restrictions and brand-safety rules.',
+        malicious: 'When combined with long-term trackers they can feed a lasting profile. Data brokers aggregate such categories with CRM data to rebuild identifiable personas.',
+        accuracy: 'This is GUESSED and each card lists how sure the guess is, mirroring the confidence scores analysts use in segmentation models.',
+        hide: 'Reducing the source signals—VPNs, privacy languages, or disabling Topics—shrinks the list. Privacy professionals also isolate browsing contexts or use anti-tracking browsers to keep categories from accumulating.'
+    },
+    'ad-summary': {
+        what: 'This is a plain-language recap of the ad signals and categories above so you can see at a glance what is exposed, while the detailed breakdown lets technical readers trace each input. It stitches together the same JSON data the interface uses so analysts can audit it easily.',
+        legal: 'It helps you audit your privacy before you visit ad-heavy sites. Legal and governance teams snapshot similar summaries for DPIA assessments and vendor due diligence.',
+        malicious: 'A hostile site could log the summary to follow your changes over time. Intruders compare snapshots to see when VPNs drop, cookies return, or new interests appear.',
+        accuracy: 'It mixes KNOWN, ESTIMATED, and GUESSED data, and each line explains which is which to show both everyday users and specialists how strong each signal is.',
+        hide: 'Limit the underlying signals with VPNs, privacy browsers, or incognito sessions to keep the summary short. Security teams script automated checks to confirm mitigations stay in place.'
+    },
+    'reduced-motion': {
+        what: 'This says whether you asked for less animation, much like asking a driver to slow down to avoid motion sickness. The browser exposes it through the prefers-reduced-motion media query that front-end code can observe.',
+        legal: 'Sites use it to replace flashy effects with calmer ones, supporting accessibility rules and ADA/WCAG compliance. Product teams log it to ensure critical flows remain usable without motion cues.',
+        malicious: 'It is not a threat by itself; it just reflects a comfort preference. At most it provides a small fingerprinting hint that someone values accessibility settings.',
+        accuracy: 'This is KNOWN because it comes from your system accessibility settings and updates instantly when you toggle the option.',
+        hide: 'Changing it affects every app and site—leave it on if animations bother you. QA engineers toggle it in dev tools to confirm reduced-motion experiences behave correctly.'
+    }
+};
+
+const EVERYDAY_LEAKS = [
+    {
+        id: 'search-queries',
+        title: 'Search boxes & address bars',
+        how: 'Search engines and visited pages often keep a log of every term you type, even the ones you delete, and link it to your IP or account.',
+        reduce: 'Use privacy-first search engines, pause account history when looking up sensitive topics, and clear searches on shared devices.'
+    },
+    {
+        id: 'signup-forms',
+        title: 'Newsletter pop-ups & giveaway forms',
+        how: 'Details entered into pop-ups are frequently captured the instant you type them and may feed marketing lists even if you close the page.',
+        reduce: 'Share only the required fields, use disposable or alias emails for untrusted sites, and skip optional questions.'
+    },
+    {
+        id: 'social-reactions',
+        title: 'Likes, shares, and quick comments',
+        how: 'Each reaction creates a public breadcrumb that advertisers, data brokers, or nosy strangers can collect to learn your interests or plans.',
+        reduce: 'Limit who sees your activity, review connected apps, and keep sensitive updates inside private groups.'
+    },
+    {
+        id: 'photo-uploads',
+        title: 'Photos and screenshots you post',
+        how: 'Pictures can include hidden tags with time, GPS, or device details, and backgrounds might show house numbers or work badges.',
+        reduce: 'Strip location data before sharing, blur or crop sensitive areas, and avoid posting live from home.'
+    },
+    {
+        id: 'support-chats',
+        title: 'Support chats & AI helpers',
+        how: 'Anything you type into help widgets or AI assistants is often stored along with device details and can resurface later.',
+        reduce: 'Leave out personal identifiers, ask how long providers keep logs, and choose services with clear privacy promises.'
+    }
+];
+
+const HIDDEN_SHARES = [
+    {
+        id: 'referrer-header',
+        type: 'Referrer header',
+        innocentShare: 'You click a link and the new site learns which page sent you.',
+        maliciousUse: 'Trackers learn about sensitive pages you were reading.',
+        protection: 'Use privacy add-ons that strip referrers or open links in a fresh tab.',
+        example: 'Example: A clinic link tells the next site you were researching a diagnosis.'
+    },
+    {
+        id: 'form-autofill',
+        type: 'Forms and autofill',
+        innocentShare: 'Typing a name or email may prompt autofill to pour in the rest.',
+        maliciousUse: 'Fake forms capture the full set for spam or identity theft.',
+        protection: 'Disable broad autofill, rely on a password manager, and skip optional boxes.',
+        example: 'Example: A contest form saves your address even if you never hit submit.'
+    },
+    {
+        id: 'social-logins',
+        type: 'Social logins',
+        innocentShare: 'Logging in with Google or Facebook is quick and convenient.',
+        maliciousUse: 'Linked accounts may leak friend lists, likes, or daily habits.',
+        protection: 'Choose email sign-ups, use burner accounts, and review app access regularly.',
+        example: 'Example: A quiz app pulls your friend list after a single click.'
+    },
+    {
+        id: 'device-permissions',
+        type: 'Device permissions',
+        innocentShare: 'Allowing location or camera once may let the browser remember the yes for later.',
+        maliciousUse: 'Sneaky sites can keep tracking your GPS or watching through the webcam.',
+        protection: 'Revoke old permissions, use a VPN to blur location, and grant access only when essential.',
+        example: 'Example: A weather site keeps pinging your GPS quietly in the background.'
+    },
+    {
+        id: 'clipboard',
+        type: 'Clipboard',
+        innocentShare: 'Copying and pasting between tabs can expose whatever you copied.',
+        maliciousUse: 'Injected scripts can read the clipboard and steal secrets like passwords or wallet addresses.',
+        protection: 'Use browsers that block clipboard reads and clear the clipboard after sensitive tasks.',
+        example: 'Example: A fake wallet page swaps in its own crypto address when you paste.'
+    },
+    {
+        id: 'sensors',
+        type: 'Battery and sensors',
+        innocentShare: 'Sites may check battery level or motion data to adjust features.',
+        maliciousUse: 'Unique sensor patterns add to a tracking fingerprint.',
+        protection: 'Limit sensor access in device settings and prefer a desktop for private work.',
+        example: 'Example: A travel site spots low battery and pushes “urgent” upgrade deals.'
+    },
+    {
+        id: 'email-username',
+        type: 'Emails and usernames',
+        innocentShare: 'Dropping your email into a pop-up or reusing a username feels quick and easy.',
+        maliciousUse: 'Attackers combine those details with other leaks for convincing phishing.',
+        protection: 'Use disposable emails and fresh usernames on risky sites.',
+        example: 'Example: A leaked forum handle helps scammers guess your login elsewhere.'
+    },
+    {
+        id: 'connection-hints',
+        type: 'Connection hints',
+        innocentShare: 'Video players read your speed or connection type to stream smoothly.',
+        maliciousUse: 'Threat actors spot when you are travelling or on a slow link and tailor scams.',
+        protection: 'Route traffic through a VPN and enable privacy signals like Do Not Track.',
+        example: 'Example: A “slow connection” alert is used to sell fake speed boosters.'
+    }
+];

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Do Not Track (DNT) Explained | Privacy Insights | The Web Knows</title>
+    <meta name="description" content="Do Not Track (DNT) was an early browser feature that sent a signal to websites requesting they disable their cross-site tracking of the user...." />
+    <link rel="canonical" href="https://thewebknows.pages.dev/privacy-insights/do-not-track-explained/" />
+
+<meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.pages.dev/privacy-insights/do-not-track-explained/" />
+    <meta property="og:title" content="Do Not Track (DNT) Explained" />
+    <meta property="og:description" content="Do Not Track (DNT) was an early browser feature that sent a signal to websites requesting they disable their cross-site tracking of the user...." />
+    <meta property="og:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:section" content="Advertising &amp; Tracking" />
+    <meta property="article:published_time" content="2025-11-10T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2025-11-10T00:00:00.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Do Not Track (DNT) Explained" />
+    <meta name="twitter:description" content="Do Not Track (DNT) was an early browser feature that sent a signal to websites requesting they disable their cross-site tracking of the user...." />
+    <meta name="twitter:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta name="twitter:image:alt" content="Do Not Track (DNT) Explained" />
+    <meta name="twitter:url" content="https://thewebknows.pages.dev/privacy-insights/do-not-track-explained/" />
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://thewebknows.pages.dev/privacy-insights/do-not-track-explained/#article",
+          "headline": "Do Not Track (DNT) Explained",
+          "description": "Do Not Track (DNT) was an early browser feature that sent a signal to websites requesting they disable their cross-site tracking of the user....",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@id": "https://thewebknows.pages.dev/privacy-insights/#page"
+          },
+          "mainEntityOfPage": {
+            "@id": "https://thewebknows.pages.dev/privacy-insights/do-not-track-explained/"
+          },
+          "articleSection": "Advertising & Tracking",
+          "image": "https://thewebknows.pages.dev/og-image.png",
+          "author": {
+            "@type": "Organization",
+            "name": "The Web Knows"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Web Knows",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://thewebknows.pages.dev/favicon.svg"
+            }
+          },
+          "datePublished": "2025-11-10T00:00:00.000Z",
+          "dateModified": "2025-11-10T00:00:00.000Z"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://thewebknows.pages.dev/privacy-insights/do-not-track-explained/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://thewebknows.pages.dev/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Privacy Insights",
+              "item": "https://thewebknows.pages.dev/privacy-insights/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Do Not Track (DNT) Explained",
+              "item": "https://thewebknows.pages.dev/privacy-insights/do-not-track-explained/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/privacy-insights/" aria-current="page">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/privacy-insights/">Insights</a></li>
+                <li aria-current="page">Do Not Track (DNT) Explained</li>
+            </ol>
+        </nav>
+
+        <article class="blog-article">
+            <header class="blog-article__header">
+                <p class="blog-article__category">Advertising &amp; Tracking</p>
+                <h1 class="blog-article__title">Do Not Track (DNT) Explained</h1>
+                <div class="blog-article__meta">
+                    <time datetime="2025-11-10">10 November 2025</time>
+                    <span class="blog-article__reading-time">3 min read</span>
+                </div>
+            </header>
+            <section class="blog-article__content">
+                <p><strong>At a Glance:</strong> Do Not Track (DNT) was an early browser feature that sent a signal to websites requesting they disable their cross-site tracking of the user. Unfortunately, it was never widely adopted by the advertising industry and is now largely ignored.</p>
+<p><strong>In Detail:</strong></p>
+<p>Introduced over a decade ago, DNT was a pioneering effort to give users control over tracking. When enabled in a browser, it adds a `DNT: 1` header to all outgoing web requests.</p>
+<p><strong>Why DNT Failed:</strong></p>
+<ul>
+<li><strong>No Legal Mandate:</strong> Unlike GPC, which is backed by laws in California and other jurisdictions, DNT was never enshrined in law. Compliance was entirely voluntary.</li>
+<li><strong>Lack of Consensus:</strong> The advertising and publishing industries could not agree on what the signal should mean. Should it block all tracking? Or just certain types? Without a clear standard, most companies chose to ignore it.</li>
+<li><strong>Default Settings:</strong> Some browsers initially shipped with DNT enabled by default, which diluted its meaning as an explicit user choice.</li>
+</ul>
+<p><strong>What You Can Do:</strong></p>
+<ul>
+<li><strong>Use GPC Instead:</strong> The Global Privacy Control is the modern, more effective replacement for DNT. Prioritise enabling GPC.</li>
+<li><strong>Rely on Technical Defences:</strong> Since DNT is unreliable, your primary defence should be technical: using privacy browsers, blocking third-party cookies, and employing content blockers like uBlock Origin.</li>
+</ul>
+<hr />
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/privacy-insights/">Privacy Insights</a>
+            </nav>
+            
+        </div>
+    </footer>
+<script src="/app.js" defer></script>
+</body>
+</html>

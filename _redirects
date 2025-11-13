@@ -1,0 +1,8 @@
+/privacy-insights.html	/privacy-insights/	301
+/privacy.html	/privacy/	301
+/about.html	/about/	301
+/glossary.html	/glossary/	301
+/blog/:asset.js	/blog/:asset.js	200
+/blog/:slug.html	/privacy-insights/:slug/	301
+/blog/:slug	/privacy-insights/:slug/	301
+

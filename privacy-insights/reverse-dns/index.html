@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Reverse DNS: What It Is and What It Reveals | Privacy Insights | The Web Knows</title>
+    <meta name="description" content="Understand PTR records, ISP naming conventions, and how reverse DNS can reveal your ISP, region, or organisation. Learn how rDNS fits alongside ASN and WHOIS data and what you can realistically do about it." />
+    <link rel="canonical" href="https://thewebknows.pages.dev/privacy-insights/reverse-dns/" />
+
+<meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.pages.dev/privacy-insights/reverse-dns/" />
+    <meta property="og:title" content="Reverse DNS: What It Is and What It Reveals" />
+    <meta property="og:description" content="Understand PTR records, ISP naming conventions, and how reverse DNS can reveal your ISP, region, or organisation. Learn how rDNS fits alongside ASN and WHOIS data and what you can realistically do about it." />
+    <meta property="og:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="article:section" content="Network &amp; IP Intelligence" />
+    <meta property="article:published_time" content="2025-11-11T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2025-11-11T00:00:00.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Reverse DNS: What It Is and What It Reveals" />
+    <meta name="twitter:description" content="Understand PTR records, ISP naming conventions, and how reverse DNS can reveal your ISP, region, or organisation." />
+    <meta name="twitter:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta name="twitter:image:alt" content="Reverse DNS: What It Is and What It Reveals" />
+    <meta name="twitter:url" content="https://thewebknows.pages.dev/privacy-insights/reverse-dns/" />
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://thewebknows.pages.dev/privacy-insights/reverse-dns/#article",
+          "headline": "Reverse DNS: What It Is and What It Reveals",
+          "description": "Understand PTR records, ISP naming conventions, and how reverse DNS can reveal your ISP, region, or organisation. Learn how rDNS fits alongside ASN and WHOIS data and what you can realistically do about it.",
+          "inLanguage": "en-GB",
+          "speakable": {
+            "@type": "SpeakableSpecification",
+            "xpath": [
+              "/html/head/title",
+              "/html/body/main/article/h2[1]"
+            ]
+          },
+          "isPartOf": {
+            "@id": "https://thewebknows.pages.dev/privacy-insights/#page"
+          },
+          "mainEntityOfPage": {
+            "@id": "https://thewebknows.pages.dev/privacy-insights/reverse-dns/"
+          },
+          "articleSection": "Network & IP Intelligence",
+          "image": "https://thewebknows.pages.dev/og-image.png",
+          "author": {
+            "@type": "Organization",
+            "name": "The Web Knows"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Web Knows",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://thewebknows.pages.dev/favicon.svg"
+            }
+          },
+          "datePublished": "2025-11-11T00:00:00.000Z",
+          "dateModified": "2025-11-11T00:00:00.000Z"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://thewebknows.pages.dev/privacy-insights/reverse-dns/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://thewebknows.pages.dev/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Privacy Insights",
+              "item": "https://thewebknows.pages.dev/privacy-insights/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Reverse DNS: What It Is and What It Reveals",
+              "item": "https://thewebknows.pages.dev/privacy-insights/reverse-dns/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/privacy-insights/" aria-current="page">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/privacy-insights/">Insights</a></li>
+                <li aria-current="page">Reverse DNS: What It Is and What It Reveals</li>
+            </ol>
+        </nav>
+
+        <article class="blog-article">
+            <header class="blog-article__header">
+                <p class="blog-article__category">Network &amp; IP Intelligence</p>
+                <h1 class="blog-article__title">Reverse DNS: What It Is and What It Reveals</h1>
+                <div class="blog-article__meta">
+                    <time datetime="2025-11-11">11 November 2025</time>
+                    <span class="blog-article__reading-time">13 min read</span>
+                </div>
+            </header>
+            <section class="blog-article__content">
+                <p><strong>Overview:</strong> Reverse DNS (rDNS) rarely features in privacy discussions, yet every outbound connection your browser makes gives websites the opportunity to look up the hostname behind your IP address. That hostname—controlled entirely by whoever owns the IP range—can leak your ISP, your company, your city, and even the type of connection you are using. This guide lifts the lid on PTR records, explains why they exist, and sets out the practical steps you can take to understand and, where possible, tame this underappreciated signal.</p>
+
+                <h2>Overview (TL;DR)</h2>
+                <p>Reverse DNS performs the opposite operation of standard DNS. Instead of converting a human-readable domain into an IP address, it maps an IP address back to a hostname using PTR (pointer) records. Because ISPs, mobile carriers, hosting companies, and large organisations choose their own naming schemes, the resulting hostnames can reveal a surprising amount: which provider you use, whether you are on mobile, the nearest city gateway, or that you are browsing from a corporate network. While rDNS on its own rarely pinpoints an individual, it is a powerful corroborating data point when combined with other signals such as ASN lookups, WHOIS records, and browser fingerprinting. For maximum privacy, route outbound traffic through a service whose PTR records you are comfortable with—typically a reputable VPN or Tor.</p>
+
+                <h2>Reverse DNS in Context: Forward vs. Reverse Lookups</h2>
+                <p>Every introduction to DNS starts with the forward lookup: resolving <code>thewebknows.com</code> to an IP address so that your browser can open a TCP connection. Reverse DNS is the counterpart, translating an IP such as <code>203.0.113.42</code> back into a hostname. The two systems sit side-by-side in the global DNS hierarchy but are maintained by different parties:</p>
+                <ul>
+                    <li><strong>Forward DNS</strong> (A/AAAA/CNAME records) is managed by whoever controls the domain name. If you own <code>example.co.uk</code>, you decide which IP it points to.</li>
+                    <li><strong>Reverse DNS</strong> (PTR records) is managed by whoever holds the IP address block. That is usually your ISP, your cloud hosting provider, or, in large enterprises, the organisation’s network team.</li>
+                </ul>
+                <p>From a privacy perspective, this division of responsibility matters. You have no direct control over the PTR record tied to your residential IP; it reflects the configuration choices of your provider. When a website queries your IP’s PTR record, it is effectively asking your ISP to describe you.</p>
+
+                <h2>How PTR Records Work Behind the Scenes</h2>
+                <p>PTR records live in the special <code>in-addr.arpa</code> (IPv4) and <code>ip6.arpa</code> (IPv6) domains. The DNS hierarchy is inverted for reverse lookups, meaning the octets of an IPv4 address are reversed. For example, the PTR record for <code>203.0.113.42</code> resides at <code>42.113.0.203.in-addr.arpa</code>. When a resolver receives the query, it walks the DNS tree until it finds the authoritative nameserver appointed by the IP block’s owner. The response is a hostname, usually one that the ISP can also resolve forward to the original IP; this “forward-confirmed reverse DNS” (FCrDNS) pattern is especially important for email servers to prove legitimacy.</p>
+                <p>Because PTR records are optional, some providers leave them blank. Others embrace elaborate naming conventions for operational convenience—embedding circuit IDs, exchange codes, or equipment types. The richer the label, the more intelligence leaks to third parties.</p>
+
+                <h2>Decoding Naming Conventions: What Hostnames Reveal</h2>
+                <p>Consider a few real-world patterns encountered on residential, mobile, and corporate networks. Each reveals something tangible about the connection:</p>
+                <ul>
+                    <li><strong>Residential Broadband:</strong> Hostnames often follow <code>cpc-wabc1-0-0-cust123.12-3.cable.virginmedia.com</code>, encoding the city (<code>wabc</code> for West Aberdeen), the cable node, and sometimes even the account sequence. BT’s <code>host-78-145-12-34.range81-151.btcentralplus.com</code> shows the dynamic pool.</li>
+                    <li><strong>Mobile Data:</strong> Carriers use patterns like <code>5.67.89.123.dynamic.orange.net</code> or <code>cust-123-4-56-78.mobile.tre.se</code>, signalling a cellular connection. Fraud systems treat mobile ASNs differently because IPs are shared on a massive scale.</li>
+                    <li><strong>Enterprise Gateways:</strong> Corporate ISPs and universities frequently assign descriptive names: <code>fw-lon.corpbank.co.uk</code> or <code>vpn-gw.cam.ac.uk</code>. Anyone observing outbound traffic can link the user to that organisation instantly.</li>
+                    <li><strong>Cloud Providers:</strong> Amazon EC2 instances appear as <code>ec2-52-12-123-45.eu-west-1.compute.amazonaws.com</code>. Similar patterns exist for Google Cloud (<code>bc1a2b3c4d5e6f7.compute-1.amazonaws.com</code>) and Azure (<code>waws-prod-am2-123.sip.azurewebsites.windows.net</code>), making it easy to classify traffic as originating from a data centre.</li>
+                </ul>
+                <p>Even when a hostname looks innocuous—say, <code>host-00-01-02-03.isp.net</code>—the mere fact that a PTR record exists can signal that the IP is part of a managed, static allocation rather than a disposable, dynamic pool. That distinction feeds into reputation scoring algorithms used in advertising, analytics, and fraud prevention.</p>
+
+                <h2>Reverse DNS as a Privacy Signal</h2>
+                <p>On its own, reverse DNS rarely uncovers an individual. Yet it enriches every other dataset a website has:</p>
+                <ul>
+                    <li><strong>Organisation identification:</strong> If a hostname includes the company or university name, the site can tailor content, adjust pricing, or even deny access. Intelligence firms use this to profile competitive activity (“someone from rival-bank.co.uk just hit our career portal”).</li>
+                    <li><strong>Geographic corroboration:</strong> City or airport codes within hostnames (<code>nyc</code>, <code>lhr</code>, <code>sfo</code>) help confirm IP geolocation results. If geolocation says “London” and your PTR record carries <code>lond-broadband</code>, confidence rises sharply.</li>
+                    <li><strong>Network type detection:</strong> PTR patterns reveal whether the connection is residential, mobile, satellite, or a known VPN infrastructure. This informs risk scoring and helps block automated scraping.</li>
+                    <li><strong>Email authentication:</strong> Mail servers rely heavily on rDNS. A missing or mismatched PTR record is a strong spam indicator, so legitimate organisations configure it carefully. Attackers mimic these conventions to bypass filters.</li>
+                </ul>
+                <p>The privacy risk is cumulative. Reverse DNS does not expose anything a determined investigator could not infer elsewhere, but it decreases uncertainty and can be combined with browser fingerprints, TLS client hellos, and behavioural data to differentiate one cohort of visitors from another.</p>
+
+                <h2>Reverse DNS vs. WHOIS vs. ASN: A Layered View</h2>
+                <p>Reverse DNS is often compared to WHOIS and ASN lookups, but each reveals a different layer:</p>
+                <ul>
+                    <li><strong>WHOIS</strong> provides the registrant information for an IP block: the legal entity, address, and abuse contacts. It is relatively static and often out of date for consumer ranges.</li>
+                    <li><strong>ASN</strong> lookups reveal the autonomous system routing the traffic. They answer “which network does this IP belong to?” and are vital for routing and reputation.</li>
+                    <li><strong>Reverse DNS</strong> conveys an operational label chosen by the network owner. It is often the most human-readable, providing hints that the other two lack.</li>
+                </ul>
+                <p>Together they create a nuanced picture. For example, an IP may have a WHOIS record for “Comcast Cable Communications”, an ASN of <code>AS7922</code> (Comcast), and an rDNS of <code>c-73-162-45-12.hsd1.ca.comcast.net</code>. A fraud system now knows this visitor is probably a Californian home broadband user—not a data centre, not Tor, not mobile.</p>
+
+                <h2>How to Inspect Your Own rDNS Footprint</h2>
+                <p>Curious about what your network reveals? You can query the PTR record for any IP using command-line tools or web interfaces.</p>
+                <h3>Command-line tools</h3>
+                <ul>
+                    <li><code>nslookup &lt;IP&gt;</code> works on Windows, macOS, and Linux. Example: <code>nslookup 8.8.8.8</code> returns <code>dns.google</code>.</li>
+                    <li><code>dig -x &lt;IP&gt;</code> offers more detail and supports specifying resolvers. Example: <code>dig -x 203.0.113.42 @1.1.1.1</code>.</li>
+                    <li><code>host &lt;IP&gt;</code> is a succinct alternative on Unix-like systems.</li>
+                </ul>
+                <h3>Web-based tools</h3>
+                <ul>
+                    <li><a href="https://viewdns.info/reverseip/" rel="noopener">viewdns.info</a> and <a href="https://mxtoolbox.com/ReverseLookup.aspx" rel="noopener">MxToolbox</a> perform rDNS queries and show related WHOIS/ASN data.</li>
+                    <li>Privacy-testing suites such as <a href="https://ipleak.net" rel="noopener">ipleak.net</a> bundle rDNS with DNS leak checks and WebRTC tests.</li>
+                </ul>
+                <p>Remember that any online service you use to perform the lookup sees your IP and query, so sensitive investigations should be proxied through a VPN or performed via your own resolver.</p>
+
+                <h2>Mitigations: What You Can and Cannot Control</h2>
+                <p>Because ISPs own the PTR records, there is little you can change at the protocol level. However, you can influence what third parties see:</p>
+                <ol>
+                    <li><strong>Use a VPN you trust:</strong> When connected, websites resolve the VPN server’s IP. Good providers use neutral hostnames (e.g., <code>lon-203.vpnprovider.net</code>) that reveal only the service and region, not your home ISP or employer.</li>
+                    <li><strong>Route through Tor:</strong> Tor exit nodes have their own PTR records, typically generic to the hosting provider. They mask your origin but may raise CAPTCHAs because many exits reside in data centres.</li>
+                    <li><strong>Upgrade to business service if you need control:</strong> Some ISPs allow static IP customers to supply custom PTR values. This is common in business contracts where email deliverability matters.</li>
+                    <li><strong>Be wary of self-hosted services on residential lines:</strong> Running a mail server without an appropriate PTR will see your emails rejected. Conversely, if you do not want your domain publicly tied to your home IP, avoid requesting vanity PTRs from your ISP.</li>
+                </ol>
+                <p>For most individuals, the pragmatic stance is awareness rather than intervention. Knowing what your hostname reveals helps you interpret why certain sites react the way they do.</p>
+
+                <h2>Use Cases: Why rDNS Still Matters Operationally</h2>
+                <p>Reverse DNS is not just a privacy footnote—it remains central in several operational workflows:</p>
+                <ul>
+                    <li><strong>Email hygiene:</strong> Spam filters check that the sending IP’s PTR points to a recognisable hostname and that the hostname resolves back to the same IP. Mismatches trigger suspicion.</li>
+                    <li><strong>Logging and incident response:</strong> Network teams rely on hostnames to understand traffic patterns quickly. A log entry with <code>vpn-exit.lon.acme.com</code> is more informative than a raw IP.</li>
+                    <li><strong>Blocking policies:</strong> Some organisations block ranges by wildcard hostnames (e.g., all traffic from <code>*.amazonaws.com</code>). Attackers study these policies to mimic trusted naming schemes.</li>
+                    <li><strong>Analytics segmentation:</strong> Marketing teams use PTR patterns to separate consumer traffic from enterprise visitors, tailoring content or sales outreach accordingly.</li>
+                </ul>
+                <p>This operational usefulness is why PTR records persist despite their privacy side-effects.</p>
+
+                <h2>Reverse DNS and IPv6</h2>
+                <p>IPv6 uses the <code>ip6.arpa</code> domain for reverse lookups, expanding each nibble into a separate DNS label. Because IPv6 allocations are vast, many ISPs forego granular PTR records for residential blocks, pointing entire prefixes to generic hostnames. Others adopt structured labels akin to <code>2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.ip6.dynamic.isp.net</code>. The privacy stakes are similar: if the hostname includes location or customer identifiers, the leak persists. Privacy extensions that randomise your interface identifier do not change the PTR record; the ISP still controls the mapping from the delegated prefix to hostnames.</p>
+
+                <h2>Frequently Asked Questions</h2>
+                <h3>Can I set my own PTR record for a residential IP?</h3>
+                <p>Typically no. The ability to edit PTR records sits with the IP block owner. Some business-grade connections offer “reverse delegation”, letting you host the reverse zone yourself or request custom entries. Residential contracts almost never include this option.</p>
+                <h3>Does the absence of a PTR record improve privacy?</h3>
+                <p>Partially. If no PTR exists, a website gains no additional label. However, the lack of a record can itself reveal that you are in a dynamic pool or on a network that does not prioritise email hosting. It reduces leakage but does not eliminate other signals.</p>
+                <h3>Will IPv6 make reverse DNS more or less revealing?</h3>
+                <p>It depends on the provider. Some ISPs map entire IPv6 /56 or /64 prefixes to a generic hostname, providing little insight. Others embed customer identifiers. Monitor your own PTR records as IPv6 rolls out—privacy-conscious providers will document their approach.</p>
+                <h3>Do VPN providers publish informative PTR records?</h3>
+                <p>Reputable VPNs aim for neutrality, using hostnames that expose only a location code or server number. Cheaper services sometimes leave default data-centre hostnames in place, making it obvious which cloud platform they use. When evaluating a provider, inspect the PTR records of their endpoints.</p>
+
+                <h2>Key Takeaway</h2>
+                <p>Reverse DNS is a low-effort lookup that provides high-value hints. You cannot stop third parties from querying your IP’s PTR record, but you can be intentional about which IPs you expose to the public internet. Whenever your privacy posture demands it—journalism, research, corporate due diligence—route traffic through infrastructure whose reverse DNS says nothing meaningful about you. For everything else, simply being aware of what leaks helps you interpret risk scores, CAPTCHAs, and support requests with a clearer, more informed eye.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/privacy-insights/">Privacy Insights</a>
+            </nav>
+            
+        </div>
+    </footer>
+<script src="/app.js" defer></script>
+</body>
+</html>
+

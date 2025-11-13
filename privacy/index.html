@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=()" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <title>Privacy Policy | The Web Knows</title>
+    <meta name="description" content="Read The Web Knows privacy policy: how the ad-supported diagnostic handles data, which partners load, and how to control your privacy." />
+    <meta name="robots" content="index, follow" />
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.pages.dev/privacy/" />
+    <meta property="og:title" content="Privacy Policy | The Web Knows" />
+    <meta property="og:description" content="How The Web Knows handles data, monetises with advertising partners, and helps you control exposure." />
+    <meta property="og:image" content="https://thewebknows.pages.dev/og-image.png" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Privacy Policy | The Web Knows" />
+    <meta name="twitter:description" content="How The Web Knows handles data, monetises with advertising partners, and helps you control exposure." />
+    <meta name="twitter:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta name="twitter:url" content="https://thewebknows.pages.dev/privacy/" />
+    
+    <link rel="canonical" href="https://thewebknows.pages.dev/privacy/" />
+
+<script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "PrivacyPolicy",
+            "@id": "https://thewebknows.pages.dev/privacy/#policy",
+            "url": "https://thewebknows.pages.dev/privacy/",
+            "name": "Privacy Policy | The Web Knows",
+            "description": "The Web Knows details its ad-supported diagnostics, outlines third-party partners, and explains how to manage your privacy choices.",
+            "datePublished": "2024-02-12",
+            "dateModified": "2025-11-10",
+            "inLanguage": "en",
+            "isPartOf": {
+                "@id": "https://thewebknows.pages.dev/#website"
+            }
+        }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/privacy-insights/">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <article class="info-card">
+            <h1>Privacy Policy</h1>
+            <p><strong>Last updated:</strong> February 2024</p>
+            <p class="cta-inline">Use <a href="/">The Web Knows privacy diagnostic</a> to confirm exactly what information is visible. The scan runs locally in your browser, while ad placements may load from our monetisation partners.</p>
+
+            <h2>Our Commitment</h2>
+            <p>The Web Knows is designed with privacy as its core principle. The diagnostic experience keeps calculations in your browser so you can see what the web sees without sending those results back to us. Advertising keeps the service sustainable, and we review partners for transparency before they are allowed on the page.</p>
+
+            <h2>How the Diagnostic Works</h2>
+            <p>When you visit this site your browser performs two sets of actions:</p>
+            <ul>
+                <li><strong>Local scan:</strong> Requests to IP lookup services (ipify.org, ipapi.co, ipinfo.io, dns.google) reveal your public network details. Browser APIs provide device, fingerprinting, and advertising status signals. These values are rendered directly to your screen.</li>
+                <li><strong>Advertising load:</strong> Ad units are fetched from approved partner networks. They may set cookies or read browser identifiers to comply with their own frequency-capping and reporting obligations.</li>
+            </ul>
+            <p>Reloading the page reruns the scan from scratch. We do not persist your diagnostic results between sessions.</p>
+
+            <h2>What We Collect</h2>
+            <ul>
+                <li><strong>Diagnostic results:</strong> Not collected or stored by us; the values live solely in your session.</li>
+                <li><strong>Server logs:</strong> We retain minimal server logs for operational security (for example, aggregate error monitoring) and purge them on a rolling basis.</li>
+                <li><strong>Advertising telemetry:</strong> Ad partners may gather impression counts, click data, or coarse device identifiers under their respective policies.</li>
+            </ul>
+
+            <h2>Advertising Partners</h2>
+            <p>We work with privacy-reviewed ad networks to fund hosting and ongoing improvements. Each partner provides its own consent tools and opt-out mechanisms. Because ads are delivered from their infrastructure, they may set third-party cookies, use local storage, or read existing identifiers to measure reach.</p>
+            <p><strong>For newcomers:</strong> Look for “Ad choices” or “Why this ad?” links inside the creative to manage settings quickly.</p>
+            <p><strong>For advanced users:</strong> You can combine browser-based protections (content blockers, network filters, privacy modes) with the diagnostic to observe how ad signals respond.</p>
+
+            <h2>Third-Party Services</h2>
+            <p>To show you your IP address and location, we use the following services:</p>
+            <ul>
+                <li><strong>ipify.org</strong> — For IP address lookup (IPv4 and IPv6)</li>
+                <li><strong>ipapi.co</strong> — For ISP and location information (primary)</li>
+                <li><strong>ipinfo.io</strong> — For ISP and location information (fallback)</li>
+                <li><strong>dns.google</strong> — For reverse DNS (PTR) lookups</li>
+            </ul>
+            <p>These services may log your requests according to their own privacy policies. Advertising networks integrated on the site maintain separate privacy statements covering their telemetry. If you prefer not to use these services, you can disable JavaScript or rely on browser extensions to block the network calls.</p>
+
+            <h2>Your Data</h2>
+            <p>You can request removal of any server-side data we hold by contacting us; however, our operational logs are short-lived and do not include your diagnostic results. To manage advertising data, use the opt-out controls provided by each network or apply browser-level protections.</p>
+            
+            <h2>Changes to This Policy</h2>
+            <p>We may update this privacy policy from time to time. Any changes will be posted on this page with an updated "Last updated" date.</p>
+            
+            <h2>Contact</h2>
+            <p>If you have questions about this privacy policy, please visit our <a href="/about/">About</a> page.</p>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+            <p class="footer-copyright">© 2025 The Web Knows. All rights reserved.</p>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/" aria-current="page">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/privacy-insights/">Privacy Insights</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/app.js" defer></script>
+</body>
+</html>
+

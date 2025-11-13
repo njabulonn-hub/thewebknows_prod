@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=()" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <title>About The Web Knows | Plain-English Privacy Diagnostics</title>
+    <meta name="description" content="Meet The Web Knows team and see how our ad-supported privacy diagnostic explains web tracking for beginners and experts alike." />
+    <meta name="robots" content="index, follow" />
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.pages.dev/about/" />
+    <meta property="og:title" content="About The Web Knows" />
+    <meta property="og:description" content="Meet the privacy diagnostic project built to explain web tracking in everyday language." />
+    <meta property="og:image" content="https://thewebknows.pages.dev/og-image.png" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About The Web Knows" />
+    <meta name="twitter:description" content="Meet the privacy diagnostic project built to explain web tracking in everyday language." />
+    <meta name="twitter:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta name="twitter:url" content="https://thewebknows.pages.dev/about/" />
+    
+    <link rel="canonical" href="https://thewebknows.pages.dev/about/" />
+
+<script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "@id": "https://thewebknows.pages.dev/about/#webpage",
+            "url": "https://thewebknows.pages.dev/about/",
+            "name": "About The Web Knows",
+            "description": "Learn the mission, methodology, and trust principles behind The Web Knows privacy diagnostic tool.",
+            "datePublished": "2024-02-12",
+            "dateModified": "2025-11-10",
+            "inLanguage": "en",
+            "isPartOf": {
+                "@id": "https://thewebknows.pages.dev/#website"
+            }
+        }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/privacy-insights/">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <article class="info-card">
+            <h1>About The Web Knows</h1>
+            <p class="page-meta"><strong>Last updated:</strong> February 2024 · <strong>Author:</strong> The Web Knows team</p>
+
+            <h2>What Is This?</h2>
+            <p>The Web Knows is a diagnostics hub that shows you exactly what information websites can see about you—without forcing you to install extra software. The core scan runs inside your browser so you can audit your exposure in real time. To keep the tool free for everyone, we now display carefully reviewed advertising units; those partners may measure impressions or set cookies under their own privacy policies.</p>
+
+            <h2>Why Does This Exist?</h2>
+            <p>Many people don't realize how much information their browser automatically shares with websites. This tool helps you understand what's visible to any website you visit, so you can make informed decisions about your privacy.</p>
+            <p><strong>If you're just getting started:</strong> lean on the plain-language summaries, everyday examples, and quick tips. They translate jargon like “ASN” or “Topics API” into scenarios you can recognise instantly.</p>
+            <p><strong>If you work in security, marketing, or compliance:</strong> the same cards highlight legal obligations, adversarial abuse paths, and mitigation checklists. You can use them as shorthand for training teammates or auditing privacy controls.</p>
+
+            <h2>How It Works</h2>
+            <p>When you visit this site, your browser:</p>
+            <ul>
+                <li>Makes requests to IP lookup services to find your public IP address and approximate location</li>
+                <li>Collects information about your browser, device, and system settings</li>
+                <li>Displays all of this information in plain English</li>
+            </ul>
+            <p>All diagnostic logic executes locally. Advertising scripts load alongside the scan and may perform their own measurement or personalisation according to the controls you have with those partners.</p>
+
+            <p class="cta-inline"><strong>Want to verify what is exposed right now?</strong> Launch <a href="/">The Web Knows privacy check</a> and compare the live results with this overview. The diagnostic runs locally while ad placements load in parallel from our monetisation partners.</p>
+
+            <h2>Data Practices &amp; Advertising Support</h2>
+            <p>We balance transparency with the reality that advertising keeps the service online:</p>
+            <ul>
+                <li><strong>Local diagnostics:</strong> Your scan results are rendered in the browser. We do not transmit the values we display back to our servers.</li>
+                <li><strong>No first-party analytics:</strong> We do not run separate analytics pixels beyond what our ad partners require for billing and reporting.</li>
+                <li><strong>Advertising scripts:</strong> Ad networks may load their own assets, set cookies, or read standard browser signals. Review each provider's privacy controls to manage those interactions.</li>
+                <li><strong>Your choice:</strong> You can continue to use VPNs, content blockers, or browser privacy modes while running the diagnostic. Doing so may change both the scan results and the ads you see.</li>
+            </ul>
+            
+              <h2>Questions?</h2>
+            <p>If you have questions or feedback, please review our <a href="/privacy/">Privacy Policy</a> for more details about diagnostics, data handling, and advertising partners.</p>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+            <p class="footer-copyright">© 2025 The Web Knows. All rights reserved.</p>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/" aria-current="page">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/privacy-insights/">Privacy Insights</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/app.js" defer></script>
+</body>
+</html>
+

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Mobile Browser Fingerprinting | Privacy Insights | The Web Knows</title>
+    <meta name="description" content="Just like on desktop, your mobile browser can be fingerprinted. The unique combination of your phone model, screen resolution, and operating system..." />
+    <link rel="canonical" href="https://thewebknows.pages.dev/privacy-insights/mobile-browser-fingerprinting/" />
+
+<meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.pages.dev/privacy-insights/mobile-browser-fingerprinting/" />
+    <meta property="og:title" content="Mobile Browser Fingerprinting" />
+    <meta property="og:description" content="Just like on desktop, your mobile browser can be fingerprinted. The unique combination of your phone model, screen resolution, and operating system..." />
+    <meta property="og:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:section" content="Mobile Privacy" />
+    <meta property="article:published_time" content="2025-11-10T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2025-11-10T00:00:00.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mobile Browser Fingerprinting" />
+    <meta name="twitter:description" content="Just like on desktop, your mobile browser can be fingerprinted. The unique combination of your phone model, screen resolution, and operating system..." />
+    <meta name="twitter:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta name="twitter:image:alt" content="Mobile Browser Fingerprinting" />
+    <meta name="twitter:url" content="https://thewebknows.pages.dev/privacy-insights/mobile-browser-fingerprinting/" />
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://thewebknows.pages.dev/privacy-insights/mobile-browser-fingerprinting/#article",
+          "headline": "Mobile Browser Fingerprinting",
+          "description": "Just like on desktop, your mobile browser can be fingerprinted. The unique combination of your phone model, screen resolution, and operating system...",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@id": "https://thewebknows.pages.dev/privacy-insights/#page"
+          },
+          "mainEntityOfPage": {
+            "@id": "https://thewebknows.pages.dev/privacy-insights/mobile-browser-fingerprinting/"
+          },
+          "articleSection": "Mobile Privacy",
+          "image": "https://thewebknows.pages.dev/og-image.png",
+          "author": {
+            "@type": "Organization",
+            "name": "The Web Knows"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Web Knows",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://thewebknows.pages.dev/favicon.svg"
+            }
+          },
+          "datePublished": "2025-11-10T00:00:00.000Z",
+          "dateModified": "2025-11-10T00:00:00.000Z"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://thewebknows.pages.dev/privacy-insights/mobile-browser-fingerprinting/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://thewebknows.pages.dev/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Privacy Insights",
+              "item": "https://thewebknows.pages.dev/privacy-insights/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Mobile Browser Fingerprinting",
+              "item": "https://thewebknows.pages.dev/privacy-insights/mobile-browser-fingerprinting/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/privacy-insights/" aria-current="page">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/privacy-insights/">Insights</a></li>
+                <li aria-current="page">Mobile Browser Fingerprinting</li>
+            </ol>
+        </nav>
+
+        <article class="blog-article">
+            <header class="blog-article__header">
+                <p class="blog-article__category">Mobile Privacy</p>
+                <h1 class="blog-article__title">Mobile Browser Fingerprinting</h1>
+                <div class="blog-article__meta">
+                    <time datetime="2025-11-10">10 November 2025</time>
+                    <span class="blog-article__reading-time">4 min read</span>
+                </div>
+            </header>
+            <section class="blog-article__content">
+                <p><strong>At a Glance:</strong> Just like on desktop, your mobile browser can be fingerprinted. The unique combination of your phone model, screen resolution, operating system version, and installed fonts creates a profile that can be used to track you.</p>
+<p><strong>In Detail:</strong></p>
+<p>Mobile devices are highly standardised, but they still have many variables that can be combined to create a unique identifier:</p>
+<ul>
+<li><strong>Hardware Model:</strong> (e.g., Samsung Galaxy S23 Ultra).</li>
+<li><strong>Screen Resolution and Pixel Density:</strong> Very specific to your device.</li>
+<li><strong>Operating System Version:</strong> (e.g., Android 14, iOS 17.2).</li>
+<li><strong>List of Installed Fonts:</strong> Can be probed by the browser.</li>
+<li><strong>Browser and Version:</strong> (e.g., Chrome 121, Safari 17.1).</li>
+<li><strong>Available APIs:</strong> Which Web APIs your.mobile browser supports.</li>
+</ul>
+<p>While the pool of identical devices is large, the combination of these factors, especially when combined with behavioural data, can make your device stand out.</p>
+<p><strong>What You Can Do:</strong></p>
+<ul>
+<li><strong>Use a Hardened Mobile Browser:</strong> Firefox Focus or Brave Browser on mobile offer strong anti-fingerprinting protections. You can also use the standard Firefox for Android and enable its "Strict" Enhanced Tracking Protection.</li>
+<li><strong>Keep Your Browser Updated:</strong> Updates often include new privacy protections and fingerprinting mitigations.</li>
+<li><strong>Avoid Using Desktop Mode:</strong> Manually switching your mobile browser to "Desktop Mode" can make your fingerprint more.unique, as it's a less common configuration.</li>
+<li><strong>Use Browser Profiles/Containers:</strong> If your mobile browser supports it (like Firefox), use containers to separate your activities.</li>
+</ul>
+<hr />
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/privacy-insights/">Privacy Insights</a>
+            </nav>
+            
+        </div>
+    </footer>
+<script src="/app.js" defer></script>
+</body>
+</html>

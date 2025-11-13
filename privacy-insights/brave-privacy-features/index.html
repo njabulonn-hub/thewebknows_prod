@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Brave Browser Privacy Features | Privacy Insights | The Web Knows</title>
+    <meta name="description" content="Brave is a privacy-focused browser that blocks ads, trackers, and fingerprinting scripts by default, offering the most robust protection with zero..." />
+    <link rel="canonical" href="https://thewebknows.pages.dev/privacy-insights/brave-privacy-features/" />
+
+<meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.pages.dev/privacy-insights/brave-privacy-features/" />
+    <meta property="og:title" content="Brave Browser Privacy Features" />
+    <meta property="og:description" content="Brave is a privacy-focused browser that blocks ads, trackers, and fingerprinting scripts by default, offering the most robust protection with zero..." />
+    <meta property="og:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:section" content="Privacy Settings &amp; Hardening" />
+    <meta property="article:published_time" content="2025-11-10T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2025-11-10T00:00:00.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Brave Browser Privacy Features" />
+    <meta name="twitter:description" content="Brave is a privacy-focused browser that blocks ads, trackers, and fingerprinting scripts by default, offering the most robust protection with zero..." />
+    <meta name="twitter:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta name="twitter:image:alt" content="Brave Browser Privacy Features" />
+    <meta name="twitter:url" content="https://thewebknows.pages.dev/privacy-insights/brave-privacy-features/" />
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://thewebknows.pages.dev/privacy-insights/brave-privacy-features/#article",
+          "headline": "Brave Browser Privacy Features",
+          "description": "Brave is a privacy-focused browser that blocks ads, trackers, and fingerprinting scripts by default, offering the most robust protection with zero...",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@id": "https://thewebknows.pages.dev/privacy-insights/#page"
+          },
+          "mainEntityOfPage": {
+            "@id": "https://thewebknows.pages.dev/privacy-insights/brave-privacy-features/"
+          },
+          "articleSection": "Privacy Settings & Hardening",
+          "image": "https://thewebknows.pages.dev/og-image.png",
+          "author": {
+            "@type": "Organization",
+            "name": "The Web Knows"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Web Knows",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://thewebknows.pages.dev/favicon.svg"
+            }
+          },
+          "datePublished": "2025-11-10T00:00:00.000Z",
+          "dateModified": "2025-11-10T00:00:00.000Z"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://thewebknows.pages.dev/privacy-insights/brave-privacy-features/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://thewebknows.pages.dev/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Privacy Insights",
+              "item": "https://thewebknows.pages.dev/privacy-insights/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Brave Browser Privacy Features",
+              "item": "https://thewebknows.pages.dev/privacy-insights/brave-privacy-features/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/privacy-insights/" aria-current="page">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/privacy-insights/">Insights</a></li>
+                <li aria-current="page">Brave Browser Privacy Features</li>
+            </ol>
+        </nav>
+
+        <article class="blog-article">
+            <header class="blog-article__header">
+                <p class="blog-article__category">Privacy Settings &amp; Hardening</p>
+                <h1 class="blog-article__title">Brave Browser Privacy Features</h1>
+                <div class="blog-article__meta">
+                    <time datetime="2025-11-10">10 November 2025</time>
+                    <span class="blog-article__reading-time">4 min read</span>
+                </div>
+            </header>
+            <section class="blog-article__content">
+                <p><strong>At a Glance:</strong> Brave is a privacy-focused browser that blocks ads, trackers, and fingerprinting scripts by default, offering the most robust protection with zero configuration required.</p>
+<p><strong>In Detail:</strong></p>
+<p>Brave is built on Chromium but is designed from the ground up for privacy. Its key features include:</p>
+<ul>
+<li><strong>Brave Shields:</strong> This is the built-in content and tracking.blocker. For every site, you can click the shield icon to see what it has blocked. By default, it is set to "Aggressive" which blocks all third-party ads and trackers.</li>
+<li><strong>Fingerprinting Protection:</strong> Brave includes several strategies to resist fingerprinting, including presenting a common set of data to all sites. You can set this protection to "Strict" in the shield settings.</li>
+<li><strong>Brave Private Windows with Tor:</strong> This unique feature routes your private browsing traffic through the Tor network, hiding your IP address from the sites you visit. It's slower but provides a high degree of anonymity for specific sessions.</li>
+<li><strong>No Google Account Integration:</strong> Unlike standard Chrome, Brave strips out Google's proprietary services and data collection.</li>
+</ul>
+<p><strong>Additional Configuration:</strong></p>
+<ul>
+<li><strong>Profiles:</strong> Like other browsers, you can create separate profiles for different tasks to further isolate your identities.</li>
+<li><strong>Settings Review:</strong> Navigate to `brave://settings/shields` and `brave://settings/privacy` to review the defaults, which are generally optimal for privacy.</li>
+</ul>
+<p><strong>What You Can Do:</strong></p>
+<ul>
+<li><strong>Just Install and Browse:</strong> For most users, simply installing Brave provides excellent privacy without any further action.</li>
+<li><strong>Use Tor Windows Sparingly:</strong> Use the "New Private Window with Tor" for sessions where you need to hide your IP, but avoid logging into personal accounts during the same session.</li>
+<li><strong>Customise Shields Per-Site:</strong> If a site breaks, you can lower the Shields level for that specific site rather than disabling protection globally.</li>
+</ul>
+<hr />
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/privacy-insights/">Privacy Insights</a>
+            </nav>
+            
+        </div>
+    </footer>
+<script src="/app.js" defer></script>
+</body>
+</html>

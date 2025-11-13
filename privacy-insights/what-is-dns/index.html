@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>What Is DNS? | Privacy Insights | The Web Knows</title>
+    <meta name="description" content="The Domain Name System (DNS) is a fundamental internet service that translates human-friendly domain names (like bbc.co.uk) into machine-readable IP..." />
+    <link rel="canonical" href="https://thewebknows.pages.dev/privacy-insights/what-is-dns/" />
+
+<meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.pages.dev/privacy-insights/what-is-dns/" />
+    <meta property="og:title" content="What Is DNS?" />
+    <meta property="og:description" content="The Domain Name System (DNS) is a fundamental internet service that translates human-friendly domain names (like bbc.co.uk) into machine-readable IP..." />
+    <meta property="og:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:section" content="Network Protocols &amp; Infrastructure" />
+    <meta property="article:published_time" content="2025-11-10T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2025-11-10T00:00:00.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="What Is DNS?" />
+    <meta name="twitter:description" content="The Domain Name System (DNS) is a fundamental internet service that translates human-friendly domain names (like bbc.co.uk) into machine-readable IP..." />
+    <meta name="twitter:image" content="https://thewebknows.pages.dev/og-image.png" />
+    <meta name="twitter:image:alt" content="What Is DNS?" />
+    <meta name="twitter:url" content="https://thewebknows.pages.dev/privacy-insights/what-is-dns/" />
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://thewebknows.pages.dev/privacy-insights/what-is-dns/#article",
+          "headline": "What Is DNS?",
+          "description": "The Domain Name System (DNS) is a fundamental internet service that translates human-friendly domain names (like bbc.co.uk) into machine-readable IP...",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@id": "https://thewebknows.pages.dev/privacy-insights/#page"
+          },
+          "mainEntityOfPage": {
+            "@id": "https://thewebknows.pages.dev/privacy-insights/what-is-dns/"
+          },
+          "articleSection": "Network Protocols & Infrastructure",
+          "image": "https://thewebknows.pages.dev/og-image.png",
+          "author": {
+            "@type": "Organization",
+            "name": "The Web Knows"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Web Knows",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://thewebknows.pages.dev/favicon.svg"
+            }
+          },
+          "datePublished": "2025-11-10T00:00:00.000Z",
+          "dateModified": "2025-11-10T00:00:00.000Z"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://thewebknows.pages.dev/privacy-insights/what-is-dns/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://thewebknows.pages.dev/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Privacy Insights",
+              "item": "https://thewebknows.pages.dev/privacy-insights/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "What Is DNS?",
+              "item": "https://thewebknows.pages.dev/privacy-insights/what-is-dns/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/privacy-insights/" aria-current="page">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/privacy-insights/">Insights</a></li>
+                <li aria-current="page">What Is DNS?</li>
+            </ol>
+        </nav>
+
+        <article class="blog-article">
+            <header class="blog-article__header">
+                <p class="blog-article__category">Network Protocols &amp; Infrastructure</p>
+                <h1 class="blog-article__title">What Is DNS?</h1>
+                <div class="blog-article__meta">
+                    <time datetime="2025-11-10">10 November 2025</time>
+                    <span class="blog-article__reading-time">4 min read</span>
+                </div>
+            </header>
+            <section class="blog-article__content">
+                <p><strong>At a Glance:</strong> The Domain Name System (DNS) is a fundamental internet service that translates human-friendly domain names (like `bbc.co.uk`) into machine-readable IP addresses (like `212.58.233.253`).</p>
+<p><strong>In Detail:</strong></p>
+<p>Without DNS, you would have to memorise long strings of numbers to visit every website. When you type a web address into your browser, a behind-the-scenes process begins:</p>
+<ol>
+<li>Your device asks a <strong>Recursive Resolver</strong> (usually provided by your ISP) for the IP address.</li>
+<li>The resolver acts like a librarian, querying a hierarchical system of <strong>Root Servers</strong>, <strong>Top-Level Domain (TLD) Servers</strong> (e.g., for `.com` or `.uk`), and finally the <strong>Authoritative Name Servers</strong> for the specific domain.</li>
+<li>The resolver gets the answer and sends the IP address back to your browser, which can then connect to the website.</li>
+</ol>
+<p><strong>The Privacy Problem with Traditional DNS:</strong></p>
+<p>By default, these DNS queries are sent in plain text. This means your ISP—and any other network observer—can see a log of every website you visit, even if you're using HTTPS.</p>
+<p><strong>What You Can Do:</strong></p>
+<ul>
+<li><strong>Use Encrypted DNS:</strong> Switch to DNS-over-HTTPS (DoH) or DNS-over-TLS (DoT). These protocols encrypt your DNS queries, hiding them from your ISP.</li>
+<li><strong>Choose a Privacy-Focused Resolver:</strong> Use a service like Cloudflare (`1.1.1.1`), NextDNS, or Quad9, which have strong privacy policies and do not log your personal data.</li>
+</ul>
+<hr />
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/privacy-insights/">Privacy Insights</a>
+            </nav>
+            
+        </div>
+    </footer>
+<script src="/app.js" defer></script>
+</body>
+</html>
