@@ -80,12 +80,26 @@
             "@context": "https://schema.org",
             "@graph": [
                 {
+                    "@type": "Organization",
+                    "@id": "https://thewebknows.com/#organization",
+                    "name": "The Web Knows",
+                    "url": "https://thewebknows.com/",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://thewebknows.com/favicon.svg"
+                    },
+                    "sameAs": []
+                },
+                {
                     "@type": "WebSite",
                     "@id": "https://thewebknows.com/#website",
                     "url": "https://thewebknows.com/",
                     "name": "The Web Knows",
                     "description": "Plain-English privacy diagnostics & guides.",
                     "inLanguage": "en",
+                    "publisher": {
+                        "@id": "https://thewebknows.com/#organization"
+                    },
                     "potentialAction": {
                         "@type": "SearchAction",
                         "target": "https://thewebknows.com/?q={search_term_string}",
