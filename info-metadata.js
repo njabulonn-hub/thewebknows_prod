@@ -1,1 +1,289 @@
-let INFO_METADATA={ipv4:{explanation:"IPv4 (Internet Protocol version 4) uses 32-bit numbers written as four decimals between 0 and 255 separated by dots (example: 192.168.1.1). This is the addressing system most of today's internet still relies on.",legalUses:"Websites use IPv4 to route pages to you, comply with local regulations, detect fraud, and tailor content to your region or language.",maliciousUses:"Adversaries can combine your IPv4 address with other signals to track activity, launch targeted attacks, or infer your approximate location.",accuracy:"Known - This is the exact IPv4 address advertised by your connection.",canHide:"Yes - Use a VPN, proxy, or privacy network to mask your real IPv4 address."},ipv6:{explanation:"IPv6 (Internet Protocol version 6) upgrades addresses to 128 bits and writes them as eight groups of hexadecimal characters separated by colons (example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334). It provides around 340 undecillion unique addresses—effectively eliminating exhaustion.",legalUses:"IPv6 serves the same purposes as IPv4—routing traffic, complying with regulations, assigning devices to networks—but scales to the billions of modern devices.",maliciousUses:"Just like IPv4, exposed IPv6 addresses can be used for tracking or targeted attacks when combined with other data.",accuracy:"Known - If your network provides IPv6, this is what websites see. If IPv6 isn't configured, nothing is displayed.",canHide:"Yes - Use an IPv6-capable VPN or disable IPv6 on your device/router to prevent exposure."},isp:{explanation:"Your Internet Service Provider (ISP) is the company that gives you internet access, like Comcast, Verizon, or AT&T. The ASN (Autonomous System Number) identifies which network your connection belongs to.",legalUses:"Websites use this to understand your connection quality, show relevant content, and comply with regional laws.",maliciousUses:"Attackers can use this to identify your internet provider, guess your location, or target attacks at specific ISPs.",accuracy:"Known - This comes from public databases that match IP addresses to ISPs.",canHide:"Yes - Using a VPN will show the VPN's ISP instead of yours."},location:{explanation:"This is an estimate of where you are based on your IP address. It's usually accurate to your city or region, but not your exact street address.",legalUses:"Websites use this to show you local content, prices in your currency, and comply with laws in your area.",maliciousUses:"Bad actors can use this to figure out your general location, target location-based attacks, or track your movements if you don't move often.",accuracy:"Inferred - This is a guess based on databases that match IP addresses to locations. It can be wrong, especially if you use a VPN.",canHide:"Yes - VPNs can make it look like you're in a different location."},referrer:{explanation:"The referrer tells a website which page you came from. It's like telling someone which door you entered through.",legalUses:"Websites use this to understand how people find them, improve their site navigation, and see which links are popular.",maliciousUses:"Some websites can see private information in the URL you came from, or track which sites you visit.",accuracy:"Known - Your browser sends this automatically when you click a link.",canHide:"Yes - You can disable referrer in browser settings, or use privacy-focused browsers that block it."},"network-type":{explanation:"This is a guess about whether you're using a home internet connection or a business/VPN connection, based on your ISP name.",legalUses:"Websites might use this to detect fraud or show different content to businesses.",maliciousUses:"Attackers might use this to identify if you're using a VPN or target home vs business users differently.",accuracy:"Guessed - This is just a best guess based on ISP names, and can be wrong.",canHide:"Not applicable - This is already a guess, and using a VPN will change the result."},"reverse-dns":{explanation:"Reverse DNS is like looking up a phone number to find the name. It converts your IP address into a readable name.",legalUses:"Used for email security, network troubleshooting, and identifying servers.",maliciousUses:"Can reveal information about your network setup or ISP infrastructure.",accuracy:"Known - If your ISP has set up reverse DNS records.",canHide:"Yes - VPNs will show their own reverse DNS instead."},browser:{explanation:"This tells websites what web browser you're using (like Chrome, Firefox, or Safari) and what version it is.",legalUses:"Websites use this to make sure their pages work correctly with your browser and show you compatible features.",maliciousUses:"Attackers can use this to find security holes in old browser versions and target attacks at you.",accuracy:"Known - Your browser sends this information automatically.",canHide:"Partially - Browser extensions can change or hide this, but it's difficult to completely hide."},os:{explanation:"Your operating system is the software that runs your device, like Windows, macOS, Android, or iOS.",legalUses:"Websites use this to make sure their pages work on your device and show you the right version of their site.",maliciousUses:"Attackers can use this to find security problems in your operating system and create attacks designed for your specific device.",accuracy:"Known - Your browser shares this automatically.",canHide:"Partially - Can be changed with browser extensions, but not completely hidden."},languages:{explanation:"These are the languages your browser is set to use. Websites use this to show you content in your preferred language.",legalUses:"Websites use this to automatically translate content, show prices in your currency, and make their site easier for you to use.",maliciousUses:"Can be used to guess your location or target you with language-specific scams.",accuracy:"Known - Your browser sends this automatically.",canHide:"Yes - You can change your browser language settings, but this affects your whole browsing experience."},timezone:{explanation:'Your time zone tells websites what time it is where you are. It\'s like telling someone "I\'m in New York time" or "I\'m in London time."',legalUses:"Websites use this to show you times for events, schedule things correctly, and display dates in your local time.",maliciousUses:"Can be used to figure out your location, track your daily schedule, or target time-based attacks.",accuracy:"Known - Your device knows your time zone and shares it.",canHide:"Partially - You can change your device time zone, but this affects other apps and can cause problems."},"local-time":{explanation:"This is the current time where you are, based on your time zone.",legalUses:"Websites use this to show you current times, schedule events, and display information relevant to your time.",maliciousUses:"Can reveal your location and daily schedule patterns.",accuracy:"Known - Calculated from your time zone.",canHide:"Same as timezone - changing it affects your whole device."},"device-type":{explanation:"This is a guess about whether you're using a phone, tablet, or computer.",legalUses:"Websites use this to show you a version of their site that works well on your device (like a mobile-friendly version).",maliciousUses:"Can be used to target attacks at specific device types or show you device-specific scams.",accuracy:"Guessed - Based on your screen size and browser information, but can be wrong.",canHide:"Partially - Can be changed with browser settings, but not completely hidden."},"screen-size":{explanation:"This is the size of your screen in pixels (the tiny dots that make up your display).",legalUses:"Websites use this to show you content that fits your screen properly.",maliciousUses:"Can be used with other information to identify your specific device model.",accuracy:"Known - Your browser shares this automatically.",canHide:"Partially - Can be changed with browser extensions, but affects how websites look."},viewport:{explanation:"The viewport is the size of your browser window, which might be smaller than your full screen.",legalUses:"Websites use this to arrange content so it fits in your browser window.",maliciousUses:"Can be combined with other information to identify your device.",accuracy:"Known - Your browser reports this automatically.",canHide:"Partially - Changes as you resize your window, but websites can still see it."},"pixel-ratio":{explanation:"Pixel ratio tells websites how sharp your screen is. Higher numbers mean a sharper, clearer display.",legalUses:"Websites use this to show you images and text at the right sharpness for your screen.",maliciousUses:"Can be used to identify your specific device model.",accuracy:"Known - Your device reports this automatically.",canHide:"Partially - Can be changed with browser extensions, but affects display quality."},"color-depth":{explanation:"Color depth tells websites how many different colors your screen can show. More colors means more realistic images.",legalUses:"Websites use this to show you images and videos at the best quality your screen can handle.",maliciousUses:"Can be used to identify your device model.",accuracy:"Known - Your device reports this automatically.",canHide:"Partially - Can be changed with browser extensions, but affects image quality."},"cpu-threads":{explanation:'CPU threads tell websites how many "workers" your computer\'s brain has. More threads usually means a faster computer.',legalUses:"Websites might use this to show you more complex features if you have a powerful computer.",maliciousUses:"Can be used to identify your device or target resource-heavy attacks at powerful computers.",accuracy:"Known - Your browser shares this automatically.",canHide:"Partially - Can be changed with browser settings, but difficult to completely hide."},ram:{explanation:"RAM (Random Access Memory) is like your computer's short-term memory. It stores information your computer is actively using.",legalUses:"Websites might use this to show you more features if you have enough memory.",maliciousUses:"Can be used to identify your device or target memory-heavy attacks.",accuracy:"Guessed - Not all browsers share this, and when they do, it's often rounded or estimated.",canHide:"Partially - Can be changed with browser settings, but not always available."},graphics:{explanation:"This tells websites what graphics card (the part that handles images and videos) your device has.",legalUses:"Websites use this to show you high-quality graphics and videos if your device can handle them.",maliciousUses:"Can be used to identify your exact device model, which helps attackers find security problems.",accuracy:"Known - Your browser can access this information through WebGL.",canHide:"Partially - Can be blocked with browser settings, but affects some website features."},microphones:{explanation:"Reports how many audio inputs (microphones) your browser can detect. It only shows counts and generic names—no audio is captured without permission.",legalUses:"Calling apps can use this to let you pick the right microphone or warn you if none are available.",maliciousUses:"Attackers could combine this with other data to build a fingerprint of your device setup.",accuracy:"Guessed - Some browsers only reveal counts after you have granted microphone permission.",canHide:"Yes - Block microphone access in your system or browser settings to hide device counts."},speakers:{explanation:"Reports how many audio outputs (like speakers or headphones) the browser can route sound to. It never captures audio.",legalUses:"Websites might use this so you can choose where sound should play.",maliciousUses:"Could be combined with other signals to fingerprint your device.",accuracy:"Guessed - Counts may be rough or hidden until you have granted audio permissions.",canHide:"Yes - Disable audio output devices or restrict permissions to hide this information."},webcams:{explanation:"Shows how many cameras your browser can see, such as built-in webcams or USB cameras.",legalUses:"Video call sites use this to help you pick the right camera.",maliciousUses:"Could be used to profile your device setup or prepare for later camera access attempts.",accuracy:"Guessed - Browsers often hide camera details until you grant permission.",canHide:"Yes - Revoke camera permissions or disable cameras to hide them."},"geolocation-support":{explanation:"Indicates whether the browser supports the Geolocation API that can request your precise location.",legalUses:"Websites need this to ask for your location for maps, delivery, or nearby search features.",maliciousUses:"Phishing sites might prompt for permission to learn your exact position.",accuracy:"Known - This only reports if the API exists and can be used in this context.",canHide:"Yes - Browsers let you block location permissions or require HTTPS before allowing access."},"geolocation-precise":{explanation:"Shows the precise location reported by your device (latitude/longitude) if you have already granted the browser permission to access it.",legalUses:"Mapping apps, ride-sharing, food delivery, and emergency services use precise location to get directions or send help to the right place.",maliciousUses:"A hostile site could track your movements, identify your home or workplace, or combine location history with other data to profile you.",accuracy:"Measured - GPS/Wi-Fi accuracy depends on device sensors and can vary from a few meters to hundreds of meters.",canHide:"Yes - Revoke geolocation permissions in your browser or device settings, or browse using modes that block location sharing."},"touch-support":{explanation:"Shows whether your device reports support for touch screens and how many fingers it can track.",legalUses:"Websites adapt layouts or gestures for touch-friendly experiences.",maliciousUses:"Can be added to a fingerprint to guess your device type.",accuracy:"Guessed - Some devices report limited information or none at all.",canHide:"Partially - Turning off touch or using desktop mode can change what is reported."},"pointer-support":{explanation:"Describes the type of pointer input your browser says you have, like a precise mouse or coarse touch.",legalUses:"Websites use this to size buttons and menus correctly for your device.",maliciousUses:"Another small signal that can help track you when combined with other data.",accuracy:"Guessed - Based on device hints and may not match every accessory you plug in.",canHide:"Partially - Spoofing user agent or using accessibility settings can change the reported value."},fonts:{explanation:"Shows how many common fonts from a 300-font sample appear to be installed or exposed to the browser.",legalUses:"Sites use this to pick fallback fonts or avoid layout shifts when a preferred font is missing.",maliciousUses:"Fingerprinting scripts probe large font lists to help uniquely identify a device.",accuracy:"Estimated - Limited to the 300-font sample and some browsers intentionally block these checks.",canHide:"Yes - Use privacy protections that block font enumeration, browse in hardened/private modes, or disable sharing of local fonts."},"java-enabled":{explanation:"Shows whether the old Java browser plugin reports itself as enabled.",legalUses:"Legacy enterprise sites used this to know if Java applets could run.",maliciousUses:"Attackers once targeted outdated Java plugins to install malware.",accuracy:"Known - Modern browsers usually disable this plugin entirely.",canHide:"Yes - Keep Java disabled or uninstall it; most browsers block it by default."},plugins:{explanation:"Lists classic NPAPI browser plugins that are still exposed, like PDF or media helpers.",legalUses:"Websites once used this to check if you could view certain media formats.",maliciousUses:"Plugin fingerprints were widely abused to track users or target old vulnerabilities.",accuracy:"Guessed - Many modern browsers return an empty list for privacy reasons.",canHide:"Yes - Modern browsers disable plugins, and you can remove remaining ones."},"connection-type":{explanation:"This tells websites what kind of internet connection you have, like WiFi, cellular (4G/5G), or ethernet.",legalUses:"Websites use this to adjust video quality and loading speeds to match your connection.",maliciousUses:"Can be used to identify if you're on mobile data (which might have data limits) or target connection-specific attacks.",accuracy:"Guessed - Based on connection speed and type, but not always accurate.",canHide:"Partially - Can be changed with browser settings, but not always available."},"effective-type":{explanation:'This is a guess about your internet speed category, like "4G" or "slow-2g".',legalUses:"Websites use this to show you lower-quality videos or images if you have a slow connection.",maliciousUses:"Can be used to identify your connection quality and target attacks accordingly.",accuracy:"Guessed - Based on connection speed measurements, but can change.",canHide:"Partially - Can be changed with browser settings, but affects website performance."},downlink:{explanation:"This is an estimate of how fast you can download things from the internet, measured in megabits per second (Mbps).",legalUses:"Websites use this to adjust video quality and loading speeds.",maliciousUses:"Can be used to identify your connection type or target bandwidth-heavy attacks.",accuracy:"Guessed - Based on recent connection tests, but can vary.",canHide:"Partially - Can be changed with browser settings, but affects website performance."},rtt:{explanation:"RTT (Round-Trip Time) is how long it takes for a message to go from your device to a website and back, measured in milliseconds.",legalUses:"Websites use this to adjust how they send you information for the best speed.",maliciousUses:"Can be used to figure out how far you are from a server or identify connection issues.",accuracy:"Guessed - Based on connection tests, but changes constantly.",canHide:"Partially - Can be changed with browser settings, but affects website performance."},"save-data":{explanation:'This tells websites if you have "data saver" mode turned on, which reduces how much data websites use.',legalUses:"Websites use this to send you smaller, data-saving versions of their pages.",maliciousUses:"Can be used to identify if you're on a limited data plan.",accuracy:"Known - Your browser or device sends this setting.",canHide:"Yes - You can turn data saver on or off in your browser or device settings."},dnt:{explanation:"Do Not Track (DNT) is a setting that tells websites you don't want to be tracked. It's like putting up a \"no soliciting\" sign.",legalUses:"Some websites respect this and don't track you, but many ignore it.",maliciousUses:"Some bad actors might ignore DNT and track you anyway.",accuracy:"Known - Your browser sends this setting automatically.",canHide:"Not applicable - This is a privacy setting you can turn on, but websites don't have to respect it."},gpc:{explanation:"Global Privacy Control (GPC) is a newer privacy signal that tells websites you want more privacy protection.",legalUses:"Some websites and laws require websites to respect this signal.",maliciousUses:"Some bad actors might ignore GPC.",accuracy:"Known - Your browser sends this if enabled.",canHide:"Not applicable - This is a privacy setting you can turn on."},cookies:{explanation:"Cookies are small files websites store on your device to remember things about you, like your login or preferences.",legalUses:"Websites use cookies to remember you're logged in, save your preferences, and make shopping carts work.",maliciousUses:"Bad actors can use cookies to track you across websites, steal your login information, or build a profile of your online activity.",accuracy:"Known - Your browser reports if cookies are enabled.",canHide:"Yes - You can disable cookies in browser settings, but many websites won't work properly."},"local-storage":{explanation:"Local storage is like cookies, but can hold more information. Websites use it to store data on your device.",legalUses:"Websites use this to save your preferences, game progress, or offline content.",maliciousUses:"Can be used to store tracking information or identify your device across websites.",accuracy:"Known - Your browser reports if local storage is available.",canHide:"Yes - You can disable local storage in browser settings, but some websites won't work."},"dark-mode":{explanation:"This tells websites if you prefer dark mode (dark backgrounds) or light mode (light backgrounds).",legalUses:"Websites use this to show you their site in your preferred appearance.",maliciousUses:'Can be used as part of a "fingerprint" to identify your device, but this is rare.',accuracy:"Known - Your device reports your appearance preference.",canHide:"Yes - You can change this in your device settings, but it affects your whole device."},"ad-topics":{explanation:"Chrome’s Topics API (when available) shares a handful of broad interest topics based on recent browsing, such as “Sports” or “Finance”.",legalUses:"Helps ad platforms keep ads relevant without exposing detailed browsing history.",maliciousUses:"A tracker could combine topics with other identifiers to build a richer profile.",accuracy:"Known only if Chrome exposes the Topics API. Most browsers return nothing.",canHide:"Turn off “Ad topics” in Chrome → Settings → Privacy and security → Ad privacy, or use a browser without the feature."},"ad-status":{explanation:"Signal health summarises which advertising signals are clearly exposed, roughly estimated, or currently hidden (IP, location, Topics, privacy signals).",legalUses:"Ad platforms rely on the same exposure levels to decide how precise their targeting or measurement can be.",maliciousUses:"Trackers could focus on the high-exposure items first or note when privacy protections such as GPC drop away.",accuracy:"Mixed — some values are exact (IP), others are estimates (geo), and some depend on browser support.",canHide:"Use VPNs, privacy modes, or disable Topics/cookies to push more cards into the low or protective buckets."},"ad-categories":{explanation:"Local heuristics that estimate which advertising buckets might fit you (e.g. local ads, mobile data-aware creatives) based on the signals already shown on this site.",legalUses:"Helps advertisers avoid irrelevant impressions and select appropriate creatives.",maliciousUses:"Could be logged and combined with other identifiers to form a persistent ad profile.",accuracy:"Guessed - Confidence labels show how certain each match is.",canHide:"Reduce the underlying signals (VPN, language changes, disabling Topics/Data Saver) to remove the matches."},"ad-summary":{explanation:"A plain-language recap of the advertising signals, matched categories, and privacy flags detected locally.",legalUses:"Expresses what an ad platform could see so you can manage your privacy settings.",maliciousUses:"A rogue site could store the summary to build a history of your visits.",accuracy:"Mixed - Combines known values (IP, language) with estimated or guessed matches.",canHide:"Limit the signals (VPN, private browsing, turning off Topics) so the summary stays empty."},"reduced-motion":{explanation:"This tells websites if you prefer less animation and movement on web pages, which helps people who get motion sickness.",legalUses:"Websites use this to show you a calmer, less animated version of their site.",maliciousUses:"Rarely used maliciously, but can be part of device identification.",accuracy:"Known - Your device reports this accessibility preference.",canHide:"Yes - You can change this in your device settings, but it affects accessibility features."}};
+let INFO_METADATA={
+ipv4:{
+explanation:"It's your network's unique identifier on the internet, like your home's street address for online traffic. It's a set of four numbers (e.g., 192.0.2.1) that allows data to find its way to you.",
+legalUses:"Websites use it to provide location-specific content, detect fraudulent activity, and ensure your connection routes correctly.",
+maliciousUses:"It can be combined with other data to approximate your location, track your online activity, or target you with attacks.",
+accuracy:"Known - This value is known because it is the exact IPv4 address your connection broadcasts to every site you visit.",
+canHide:"Yes - By using a trustworthy VPN or proxy service, which will show its own address instead of yours."
+},
+ipv6:{
+explanation:"This is the newer format for internet addresses, designed because the old system is running out of unique numbers. It's longer and more complex (e.g., 2001:0db8::).",
+legalUses:"It serves the same purpose as an IPv4 address but can support the vast number of modern connected devices.",
+maliciousUses:"If exposed, it can be used for tracking and targeting, similar to an IPv4 address.",
+accuracy:"Known - This is known when your ISP enables IPv6. If nothing appears, your provider is not broadcasting IPv6 to the web.",
+canHide:"Yes - Use a VPN that supports IPv6, or disable IPv6 in your device or router settings."
+},
+isp:{
+explanation:"Your ISP (Internet Service Provider) is your internet company (e.g., Comcast). The ASN is the identifier for the specific network your ISP uses to route your traffic.",
+legalUses:"Websites use this to comply with regional content laws, optimize your connection, and perform security checks.",
+maliciousUses:"It can reveal your general location and internet provider, which can be combined with other data to profile you.",
+accuracy:"Known - This information is known and drawn from public routing databases that map IP ranges to ISPs.",
+canHide:"Yes - A VPN will mask your real ISP and show its own information instead."
+},
+location:{
+explanation:"This is an educated guess of your geographic location based on your IP address. It's typically accurate to the city level, but not to your precise address.",
+legalUses:"Websites use it to show local content, such as news, weather, and language settings.",
+maliciousUses:"It can reveal your general area, which might be sensitive depending on your circumstances.",
+accuracy:"Inferred - This is inferred from commercial geolocation databases and can be wrong, especially when you use VPNs or corporate routes.",
+canHide:"Yes - A VPN can make it appear you are in a different location."
+},
+referrer:{
+explanation:"This is the web address of the page you were on before clicking a link to the current site. It tells a site where you came from.",
+legalUses:"Websites use it for analytics to understand their traffic sources and to pay affiliates for referrals.",
+maliciousUses:"It can sometimes expose private information, like search terms you used, revealing your browsing habits.",
+accuracy:"Known - Referrer values are known because browsers send them automatically unless a privacy control removes the header.",
+canHide:"Yes - Most browsers and privacy extensions can block referrer information."
+},
+"network-type":{
+explanation:"This is an inference about whether you're on a home connection, mobile data, or a data center (which often hosts VPNs).",
+legalUses:"Services use it for security, like triggering extra checks for traffic that appears to come from an anonymous data center.",
+maliciousUses:"It can flag you as a VPN user, which some services try to block.",
+accuracy:"Guessed - This is an educated guess based on naming patterns and may mislabel niche or newly announced networks.",
+canHide:"Not applicable - You would need to switch to a different network or use a VPN that mimics a residential connection."
+},
+"reverse-dns":{
+explanation:"This is a lookup that converts your IP address into a readable hostname, like a phone book for the internet.",
+legalUses:"It's used for email security and by network administrators to troubleshoot issues.",
+maliciousUses:"It can reveal information about your ISP or network setup.",
+accuracy:"Known - It is known only if your ISP publishes a reverse DNS record; many residential IPs do not have one.",
+canHide:"Yes - You cannot change it directly, but a VPN will show the VPN provider's hostname instead."
+},
+browser:{
+explanation:"This identifies the specific web browser you are using (e.g., Chrome 121) and its version number.",
+legalUses:"Websites use it to ensure compatibility and display content correctly. They may also warn users with outdated, insecure versions.",
+maliciousUses:"Hackers can target known security flaws in specific browser versions.",
+accuracy:"Known - This is KNOWN because your browser reports it, unless a privacy tool rewrites the string. Modern browsers may provide high-entropy hints only to trusted origins using User-Agent Client Hints negotiation.",
+canHide:"Partially - Extensions can mask it, but this may cause websites to display incorrectly."
+},
+os:{
+explanation:"This is the core software that runs your device, such as Windows, macOS, Android, or iOS.",
+legalUses:"Websites use it to provide the correct software downloads and ensure features work properly.",
+maliciousUses:"Attackers can tailor scams or malware to your specific system.",
+accuracy:"Known - This is KNOWN because your browser shares it, and even when spoofed many sites can still guess correctly using feature detection and TLS fingerprinting.",
+canHide:"Partially - Privacy tools can mask it, but this can confuse websites and break functionality."
+},
+languages:{
+explanation:"These are the languages you've set as preferred in your browser settings (e.g., English, Spanish).",
+legalUses:"Websites use them to automatically show content in your language.",
+maliciousUses:"They can be used as a data point to infer your location or cultural background.",
+accuracy:"Known - This is KNOWN because it comes straight from your browser settings. Developers know that HTTP negotiation falls back through the language list until a supported locale is found.",
+canHide:"Yes - You can change your browser's language list, but this will affect every site you visit."
+},
+timezone:{
+explanation:"This is the time zone setting from your device.",
+legalUses:"Websites use it to display accurate times for events, schedules, and posts.",
+maliciousUses:"Combined with other data, it can help confirm your geographic region.",
+accuracy:"Known - This is KNOWN because it comes from your device clock. Programmers often treat it as the browser's resolved IANA timezone name, which updates automatically as you travel.",
+canHide:"Partially - You can change your device's time zone, but this will affect all other apps and clocks on your device."
+},
+"local-time":{
+explanation:"This is the current time according to your device.",
+legalUses:"Websites use it for accurate timestamps and scheduling.",
+maliciousUses:"It can help build a profile of your active hours online.",
+accuracy:"Known - This is KNOWN and calculated directly from your timezone settings, though skewed system clocks can throw it off. Engineers sync devices with NTP or chrony to keep offsets within milliseconds.",
+canHide:"Partially - Only by changing your device's clock, which is not practical."
+},
+"device-type":{
+explanation:"This is an estimate of whether you're using a phone, tablet, or computer.",
+legalUses:"Websites use it to switch to a layout that fits your screen size.",
+maliciousUses:"It's one of many data points used for tracking and fingerprinting.",
+accuracy:"Guessed - This is GUESSED and can be fooled by unusual screen setups or developer tools. It typically uses heuristics like pointer precision, screen diagonal, and hardware concurrency.",
+canHide:"Partially - Spoofing it can make sites show the wrong layout, so it's not generally recommended."
+},
+"screen-size":{
+explanation:"This is the total pixel dimensions of your display.",
+legalUses:"Websites use it to send images and layouts that fit your screen properly.",
+maliciousUses:"Unique screen sizes are a strong identifier for browser fingerprinting.",
+accuracy:"Known - This is KNOWN because your browser reports the real size unless you are faking it, though multi-monitor scaling can cause subtle shifts. Front-end engineers account for devicePixelRatio and OS scaling when interpreting results.",
+canHide:"Partially - Changing it with tools can break website layouts."
+},
+viewport:{
+explanation:"This is the current size of your browser window, which changes if you resize it.",
+legalUses:"Websites adjust their layout in real-time to fit your current window size.",
+maliciousUses:"Like screen size, it's a factor in browser fingerprinting.",
+accuracy:"Known - This is KNOWN and updates in real time as you resize, sourced from the rendering engine's layout tree. Developers use ResizeObserver and matchMedia to react to the same numbers.",
+canHide:"Partially - Spoofing it can cause overlapping content or missing buttons."
+},
+"pixel-ratio":{
+explanation:"This indicates how sharp your screen is. A higher number means a sharper, high-resolution display.",
+legalUses:"Websites use it to send high-quality images to high-resolution screens and lighter images to standard screens.",
+maliciousUses:"It's another data point for device fingerprinting.",
+accuracy:"Known - This is KNOWN because it comes from your hardware, although zoom levels and OS scaling can tweak it slightly. Canvas rendering APIs reveal the same ratio when measuring backing store pixels.",
+canHide:"Partially - Changing it usually makes text and images look blurry."
+},
+"color-depth":{
+explanation:"This indicates how many colors your screen can display.",
+legalUses:"Websites and video streams use it to ensure colors are displayed accurately.",
+maliciousUses:"Unusual color depths can help identify specific device models.",
+accuracy:"Known - This is KNOWN because it reports your real display capability, though virtualization layers can cap it. Graphics programmers inspect the same value when tuning WebGL contexts and canvas rendering.",
+canHide:"Partially - Spoofing it can make colors look wrong on every site."
+},
+"cpu-threads":{
+explanation:"This indicates your device's processing power, like the number of workers available to handle tasks.",
+legalUses:"Complex web apps use it to distribute work efficiently without slowing down your device.",
+maliciousUses:"Unique counts can help identify your device model or indicate a powerful machine worth targeting.",
+accuracy:"Known - This is KNOWN because the browser reads it straight from your hardware, though some browsers round it for privacy. Kernel-level APIs expose the same logical processor count for native apps.",
+canHide:"Partially - Spoofing it may slow down websites or cause glitches."
+},
+ram:{
+explanation:"This is a rough estimate of your device's memory, reported in broad categories (e.g., 4GB, 8GB).",
+legalUses:"Websites use it to decide how much data to load at once to avoid overwhelming your device.",
+maliciousUses:"It can support device fingerprinting.",
+accuracy:"Estimated - This is ESTIMATED because many browsers share only rounded buckets such as 4 GB or 8 GB. Internally it is derived from hardware telemetry but intentionally coarsened for privacy.",
+canHide:"Partially - Most browsers already limit this information for privacy."
+},
+graphics:{
+explanation:"This identifies your graphics card model.",
+legalUses:"It enables high-quality video, games, and 3D graphics on the web.",
+maliciousUses:"It's a very strong and unique identifier for tracking.",
+accuracy:"Known - This is KNOWN and usually exact unless the browser masks the vendor. Developers rely on the same info in graphics debugging consoles and driver compatibility checks.",
+canHide:"Partially - Spoofing it is difficult and often breaks video and games."
+},
+microphones:{
+explanation:"This shows if microphones are connected. No audio is accessed unless you grant permission.",
+legalUses:"Video chat apps use it to let you select which microphone to use.",
+maliciousUses:"It adds another detail to your device's fingerprint.",
+accuracy:"Guessed - This is GUESSED because some browsers hide the full list until you have granted permission before, and device IDs may be randomized. Media APIs expose only hashed identifiers unless the origin is trusted.",
+canHide:"Yes - Block microphone access in your browser settings or unplug external mics."
+},
+speakers:{
+explanation:"This shows available audio devices like speakers or headphones.",
+legalUses:"Websites use it to let you choose where sound should play.",
+maliciousUses:"It's a minor factor in device fingerprinting.",
+accuracy:"Guessed - This is GUESSED because many browsers reveal only limited information and may obfuscate labels. Browser makers sometimes require secure contexts or user gestures to expose full device metadata.",
+canHide:"Yes - Disable or unplug unused audio devices."
+},
+webcams:{
+explanation:"This shows if cameras are connected. No video is accessed unless you grant permission.",
+legalUses:"Video call tools need this to help you switch cameras.",
+maliciousUses:"A site could learn a camera exists and try to trick you into turning it on.",
+accuracy:"Guessed - This is GUESSED because many browsers hide the exact count until permission is granted, and identifiers may rotate. Under privacy sandboxing, device IDs are ephemeral to stop cross-site tracking.",
+canHide:"Yes - Cover or unplug cameras, and keep permissions revoked."
+},
+"geolocation-support":{
+explanation:"This shows whether your browser allows sites to ask for your precise location.",
+legalUses:"Maps and delivery apps check this to see if they can request your location.",
+maliciousUses:"Pushy sites may nag you for access to log your location.",
+accuracy:"Known - This is KNOWN because the browser knows if the feature is available, usually only on secure pages and some embedded browsers. Engineers confirm it via feature detection or permissions.query().",
+canHide:"Yes - Keep location permissions blocked in your browser."
+},
+"geolocation-precise":{
+explanation:"If you granted permission, this shows your exact GPS coordinates.",
+legalUses:"Essential for navigation, deliveries, and emergency services.",
+maliciousUses:"It can reveal your home, workplace, or travel routine.",
+accuracy:"Measured - This is MEASURED and can be very close, especially on phones with GPS, assisted GNSS, or Wi-Fi triangulation. Engineers inspect accuracy and timestamp fields to gauge sensor quality.",
+canHide:"Yes - Revoke location permissions for the site or in your browser settings."
+},
+"touch-support":{
+explanation:"This indicates whether your device has a touchscreen.",
+legalUses:"Sites use it to enable touch-friendly layouts and gestures.",
+maliciousUses:"It's a minor factor in device fingerprinting.",
+accuracy:"Guessed - This is GUESSED and can be wrong if drivers misreport touch support or if remote desktops translate input. Web runtimes often cache maxTouchPoints and fall back to zero when uncertain.",
+canHide:"Partially - Spoofing it may remove touch-friendly layouts you need."
+},
+"pointer-support":{
+explanation:"This indicates whether you're using a precise mouse or a finger.",
+legalUses:"Websites use it to size interactive elements appropriately.",
+maliciousUses:"It's a minor factor in fingerprinting.",
+accuracy:"Guessed - This is GUESSED based on what the browser knows, aggregating device capabilities and fallback heuristics.",
+canHide:"Partially - Spoofing it can make sites assume the wrong controls."
+},
+fonts:{
+explanation:"This checks which fonts from a sample list are installed on your device.",
+legalUses:"Websites use it to pick fonts that will display correctly on your device.",
+maliciousUses:"The unique combination of fonts is a strong method for browser fingerprinting.",
+accuracy:"Estimated - This is ESTIMATED because it only tests a limited list and some browsers block the check entirely, returning generic metrics. Privacy-first browsers randomize or disable local font enumeration.",
+canHide:"Yes - Enable anti-fingerprinting modes in your browser to block this check."
+},
+"java-enabled":{
+explanation:"This reports if the outdated Java browser plugin is enabled. Modern browsers keep it off for security.",
+legalUses:"Virtually no modern sites need it.",
+maliciousUses:"It was a major security vulnerability in the past.",
+accuracy:"Known - This is KNOWN because the browser simply says yes, no, or unsupported, mapping to plugin availability.",
+canHide:"Yes - Leave it disabled for security; modern sites don't need it."
+},
+plugins:{
+explanation:"This lists old-style browser add-ons. Modern browsers typically show an empty list.",
+legalUses:"They were once used for specific media formats.",
+maliciousUses:"They were historical targets for attacks and tracking.",
+accuracy:"Guessed - This is GUESSED because many browsers block the list or show only built-in entries, making the data incomplete. Chromium-based browsers now gate plugin enumeration behind feature policies.",
+canHide:"Yes - Stay on modern browsers and avoid installing legacy plugins."
+},
+"connection-type":{
+explanation:"This indicates whether you're on Wi-Fi, mobile data, or a wired connection.",
+legalUses:"Sites may adjust data usage to save your mobile plan.",
+maliciousUses:"It can hint that you're traveling or on a potentially weaker connection.",
+accuracy:"Known - This is KNOWN only when the browser shares it, and many do not, because the specification is still experimental. Engineers treat the value as advisory since desktop browsers often return \"unknown.\"",
+canHide:"Partially - Most browsers already hide it by default."
+},
+"effective-type":{
+explanation:"This is a rough label for your connection speed (e.g., \"4G\" or \"slow-2g\").",
+legalUses:"Streaming sites use it to automatically adjust video quality.",
+maliciousUses:"It can reveal when your connection is sluggish.",
+accuracy:"Estimated - This is ESTIMATED based on recent activity and can change quickly, especially as radio conditions fluctuate. Developers know it is derived from moving averages of RTT and downlink measurements.",
+canHide:"Partially - Spoofing it may cause videos to load the wrong quality."
+},
+downlink:{
+explanation:"This is a rough estimate of your download speed in megabits per second.",
+legalUses:"Sites use it to manage video quality and loading times.",
+maliciousUses:"It can hint at your internet plan or help time data-heavy attacks.",
+accuracy:"Estimated - This is ESTIMATED and updates as your real-world speed changes, but it is not a certified speed test. Browser engines smooth the value using rolling averages to avoid constant jitter.",
+canHide:"Partially - Changing it only fools the estimate; sites can still run speed tests."
+},
+rtt:{
+explanation:"This measures the delay (in milliseconds) for data to travel to a server and back.",
+legalUses:"It helps sites decide when to show loading indicators.",
+maliciousUses:"It can hint at your distance from a server or VPN usage.",
+accuracy:"Estimated - This is ESTIMATED from recent network activity and can fluctuate with congestion. Engineers often compare it against ICMP ping or synthetic monitoring results for validation.",
+canHide:"Partially - You cannot easily hide real network delays."
+},
+"save-data":{
+explanation:"This indicates you've asked your browser to use less data.",
+legalUses:"Sites honor it by sending smaller images and simpler pages.",
+maliciousUses:"It can signal that you're on a limited data plan.",
+accuracy:"Known - This is KNOWN because it comes straight from your browser setting and does not change mid-session unless you toggle it.",
+canHide:"Yes - Turn the setting off to get full-quality content."
+},
+dnt:{
+explanation:"This is a request your browser sends asking sites not to track you.",
+legalUses:"Some sites honor it, but most are free to ignore it.",
+maliciousUses:"It may mark you as someone who values privacy.",
+accuracy:"Known - This is KNOWN because it is either on, off, or unset and is read directly from browser settings.",
+canHide:"Not applicable - You either enable it or not; turning it on doesn't guarantee privacy."
+},
+gpc:{
+explanation:"This is a newer, stronger \"do not sell my data\" signal that carries legal weight in some regions.",
+legalUses:"In supported regions, companies must respect it by law.",
+maliciousUses:"It is a protection, not a risk.",
+accuracy:"Known - This is KNOWN when your browser supports it and sets the value to true.",
+canHide:"Not applicable - You cannot hide it except by turning it off."
+},
+cookies:{
+explanation:"This shows whether your browser allows sites to store small data files (cookies) on your device.",
+legalUses:"Cookies keep you signed in and remember site preferences.",
+maliciousUses:"They can be used to track your activity across sites.",
+accuracy:"Known - This is KNOWN because the browser knows whether cookies are allowed, taking into account third-party restrictions, SameSite rules, and partitioned storage.",
+canHide:"Yes - You can block cookies, but many sites will stop working correctly."
+},
+"local-storage":{
+explanation:"This is a more powerful storage space than cookies, used for saving app data on your device.",
+legalUses:"It makes sites faster and lets web apps work offline.",
+maliciousUses:"Trackers can stash data there without your knowledge.",
+accuracy:"Known - This is KNOWN because the browser decides whether the feature is available, respecting private-browsing modes and storage partitions.",
+canHide:"Yes - Disabling it breaks many modern web apps."
+},
+"dark-mode":{
+explanation:"This indicates whether you prefer a dark or light color theme.",
+legalUses:"Websites use it to match your visual preference automatically.",
+maliciousUses:"It's a minor fingerprinting factor.",
+accuracy:"Known - This is KNOWN from your system settings and updates instantly when you toggle the theme at the OS or browser level.",
+canHide:"Yes - Changing it alters the appearance of every app and site."
+},
+"reduced-motion":{
+explanation:"This indicates you've asked for less animation, often for accessibility reasons.",
+legalUses:"Sites replace flashy effects with calmer ones to prevent motion sickness.",
+maliciousUses:"It's a harmless preference that adds a small fingerprinting clue.",
+accuracy:"Known - This is KNOWN because it comes from your system accessibility settings and updates instantly when you toggle the option.",
+canHide:"Yes - Changing it affects every app and site; leave it on if animations bother you."
+}
+};
