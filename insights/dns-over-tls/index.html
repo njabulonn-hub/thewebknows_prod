@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://static.cloudflareinsights.com https://ep2.adtrafficquality.google; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com; font-src 'self' data:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep2.adtrafficquality.google https://*.google.com; base-uri 'self'; form-action 'self';" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>DNS over TLS (DoT) | Insights | The Web Knows</title>
+    <meta name="description" content="DNS over TLS (DoT) is another method for encrypting DNS queries, using the TLS protocol on a dedicated port." />
+    <link rel="canonical" href="https://thewebknows.com/insights/dns-over-tls/" />
+
+<meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.com/insights/dns-over-tls/" />
+    <meta property="og:title" content="DNS over TLS (DoT)" />
+    <meta property="og:description" content="DNS over TLS (DoT) is another method for encrypting DNS queries, using the TLS protocol on a dedicated port." />
+    <meta property="og:image" content="https://thewebknows.com/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:section" content="Network Protocols &amp; Infrastructure" />
+    <meta property="article:published_time" content="2025-11-10T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2025-11-10T00:00:00.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DNS over TLS (DoT)" />
+    <meta name="twitter:description" content="DNS over TLS (DoT) is another method for encrypting DNS queries, using the TLS protocol on a dedicated port." />
+    <meta name="twitter:image" content="https://thewebknows.com/og-image.png" />
+    <meta name="twitter:image:alt" content="DNS over TLS (DoT)" />
+    <meta name="twitter:url" content="https://thewebknows.com/insights/dns-over-tls/" />
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://thewebknows.com/insights/dns-over-tls/#article",
+          "headline": "DNS over TLS (DoT)",
+          "description": "DNS over TLS (DoT) is another method for encrypting DNS queries, using the TLS protocol on a dedicated port.",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@id": "https://thewebknows.com/insights/#page"
+          },
+          "mainEntityOfPage": {
+            "@id": "https://thewebknows.com/insights/dns-over-tls/"
+          },
+          "articleSection": "Network Protocols & Infrastructure",
+          "image": "https://thewebknows.com/og-image.png",
+          "author": {
+            "@type": "Organization",
+            "name": "The Web Knows"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Web Knows",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://thewebknows.com/favicon.svg"
+            }
+          },
+          "datePublished": "2025-11-13T00:00:00.000Z",
+          "dateModified": "2025-11-14T00:00:00.000Z"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://thewebknows.com/insights/dns-over-tls/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://thewebknows.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Insights",
+              "item": "https://thewebknows.com/insights/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "DNS over TLS (DoT)",
+              "item": "https://thewebknows.com/insights/dns-over-tls/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/insights/" aria-current="page">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/insights/">Insights</a></li>
+                <li aria-current="page">DNS over TLS (DoT)</li>
+            </ol>
+        </nav>
+
+        <article class="blog-article">
+            <header class="blog-article__header">
+                <p class="blog-article__category">Network Protocols &amp; Infrastructure</p>
+                <h1 class="blog-article__title">DNS over TLS (DoT)</h1>
+                <div class="blog-article__meta">
+                    <time datetime="2025-11-10">10 November 2025</time>
+                    <span class="blog-article__reading-time">3 min read</span>
+                </div>
+            </header>
+            <section class="blog-article__content">
+                <p><strong>At a Glance:</strong> DNS over TLS (DoT) is another method for encrypting DNS queries, using the TLS protocol (the same encryption that secures HTTPS) on a dedicated port. It achieves the same privacy goal as DoH but through a different technical approach.</p>
+<p><strong>In Detail:</strong></p>
+<p>While DoH mixes DNS traffic with other HTTPS web traffic, DoT creates a separate, encrypted tunnel exclusively for DNS on port 853.</p>
+<p><strong>Key Differences Between DoT and DoH:</strong></p>
+<ul>
+<li><strong>Traffic Isolation:</strong> DoT traffic is distinct and can be easily identified and allowed or blocked by network administrators. DoH traffic is blended with all other HTTPS traffic, making it harder to block.</li>
+<li><strong>Configuration Level:</strong> DoT is often configured at the router or operating system level, protecting every device on your network. DoH is more commonly configured per-application (like in a browser).</li>
+<li><strong>Goal:</strong> Both provide the same core benefit: preventing eavesdropping and manipulation of your DNS queries.</li>
+</ul>
+<p>The choice between DoT and DoH often comes down to your specific needs. DoT is favoured for enterprise network management, while DoH is praised for its ability to bypass restrictive networks that block plain-text DNS.</p>
+<p><strong>What You Can Do:</strong></p>
+<ul>
+<li><strong>Configure on Your Router:</strong> If your router supports it, enabling DoT will protect all devices connected to your home Wi-Fi. You'll need to specify a DoT-supported resolver address (e.g., `1.1.1.1` or `8.8.8.8`).</li>
+<li><strong>Use on Android:</strong> Android has built-in support for Private DNS (which uses DoT). Go to Settings > Network & Internet > Private DNS, and enter the hostname of a provider (e.g., `one.one.one.one` for Cloudflare).</li>
+</ul>
+<hr />
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/insights/">Insights</a>
+            </nav>
+            
+        </div>
+    </footer>
+<script src="/app.js" defer></script>
+</body>
+</html>

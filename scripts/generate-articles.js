@@ -3,7 +3,7 @@ const path = require('path');
 
 const DATA_PATH = path.join(__dirname, '..', 'blog', 'articles-data.js');
 const SOURCE_MARKDOWN = path.join(__dirname, '..', 'blog', 'articles-expanded.md');
-const OUTPUT_DIR = path.join(__dirname, '..', 'privacy-insights');
+const OUTPUT_DIR = path.join(__dirname, '..', 'insights');
 const SITE_ORIGIN = 'https://thewebknows.com';
 
 const THEME_PREFLIGHT_SCRIPT = `    <script>
@@ -202,9 +202,9 @@ function generateArticleHtml(article, bodyHtml) {
         readingTime,
     } = article;
 
-    const safeTitleText = escapeHtml(title || 'Privacy Insights');
-    const safeCategoryText = escapeHtml(category || 'Privacy Insights');
-    const canonicalUrl = `${SITE_ORIGIN}/privacy-insights/${encodeURIComponent(slug)}/`;
+    const safeTitleText = escapeHtml(title || 'Insights');
+    const safeCategoryText = escapeHtml(category || 'Insights');
+    const canonicalUrl = `${SITE_ORIGIN}/insights/${encodeURIComponent(slug)}/`;
     const descriptionSource = article.summary || article.seoDescription || article.excerpt || '';
     const description = truncateDescription(descriptionSource, 155);
     const safeDescriptionAttr = escapeAttribute(description);
@@ -232,7 +232,7 @@ function generateArticleHtml(article, bodyHtml) {
                 description,
                 inLanguage: 'en',
                 isPartOf: {
-                    '@id': `${SITE_ORIGIN}/privacy-insights/#page`
+                    '@id': `${SITE_ORIGIN}/insights/#page`
                 },
                 mainEntityOfPage: {
                     '@id': canonicalUrl
@@ -267,8 +267,8 @@ function generateArticleHtml(article, bodyHtml) {
                     {
                         '@type': 'ListItem',
                         position: 2,
-                        name: 'Privacy Insights',
-                        item: `${SITE_ORIGIN}/privacy-insights/`
+                        name: 'Insights',
+                        item: `${SITE_ORIGIN}/insights/`
                     },
                     {
                         '@type': 'ListItem',
@@ -303,7 +303,7 @@ function generateArticleHtml(article, bodyHtml) {
     <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), browsing-topics=(self)" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>${safeTitleText} | Privacy Insights | The Web Knows</title>
+    <title>${safeTitleText} | Insights | The Web Knows</title>
     <meta name="description" content="${safeDescriptionAttr}" />
     <link rel="canonical" href="${canonicalUrl}" />
     <!-- Google AdSense - Loaded after page load to avoid blocking render -->
@@ -336,7 +336,7 @@ ${structuredDataJson}
             </a>
             <nav class="nav-row" aria-label="Primary">
                 <a class="nav-link" href="/">Report</a>
-                <a class="nav-link" href="/privacy-insights/" aria-current="page">Insights</a>
+                <a class="nav-link" href="/insights/" aria-current="page">Insights</a>
                 <a class="nav-link" href="/glossary/">Glossary</a>
             </nav>
             <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
@@ -351,7 +351,7 @@ ${structuredDataJson}
         <nav class="breadcrumb" aria-label="Breadcrumb">
             <ol class="breadcrumb-list">
                 <li><a href="/">Home</a></li>
-                <li><a href="/privacy-insights/">Insights</a></li>
+                <li><a href="/insights/">Insights</a></li>
                 <li aria-current="page">${safeTitleText}</li>
             </ol>
         </nav>
@@ -381,7 +381,7 @@ ${structuredDataJson}
                 <a href="/privacy/">Privacy Policy</a>
                 <a href="/about/">About</a>
                 <a href="/glossary/">Glossary</a>
-                <a href="/privacy-insights/">Privacy Insights</a>
+                <a href="/insights/">Insights</a>
             </nav>
         </div>
     </footer>

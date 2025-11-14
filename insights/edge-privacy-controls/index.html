@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://static.cloudflareinsights.com https://ep2.adtrafficquality.google; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com; font-src 'self' data:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep2.adtrafficquality.google https://*.google.com; base-uri 'self'; form-action 'self';" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Edge Privacy Controls | Insights | The Web Knows</title>
+    <meta name="description" content="Microsoft Edge, based on Chromium, offers a range of privacy settings that can be configured to provide a good level of protection." />
+    <link rel="canonical" href="https://thewebknows.com/insights/edge-privacy-controls/" />
+
+<meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.com/insights/edge-privacy-controls/" />
+    <meta property="og:title" content="Edge Privacy Controls" />
+    <meta property="og:description" content="Microsoft Edge, based on Chromium, offers a range of privacy settings that can be configured to provide a good level of protection." />
+    <meta property="og:image" content="https://thewebknows.com/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:section" content="Privacy Settings &amp; Hardening" />
+    <meta property="article:published_time" content="2025-11-10T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2025-11-10T00:00:00.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Edge Privacy Controls" />
+    <meta name="twitter:description" content="Microsoft Edge, based on Chromium, offers a range of privacy settings that can be configured to provide a good level of protection." />
+    <meta name="twitter:image" content="https://thewebknows.com/og-image.png" />
+    <meta name="twitter:image:alt" content="Edge Privacy Controls" />
+    <meta name="twitter:url" content="https://thewebknows.com/insights/edge-privacy-controls/" />
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://thewebknows.com/insights/edge-privacy-controls/#article",
+          "headline": "Edge Privacy Controls",
+          "description": "Microsoft Edge, based on Chromium, offers a range of privacy settings that can be configured to provide a good level of protection.",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@id": "https://thewebknows.com/insights/#page"
+          },
+          "mainEntityOfPage": {
+            "@id": "https://thewebknows.com/insights/edge-privacy-controls/"
+          },
+          "articleSection": "Privacy Settings & Hardening",
+          "image": "https://thewebknows.com/og-image.png",
+          "author": {
+            "@type": "Organization",
+            "name": "The Web Knows"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Web Knows",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://thewebknows.com/favicon.svg"
+            }
+          },
+          "datePublished": "2025-11-13T00:00:00.000Z",
+          "dateModified": "2025-11-14T00:00:00.000Z"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://thewebknows.com/insights/edge-privacy-controls/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://thewebknows.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Insights",
+              "item": "https://thewebknows.com/insights/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Edge Privacy Controls",
+              "item": "https://thewebknows.com/insights/edge-privacy-controls/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/insights/" aria-current="page">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/insights/">Insights</a></li>
+                <li aria-current="page">Edge Privacy Controls</li>
+            </ol>
+        </nav>
+
+        <article class="blog-article">
+            <header class="blog-article__header">
+                <p class="blog-article__category">Privacy Settings &amp; Hardening</p>
+                <h1 class="blog-article__title">Edge Privacy Controls</h1>
+                <div class="blog-article__meta">
+                    <time datetime="2025-11-10">10 November 2025</time>
+                    <span class="blog-article__reading-time">4 min read</span>
+                </div>
+            </header>
+            <section class="blog-article__content">
+                <p><strong>At a Glance:</strong> Microsoft Edge, based on Chromium, offers a range of privacy settings that can be configured to provide a good level of protection, though it requires careful adjustment to minimise Microsoft's own data collection.</p>
+<p><strong>In Detail:</strong></p>
+<p>To enhance your privacy in Edge, follow these steps:</p>
+<p><strong>1. Core Privacy Settings (edge://settings/privacy):</strong></p>
+<ul>
+<li><strong>Tracking prevention:</strong> Set this to <strong>Strict</strong>. This blocks most trackers and malicious trackers.</li>
+<li><strong>"Block only third-party cookies":</strong> Ensure this is selected under "Cookies and site permissions" > "Cookies and site data".</li>
+<li><strong>"Send "Do Not Track" requests":</strong> You can set this to "On", though its effectiveness is limited.</li>
+</ul>
+<p><strong>2. Services Settings (edge://settings/privacy):</strong></p>
+<ul>
+<li>Scroll down to "Services". It is advisable to turn off options like:</li>
+</ul>
+<p>  - "Show search and site suggestions as I type"</p>
+<p>  - "Allow sites to see if I have payment methods saved"</p>
+<p>  - "Offer to save passwords" (Consider using a dedicated password manager instead).</p>
+<p><strong>3. Personalisation & Advertising:</strong></p>
+<ul>
+<li>In your Microsoft account settings online, review and limit ad personalisation.</li>
+<li>In Edge, go to `edge://settings/profiles/personalization` and turn off "Personalize your web experience..." to reduce data sent to Microsoft.</li>
+</ul>
+<p><strong>4. Secure DNS & Extensions:</strong></p>
+<ul>
+<li>Enable "Use secure DNS" in settings and choose a provider like Cloudflare.</li>
+<li>Install essential privacy extensions from the Chrome Web Store: <strong>uBlock Origin</strong>, <strong>Privacy Badger</strong>, and <strong>ClearURLs</strong>.</li>
+</ul>
+<p><strong>What You Can Do:</strong></p>
+<ul>
+<li><strong>Audit Your Sync Data:</strong> If you use Edge sync, review what data you are syncing (passwords, history, etc.) in `edge://settings/profiles/sync` and disable anything you don't need cloud-synced.</li>
+<li><strong>Clear Data on Exit:</strong> Configure Edge to clear browsing data on exit for specific sites or all data.</li>
+<li><strong>Treat it like Chrome:</strong> For privacy purposes, the hardening process for Edge is very similar to that of Chrome.</li>
+</ul>
+<hr />
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/insights/">Insights</a>
+            </nav>
+            
+        </div>
+    </footer>
+<script src="/app.js" defer></script>
+</body>
+</html>

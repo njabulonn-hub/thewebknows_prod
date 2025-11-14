@@ -1,4 +1,4 @@
-# Privacy Insights Blog - Implementation Guide
+# Insights Blog - Implementation Guide
 
 ## What's Been Completed
 
@@ -8,7 +8,7 @@
    - Categories, reading times, related articles
    - Helper functions for searching and filtering
 
-2. **Blog Index Page** (`privacy-insights/index.html`)
+2. **Blog Index Page** (`insights/index.html`)
    - Search functionality
    - Category filtering
    - Responsive article grid
@@ -28,7 +28,7 @@
    - Fully responsive (mobile, tablet, desktop)
    - Dark mode support
 
-5. **Sample Article Template** (`privacy-insights/what-is-ip-address/index.html`)
+5. **Sample Article Template** (`insights/what-is-ip-address/index.html`)
    - Complete HTML structure
    - SEO meta tags
    - Structured data (JSON-LD)
@@ -41,7 +41,7 @@
 You have two options:
 
 ### Option 1: Manual Creation (Recommended for Quality)
-Use the template in `privacy-insights/what-is-ip-address/index.html` to create each article:
+Use the template in `insights/what-is-ip-address/index.html` to create each article:
 1. Copy the template
 2. Update the article-specific content from the user's provided text
 3. Update SEO meta tags (title, description, URL)
@@ -55,7 +55,7 @@ Create a Node.js or Python script to:
 2. For each article, load the corresponding content from the user's expanded text
 3. Inject content into the template
 4. Generate the HTML file
-5. Save to `privacy-insights/[slug]/index.html`
+5. Save to `insights/[slug]/index.html`
 
 ## Article Content Mapping
 
@@ -244,7 +244,7 @@ Each article already includes:
 
 ```
 /
-├── privacy-insights/
+├── insights/
 │   ├── index.html (Blog index)
 │   ├── what-is-ip-address/
 │   │   └── index.html (Sample article)

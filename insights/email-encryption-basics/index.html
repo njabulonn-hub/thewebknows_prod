@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://static.cloudflareinsights.com https://ep2.adtrafficquality.google; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com; font-src 'self' data:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep2.adtrafficquality.google https://*.google.com; base-uri 'self'; form-action 'self';" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Email Encryption Basics | Insights | The Web Knows</title>
+    <meta name="description" content="Email encryption ensures that only the intended recipient can read the content of your message. There are two main types: encryption &quot;in transit&quot; (TLS)..." />
+    <link rel="canonical" href="https://thewebknows.com/insights/email-encryption-basics/" />
+
+<meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.com/insights/email-encryption-basics/" />
+    <meta property="og:title" content="Email Encryption Basics" />
+    <meta property="og:description" content="Email encryption ensures that only the intended recipient can read the content of your message. There are two main types: encryption &quot;in transit&quot; (TLS)..." />
+    <meta property="og:image" content="https://thewebknows.com/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:section" content="Email &amp; Communication Privacy" />
+    <meta property="article:published_time" content="2025-11-10T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2025-11-10T00:00:00.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Email Encryption Basics" />
+    <meta name="twitter:description" content="Email encryption ensures that only the intended recipient can read the content of your message. There are two main types: encryption &quot;in transit&quot; (TLS)..." />
+    <meta name="twitter:image" content="https://thewebknows.com/og-image.png" />
+    <meta name="twitter:image:alt" content="Email Encryption Basics" />
+    <meta name="twitter:url" content="https://thewebknows.com/insights/email-encryption-basics/" />
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://thewebknows.com/insights/email-encryption-basics/#article",
+          "headline": "Email Encryption Basics",
+          "description": "Email encryption ensures that only the intended recipient can read the content of your message. There are two main types: encryption \"in transit\" (TLS)...",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@id": "https://thewebknows.com/insights/#page"
+          },
+          "mainEntityOfPage": {
+            "@id": "https://thewebknows.com/insights/email-encryption-basics/"
+          },
+          "articleSection": "Email & Communication Privacy",
+          "image": "https://thewebknows.com/og-image.png",
+          "author": {
+            "@type": "Organization",
+            "name": "The Web Knows"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Web Knows",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://thewebknows.com/favicon.svg"
+            }
+          },
+          "datePublished": "2025-11-13T00:00:00.000Z",
+          "dateModified": "2025-11-14T00:00:00.000Z"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://thewebknows.com/insights/email-encryption-basics/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://thewebknows.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Insights",
+              "item": "https://thewebknows.com/insights/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Email Encryption Basics",
+              "item": "https://thewebknows.com/insights/email-encryption-basics/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/insights/" aria-current="page">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/insights/">Insights</a></li>
+                <li aria-current="page">Email Encryption Basics</li>
+            </ol>
+        </nav>
+
+        <article class="blog-article">
+            <header class="blog-article__header">
+                <p class="blog-article__category">Email &amp; Communication Privacy</p>
+                <h1 class="blog-article__title">Email Encryption Basics</h1>
+                <div class="blog-article__meta">
+                    <time datetime="2025-11-10">10 November 2025</time>
+                    <span class="blog-article__reading-time">4 min read</span>
+                </div>
+            </header>
+            <section class="blog-article__content">
+                <p><strong>At a Glance:</strong> Email encryption ensures that only the intended recipient can read the content of your message. There are two main types: encryption "in transit" (TLS) and encryption "end-to-end" (E2EE).</p>
+<p><strong>In Detail:</strong></p>
+<p>Think of email like a postcard—anyone handling it can read it. Encryption turns that postcard into a sealed letter inside a secure armoured truck.</p>
+<p><strong>1. Transport Layer Security (TLS):</strong></p>
+<ul>
+<li><strong>What it does:</strong> Encrypts the connection *between* mail servers, like the armoured truck. It prevents eavesdroppers on the network from reading your email as it travels.</li>
+<li><strong>Limitation:</strong> The email is decrypted and stored in plain text on the receiving server (e.g., Gmail's servers). Your email provider can still read it.</li>
+</ul>
+<p><strong>2. End-to-End Encryption (E2EE):</strong></p>
+<ul>
+<li><strong>What it does:</strong> Encrypts the message on *your device* and only the intended recipient can decrypt it on *their device*. The encrypted gibberish passes through the servers, but the providers cannot read it.</li>
+<li><strong>Common Standards:</strong></li>
+</ul>
+<p>  - <strong>PGP (Pretty Good Privacy) / GPG (GNU Privacy Guard):</strong> The gold standard for E2EE email. It requires you to manage public and private cryptographic keys. It's very secure but complex for the average user.</p>
+<p>  - <strong>S/MIME (Secure/Multipurpose Internet Mail Extensions):</strong> Often used in corporate environments, requiring a certificate from a trusted authority.</p>
+<p><strong>What You Can Do:</strong></p>
+<ul>
+<li><strong>Use E2EE Services:</strong> For sensitive conversations, use services like <strong>Proton Mail</strong>, <strong>Tutanota</strong>, or <strong>Signal</strong> (for messaging) that have E2EE built-in and user-friendly.</li>
+<li><strong>Verify Keys:</strong> When using E2EE, always verify your contact's "fingerprint" or "safety number" through a separate channel (e.g., a phone call) to ensure no one is intercepting your communication (a "man-in-the-middle" attack).</li>
+</ul>
+<hr />
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/insights/">Insights</a>
+            </nav>
+            
+        </div>
+    </footer>
+<script src="/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://static.cloudflareinsights.com https://ep2.adtrafficquality.google; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com; font-src 'self' data:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep2.adtrafficquality.google https://*.google.com; base-uri 'self'; form-action 'self';" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>WebRTC Leak Test | Insights | The Web Knows</title>
+    <meta name="description" content="A WebRTC leak test checks if your browser's Web Real-Time Communication functionality is revealing your real public or local IP address, even when you are..." />
+    <link rel="canonical" href="https://thewebknows.com/insights/test-for-webrtc-leaks/" />
+
+<meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.com/insights/test-for-webrtc-leaks/" />
+    <meta property="og:title" content="WebRTC Leak Test" />
+    <meta property="og:description" content="A WebRTC leak test checks if your browser's Web Real-Time Communication functionality is revealing your real public or local IP address, even when you are..." />
+    <meta property="og:image" content="https://thewebknows.com/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:section" content="Privacy Testing Tools" />
+    <meta property="article:published_time" content="2025-11-10T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2025-11-10T00:00:00.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="WebRTC Leak Test" />
+    <meta name="twitter:description" content="A WebRTC leak test checks if your browser's Web Real-Time Communication functionality is revealing your real public or local IP address, even when you are..." />
+    <meta name="twitter:image" content="https://thewebknows.com/og-image.png" />
+    <meta name="twitter:image:alt" content="WebRTC Leak Test" />
+    <meta name="twitter:url" content="https://thewebknows.com/insights/test-for-webrtc-leaks/" />
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://thewebknows.com/insights/test-for-webrtc-leaks/#article",
+          "headline": "WebRTC Leak Test",
+          "description": "A WebRTC leak test checks if your browser's Web Real-Time Communication functionality is revealing your real public or local IP address, even when you are...",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@id": "https://thewebknows.com/insights/#page"
+          },
+          "mainEntityOfPage": {
+            "@id": "https://thewebknows.com/insights/test-for-webrtc-leaks/"
+          },
+          "articleSection": "Privacy Testing Tools",
+          "image": "https://thewebknows.com/og-image.png",
+          "author": {
+            "@type": "Organization",
+            "name": "The Web Knows"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Web Knows",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://thewebknows.com/favicon.svg"
+            }
+          },
+          "datePublished": "2025-11-13T00:00:00.000Z",
+          "dateModified": "2025-11-14T00:00:00.000Z"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://thewebknows.com/insights/test-for-webrtc-leaks/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://thewebknows.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Insights",
+              "item": "https://thewebknows.com/insights/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "WebRTC Leak Test",
+              "item": "https://thewebknows.com/insights/test-for-webrtc-leaks/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/insights/" aria-current="page">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/insights/">Insights</a></li>
+                <li aria-current="page">WebRTC Leak Test</li>
+            </ol>
+        </nav>
+
+        <article class="blog-article">
+            <header class="blog-article__header">
+                <p class="blog-article__category">Privacy Testing Tools</p>
+                <h1 class="blog-article__title">WebRTC Leak Test</h1>
+                <div class="blog-article__meta">
+                    <time datetime="2025-11-10">10 November 2025</time>
+                    <span class="blog-article__reading-time">4 min read</span>
+                </div>
+            </header>
+            <section class="blog-article__content">
+                <p><strong>At a Glance:</strong> A WebRTC leak test checks if your browser's Web Real-Time Communication (WebRTC) functionality is revealing your real public or local IP address, even when you are using a VPN.</p>
+<p><strong>In Detail:</strong></p>
+<p>WebRTC is a powerful technology that enables.voice, video, and file sharing directly within the browser without plugins. To establish these peer-to-peer connections, browsers need to discover their own network addresses. During this process, they can potentially expose your device's local IP address (e.g., `192.168.1.5`) and, in some network configurations, your.true public IP address assigned by your ISP.</p>
+<p>If you are using a VPN, this creates a serious privacy leak: a website could see both the VPN server's IP (which is what you want) and your real IP address (which you are trying to hide).</p>
+<p><strong>How to Perform a Test:</strong></p>
+<ol>
+<li><strong>Connect to your VPN.</strong></li>
+<li><strong>Visit a WebRTC Leak Test Website:</strong> Use a site like `browserleaks.com/webrtc` or `ipleak.net`.</li>
+<li><strong>Analyse the Results:</strong> The test page will display any IP addresses it was able to discover via WebRTC.</li>
+</ol>
+<p><strong>What to Look For:</strong></p>
+<ul>
+<li><strong>No Leak:</strong> The test should only show the IP address of your VPN server.</li>
+<li><strong>WebRTC Leak:</strong> The test shows your real, ISP-assigned public IP address and/or your local network IP.</li>
+</ul>
+<p><strong>What You Can Do:</strong></p>
+<ul>
+<li><strong>Use a Browser with Built-in Protection:</strong> Brave browser blocks WebRTC leaks by default. In Firefox, you can.disable WebRTC by setting `media.peerconnection.enabled` to `false` in `about:config`.</li>
+<li><strong>Use a Browser Extension:</strong> Extensions like "WebRTC Leak Prevent" or "uBlock Origin" (with advanced settings) can be configured to disable or control WebRTC in browsers like Chrome.</li>
+<li><strong>Disable WebRTC in Flags:</strong> In Chrome-based browsers, you can try disabling WebRTC by visiting `chrome://flags/` and searching for "WebRTC", but this method is less reliable and may be removed in future versions.</li>
+</ul>
+<hr />
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/insights/">Insights</a>
+            </nav>
+            
+        </div>
+    </footer>
+<script src="/app.js" defer></script>
+</body>
+</html>

@@ -20,8 +20,8 @@ function resolveFirstExistingPath(candidates) {
 }
 
 const insightsHtmlPath = resolveFirstExistingPath([
-    path.join(rootDir, 'privacy-insights', 'index.html'),
-    path.join(rootDir, 'privacy-insights.html')
+    path.join(rootDir, 'insights', 'index.html'),
+    path.join(rootDir, 'insights.html')
 ]);
 const glossaryHtmlPath = resolveFirstExistingPath([
     path.join(rootDir, 'glossary', 'index.html'),
@@ -30,7 +30,7 @@ const glossaryHtmlPath = resolveFirstExistingPath([
 
 const SITE_ORIGIN = 'https://thewebknows.com';
 const HOME_URL = `${SITE_ORIGIN}/`;
-const INSIGHTS_URL = `${SITE_ORIGIN}/privacy-insights/`;
+const INSIGHTS_URL = `${SITE_ORIGIN}/insights/`;
 const GLOSSARY_URL = `${SITE_ORIGIN}/glossary/`;
 const OG_IMAGE_URL = `${SITE_ORIGIN}/og-image.png`;
 
@@ -240,7 +240,7 @@ function ensureMarkerContent(html, marker) {
 }
 
 function renderArticleCard(article) {
-    const href = `/privacy-insights/${encodeURIComponent(article.slug)}/`;
+    const href = `/insights/${encodeURIComponent(article.slug)}/`;
     const dateDisplay = formatDate(article.lastUpdated);
     const dateAttribute = article.lastUpdated ? ` datetime="${escapeAttribute(article.lastUpdated)}"` : '';
     const readingTime = Number.isFinite(article.readingTime)
@@ -413,7 +413,7 @@ function renderGlossaryEntry(entry) {
     const relatedListItems = relatedArticles.map(article => {
         if (!article) return '';
         const slug = article.slug || article.id || '';
-        const href = slug ? `/privacy-insights/${encodeURIComponent(slug)}/` : '/privacy-insights/';
+        const href = slug ? `/insights/${encodeURIComponent(slug)}/` : '/insights/';
         const title = article.title || slug || 'View article';
         return `                <li><a href="${escapeAttribute(href)}">${escapeHtml(title)}</a></li>`;
     }).filter(Boolean).join('\n');
@@ -573,7 +573,7 @@ function buildInsightsStructuredData(articles) {
             "@type": "CollectionPage",
             "@id": `${INSIGHTS_URL}#page`,
             "url": INSIGHTS_URL,
-            "name": "Privacy Insights – Plain-English Privacy Guides",
+            "name": "Insights – Plain-English Privacy Guides",
             "description": "Discover over 100 plain-English guides covering IP addresses, VPNs, browser fingerprinting, tracking cookies, and mobile privacy.",
             "inLanguage": "en",
             "isPartOf": { "@id": `${HOME_URL}#website` },
@@ -582,7 +582,7 @@ function buildInsightsStructuredData(articles) {
         {
             "@type": "ItemList",
             "@id": `${INSIGHTS_URL}#item-list`,
-            "name": "Privacy Insights Guides",
+            "name": "Insights Guides",
             "itemListOrder": "https://schema.org/ItemListUnordered",
             "numberOfItems": articles.length,
             "itemListElement": itemListElements
@@ -634,7 +634,7 @@ function buildGlossaryStructuredData(entries) {
 }
 
 function buildArticleHead(article) {
-    const title = article && article.title ? String(article.title) : 'Privacy Insights';
+    const title = article && article.title ? String(article.title) : 'Insights';
     const slug = article && article.slug ? String(article.slug) : '';
     const canonicalUrl = slug ? `${INSIGHTS_URL}${encodeURIComponent(slug)}/` : INSIGHTS_URL;
     const descriptionSource = article && article.excerpt ? article.excerpt : '';
@@ -679,7 +679,7 @@ function buildArticleHead(article) {
                 {
                     "@type": "ListItem",
                     "position": 2,
-                    "name": "Privacy Insights",
+                    "name": "Insights",
                     "item": INSIGHTS_URL
                 },
                 {
@@ -713,7 +713,7 @@ function buildArticleHead(article) {
         '',
         '    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />',
         '',
-        `    <title>${escapeHtml(`${title} | Privacy Insights | The Web Knows`)}</title>`,
+        `    <title>${escapeHtml(`${title} | Insights | The Web Knows`)}</title>`,
         `    <meta name="description" content="${escapeAttribute(description)}" />`,
         '    <meta name="robots" content="index, follow" />',
         '',
@@ -751,14 +751,14 @@ function applyArticleLinkUpdates(html) {
         .replace(/<html lang="en-GB">/g, '<html lang="en">')
         .replace(/class="brand" href="\.\.\/"/g, 'class="brand" href="/"')
         .replace(/class="nav-link" href="\.\.\/">Report/g, 'class="nav-link" href="/">Report')
-        .replace(/class="nav-link" href="\.\.\/privacy-insights\.html"/g, 'class="nav-link" href="/privacy-insights/"')
+        .replace(/class="nav-link" href="\.\.\/insights\.html"/g, 'class="nav-link" href="/insights/"')
         .replace(/class="nav-link" href="\.\.\/glossary\.html"/g, 'class="nav-link" href="/glossary/"')
         .replace(/<li><a href="\.\.\/">Home<\/a><\/li>/g, '<li><a href="/">Home</a></li>')
-        .replace(/<li><a href="\.\.\/privacy-insights\.html">Insights<\/a><\/li>/g, '<li><a href="/privacy-insights/">Insights</a></li>')
+        .replace(/<li><a href="\.\.\/insights\.html">Insights<\/a><\/li>/g, '<li><a href="/insights/">Insights</a></li>')
         .replace(/href="\.\.\/privacy\.html"/g, 'href="/privacy/"')
         .replace(/href="\.\.\/about\.html"/g, 'href="/about/"')
         .replace(/href="\.\.\/glossary\.html"/g, 'href="/glossary/"')
-        .replace(/href="\.\.\/privacy-insights\.html"/g, 'href="/privacy-insights/"')
+        .replace(/href="\.\.\/insights\.html"/g, 'href="/insights/"')
         .replace(/Â©/g, '&copy;');
 }
 
@@ -790,7 +790,7 @@ function updateArticleHead(article) {
         return;
     }
     const legacyPath = path.join(rootDir, 'blog', `${article.slug}.html`);
-    const outputDir = path.join(rootDir, 'privacy-insights', article.slug);
+    const outputDir = path.join(rootDir, 'insights', article.slug);
     const outputPath = path.join(outputDir, 'index.html');
 
     let sourcePath = outputPath;
@@ -852,15 +852,15 @@ function updateHtmlFile(filePath, replacements) {
 
 // Build Insights markup
 const insights = buildInsightsStaticMarkup();
-writeOutputFile('privacy-insights-categories.html', insights.categoriesMarkup);
-writeOutputFile('privacy-insights-articles.html', insights.articlesMarkup);
+writeOutputFile('insights-categories.html', insights.categoriesMarkup);
+writeOutputFile('insights-articles.html', insights.articlesMarkup);
 
 const insightsResultsText = insights.count === 1
     ? 'Showing 1 article'
     : `Showing ${insights.count} articles`;
 const insightsJsonLdScript = buildInsightsStructuredData(insights.articlesList || []);
 if (insightsJsonLdScript) {
-    writeOutputFile('privacy-insights.jsonld', insightsJsonLdScript);
+    writeOutputFile('insights.jsonld', insightsJsonLdScript);
 }
 
 updateHtmlFile(insightsHtmlPath, {

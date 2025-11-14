@@ -18,7 +18,7 @@ All files are in the root directory:
 - `app.js` — All JavaScript logic (under 50 KB)
 - `privacy/` — Privacy policy (`index.html`)
 - `about/` — About page (`index.html`)
-- `privacy-insights/` — Privacy guides hub and article directories
+- `insights/` — Privacy guides hub and article directories
 - `glossary/` — Glossary hub (`index.html`)
 - `robots.txt` — Search engine directives
 - `sitemap.xml` — Sitemap for search engines

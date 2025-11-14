@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://static.cloudflareinsights.com https://ep2.adtrafficquality.google; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://dns.google https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com; font-src 'self' data:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep2.adtrafficquality.google https://*.google.com; base-uri 'self'; form-action 'self';" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Browser Extension Privacy Risks | Insights | The Web Knows</title>
+    <meta name="description" content="Browser extensions can greatly enhance your browsing experience, but they can also pose significant privacy and security risks." />
+    <link rel="canonical" href="https://thewebknows.com/insights/browser-extension-privacy-risks/" />
+
+<meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:url" content="https://thewebknows.com/insights/browser-extension-privacy-risks/" />
+    <meta property="og:title" content="Browser Extension Privacy Risks" />
+    <meta property="og:description" content="Browser extensions can greatly enhance your browsing experience, but they can also pose significant privacy and security risks." />
+    <meta property="og:image" content="https://thewebknows.com/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:section" content="Privacy Settings &amp; Hardening" />
+    <meta property="article:published_time" content="2025-11-10T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2025-11-10T00:00:00.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Browser Extension Privacy Risks" />
+    <meta name="twitter:description" content="Browser extensions can greatly enhance your browsing experience, but they can also pose significant privacy and security risks." />
+    <meta name="twitter:image" content="https://thewebknows.com/og-image.png" />
+    <meta name="twitter:image:alt" content="Browser Extension Privacy Risks" />
+    <meta name="twitter:url" content="https://thewebknows.com/insights/browser-extension-privacy-risks/" />
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://thewebknows.com/insights/browser-extension-privacy-risks/#article",
+          "headline": "Browser Extension Privacy Risks",
+          "description": "Browser extensions can greatly enhance your browsing experience, but they can also pose significant privacy and security risks.",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@id": "https://thewebknows.com/insights/#page"
+          },
+          "mainEntityOfPage": {
+            "@id": "https://thewebknows.com/insights/browser-extension-privacy-risks/"
+          },
+          "articleSection": "Privacy Settings & Hardening",
+          "image": "https://thewebknows.com/og-image.png",
+          "author": {
+            "@type": "Organization",
+            "name": "The Web Knows"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Web Knows",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://thewebknows.com/favicon.svg"
+            }
+          },
+          "datePublished": "2025-11-13T00:00:00.000Z",
+          "dateModified": "2025-11-14T00:00:00.000Z"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://thewebknows.com/insights/browser-extension-privacy-risks/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://thewebknows.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Insights",
+              "item": "https://thewebknows.com/insights/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Browser Extension Privacy Risks",
+              "item": "https://thewebknows.com/insights/browser-extension-privacy-risks/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="nav-link" href="/">Report</a>
+                <a class="nav-link" href="/insights/" aria-current="page">Insights</a>
+                <a class="nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/insights/">Insights</a></li>
+                <li aria-current="page">Browser Extension Privacy Risks</li>
+            </ol>
+        </nav>
+
+        <article class="blog-article">
+            <header class="blog-article__header">
+                <p class="blog-article__category">Privacy Settings &amp; Hardening</p>
+                <h1 class="blog-article__title">Browser Extension Privacy Risks</h1>
+                <div class="blog-article__meta">
+                    <time datetime="2025-11-10">10 November 2025</time>
+                    <span class="blog-article__reading-time">4 min read</span>
+                </div>
+            </header>
+            <section class="blog-article__content">
+                <p><strong>At a Glance:</strong> Browser extensions can greatly enhance your browsing experience, but they can also pose significant privacy and security risks, as they often have extensive.permissions to read and modify your data on every website you visit.</p>
+<p><strong>In Detail:</strong></p>
+<p>When you install an extension, you grant it specific permissions. A malicious or compromised extension can:</p>
+<ul>
+<li><strong>Read Your Browsing Activity:</strong> It can see every page you visit, including passwords, personal messages, and financial information you type.</li>
+<li><strong>Capture Your Keystrokes:</strong> It can log everything you type.</li>
+<li><strong>Modify Web Pages:</strong> It can inject ads, cryptocurrency miners, or malicious content into the pages you view.</li>
+<li><strong>"Phone Home":</strong> It can send any data it collects to a remote server controlled by the developer.</li>
+</ul>
+<p><strong>How to Mitigate the Risks:</strong></p>
+<ul>
+<li><strong>Install Minimally:</strong> Only install extensions you absolutely need and trust.</li>
+<li><strong>Check Permissions:</strong> Before installing, review the permissions the extension requests. Be wary of extensions that request access to "Read and change all your data on all websites" if their functionality doesn't clearly require it.</li>
+<li><strong>Stick to Official Stores:</strong> Only install extensions from the official Chrome Web Store or Firefox Add-ons marketplace, which offer some level of vetting.</li>
+<li><strong>Review the Developer and Privacy Policy:</strong> Choose extensions from reputable developers who have a clear privacy policy stating they do not collect your personal data.</li>
+<li><strong>Audit Regularly:</strong> Periodically review your installed extensions and remove those you no longer use.</li>
+</ul>
+<p><strong>What You Can Do:</strong></p>
+<p>Treat browser extensions with the same caution you would treat any software you install on your computer. They are not harmless toys; they are powerful tools that need to be managed responsibly.</p>
+<hr />
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/insights/">Insights</a>
+            </nav>
+            
+        </div>
+    </footer>
+<script src="/app.js" defer></script>
+</body>
+</html>
