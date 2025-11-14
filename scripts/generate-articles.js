@@ -30,7 +30,8 @@ const THEME_PREFLIGHT_SCRIPT = `    <script>
 
 function loadArticlesData() {
     const content = fs.readFileSync(DATA_PATH, 'utf8');
-    const match = content.match(/const ARTICLES_DATA = (\[[\s\S]*?\]);/);
+    // Try to match both const and let, with or without spaces
+    const match = content.match(/(?:const|let)\s+ARTICLES_DATA\s*=\s*(\[[\s\S]*?\])\s*,/);
     if (!match) {
         throw new Error('Unable to parse ARTICLES_DATA in articles-data.js');
     }
@@ -401,6 +402,87 @@ ${structuredDataJson}
 </html>`;
 }
 
+function findArticleContent(article, sections) {
+    const target = normaliseTitle(article.title);
+    const slugWords = article.slug.split('-').filter(w => w.length > 2);
+    
+    // Strategy 1: Direct title match
+    let heading = Object.keys(sections).find(key => {
+        const normalised = normaliseTitle(key);
+        return normalised === target || 
+               normalised.startsWith(target) || 
+               target.startsWith(normalised) ||
+               normalised.includes(target) ||
+               target.includes(normalised);
+    });
+    
+    if (heading) return heading;
+    
+    // Strategy 2: Match by slug keywords
+    if (slugWords.length > 0) {
+        heading = Object.keys(sections).find(key => {
+            const normalised = normaliseTitle(key);
+            const keyWords = normalised.split(/\s+/);
+            const matches = slugWords.filter(slugWord => 
+                keyWords.some(keyWord => {
+                    const kw = keyWord.toLowerCase();
+                    const sw = slugWord.toLowerCase();
+                    return kw.includes(sw) || sw.includes(kw) || kw === sw;
+                })
+            );
+            const requiredMatches = slugWords.length <= 3 ? slugWords.length : Math.max(2, Math.floor(slugWords.length * 0.6));
+            return matches.length >= requiredMatches;
+        });
+        
+        if (heading) return heading;
+    }
+    
+    // Strategy 3: Match by significant keywords from title
+    const titleKeyWords = target.split(/\s+/).filter(w => w.length > 3);
+    if (titleKeyWords.length > 0) {
+        heading = Object.keys(sections).find(key => {
+            const normalised = normaliseTitle(key);
+            const keyWords = normalised.split(/\s+/);
+            const matches = titleKeyWords.filter(titleWord => 
+                keyWords.some(keyWord => {
+                    const kw = keyWord.toLowerCase();
+                    const tw = titleWord.toLowerCase();
+                    return kw.includes(tw) || tw.includes(kw) || kw === tw;
+                })
+            );
+            return matches.length >= Math.min(2, titleKeyWords.length);
+        });
+        
+        if (heading) return heading;
+    }
+    
+    // Strategy 4: Special mappings for known variations
+    const specialMappings = {
+        'topics-api-privacy-sandbox': ['topics api', 'topics', 'google topics'],
+        'global-privacy-control': ['global privacy control', 'gpc'],
+        'mobile-privacy-webviews': ['mobile privacy', 'webviews', 'webview'],
+        'asn-bgp-for-humans': ['asn', 'bgp', 'autonomous system'],
+        'ipv4-vs-ipv6-privacy': ['ipv4', 'ipv6', 'privacy'],
+        'reverse-dns': ['reverse dns', 'ptr'],
+        'webrtc-leaks': ['webrtc', 'leaks', 'stun'],
+        'vpn-detection-how-it-works': ['vpn detection', 'vpn'],
+        'http-headers-client-hints': ['http headers', 'client hints'],
+        'cookies-and-storage-tracking': ['cookies storage', 'storage tracking', 'service workers']
+    };
+    
+    if (specialMappings[article.slug]) {
+        const keywords = specialMappings[article.slug];
+        heading = Object.keys(sections).find(key => {
+            const normalised = normaliseTitle(key);
+            return keywords.some(kw => normalised.includes(kw));
+        });
+        
+        if (heading) return heading;
+    }
+    
+    return null;
+}
+
 function main() {
     const articles = loadArticlesData();
     const markdown = fs.readFileSync(SOURCE_MARKDOWN, 'utf8');
@@ -408,11 +490,7 @@ function main() {
     const outputCount = { success: 0, missing: 0 };
 
     articles.forEach((article) => {
-        const target = normaliseTitle(article.title);
-        const heading = Object.keys(sections).find((key) => {
-            const normalised = normaliseTitle(key);
-            return normalised.startsWith(target) || target.startsWith(normalised) || normalised.includes(target);
-        });
+        const heading = findArticleContent(article, sections);
 
         if (!heading) {
             outputCount.missing += 1;

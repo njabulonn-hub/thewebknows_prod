@@ -1437,77 +1437,89 @@ When you stop using your ISP's DNS, you need to choose a new resolver. Not all a
 
 ---
 
-### What are Tracking Cookies? The Classic Web Tracker
+### What are Tracking Cookies?
 
-**At a Glance:** Tracking cookies are small text files placed on your device by websites you visit. They contain a unique identifier that allows trackers to recognise you across different sites and sessions, building a profile of your browsing habits.
+**At a Glance:** Tracking cookies are small files that websites put on your computer. They follow you from site to site, helping companies build a profile of your interests and online habits.
 
 **In Detail:**
 
-Cookies were originally invented to make the web more functional, for example, by keeping you logged into a site. However, their ability to store a persistent ID made them a perfect tool for cross-site tracking.
+Cookies were originally created to be helpful. For example, they can remember your login details or what you put in a shopping cart. However, some cookies, known as "tracking cookies," are used to monitor what you do online.
 
 **How Tracking Cookies Work:**
 
-1. You visit a site that contains code from a third-party advertiser or analytics company (e.g., Google Ads).
-2. That third-party places a cookie with a unique ID on your browser.
-3. When you later visit a *different* site that also uses the same third-party service, it can read that cookie and know, "This is the same user who was on the previous site."
-4. Over time, a detailed profile of your interests and behaviour is built and used for ad targeting.
+1.  You visit a website that has an ad or a "Like" button from another company (like Google or Facebook).
+
+2.  That other company places a small file on your browser with a unique ID—like a digital nametag.
+
+3.  When you visit a *different* website that also uses services from that same company, it reads your nametag.
+
+4.  It now knows, "This is the same person who visited that other site." Over time, it connects your visits to many sites, building a detailed picture of what you like and do online.
 
 **What You Can Do:**
 
-- **Block Third-Party Cookies:** This is the most effective step. In your browser's privacy settings, change the cookie preference to "Block third-party cookies".
-- **Clear Site Data Regularly:** Manually clear cookies and site data in your browser settings, or use an extension that auto-deletes them when you close the browser.
-- **Use Container Tabs (Firefox):** Firefox's Multi-Account Containers isolate cookies so that your activity in one container (e.g., "Social Media") is completely separate from another (e.g., "Banking").
+-   **Block Third-Party Cookies:** This is the most effective step. In your browser's privacy settings, look for an option to "Block third-party cookies."
+
+-   **Clear Your Browsing Data Regularly:** You can manually delete cookies in your browser settings. Some browsers or extensions can also automatically delete them when you close the browser.
+
+-   **Use Container Tabs (Firefox):** This feature in Firefox lets you isolate your online activities. For example, your browsing on a social media site is kept completely separate from your browsing on other sites, preventing trackers from following you.
 
 ---
 
-### Third-Party Cookies Explained: The Cross-Site Followers
+### Third-Party Cookies Explained
 
-**At a Glance:** Third-party cookies are set by a domain other than the one you are currently visiting. They are the primary tool for the advertising industry to track your activity across the entire web.
+**At a Glance:** Third-party cookies are set by companies other than the one running the website you're on. They are the main tool used to follow you around the internet to show you targeted ads.
 
 **In Detail:**
 
-The distinction between "first-party" and "third-party" is crucial:
+It's important to know the difference between the website you're visiting and the other companies that have content on it.
 
-- **First-Party Cookie:** Set by the website you are directly interacting with (e.g., `bbc.co.uk`). These are generally used for legitimate functions like remembering your login session, language preference, or shopping cart contents.
-- **Third-Party Cookie:** Set by a different domain (e.g., `doubleclick.net` or `facebook.com`) that has content embedded on the page you're visiting, like an ad, a like button, or an analytics script. These are used almost exclusively for tracking and advertising.
+-   **First-Party Cookie:** Created by the website you are directly using (like `bbc.co.uk`). These are generally helpful, remembering your login, language, or what's in your shopping cart.
 
-Because a company like Google has its ads and analytics on millions of websites, its third-party cookies can follow you everywhere, creating a comprehensive picture of your online life.
+-   **Third-Party Cookie:** Created by a different company (like an ad network or a social media platform) that has an ad or a button on the page. These are used almost entirely for tracking and advertising.
+
+Because a company like Google has its ads on millions of websites, its third-party cookies can see you on all those sites, creating a very detailed picture of your online life.
 
 **The Future of Third-Party Cookies:**
 
-Due to growing privacy concerns and regulations, third-party cookies are being phased out. Apple's Safari and Mozilla's Firefox have blocked them by default for years. Google Chrome, which dominates the browser market, is also in the process of phasing them out, intending to replace them with its "Privacy Sandbox" initiatives.
+Due to growing privacy concerns, third-party cookies are being phased out. Browsers like Safari and Firefox already block them, and Google Chrome is in the process of doing the same.
 
 **What You Can Do:**
 
-- **Block Them:** Ensure your browser is set to block third-party cookies.
-- **Use a Content Blocker:** Extensions like uBlock Origin prevent the tracking scripts that set these cookies from even loading.
+-   **Block Them:** Make sure your browser is set to block third-party cookies.
+
+-   **Use a Content Blocker:** Browser extensions like uBlock Origin can stop the tracking scripts that set these cookies from even loading.
 
 ---
 
-### Google Topics API: The New, Coarser Ad System
+### Google Topics API
 
-**At a Glance:** The Topics API is Google's proposed replacement for third-party cookies. Instead of tracking individual users, it infers your broad interests (e.g., "Fitness" or "Travel") on your device and shares only those high-level topics with sites you visit for ad targeting.
+**At a Glance:** The Topics API is Google's proposed new system for showing you relevant ads without tracking you individually. Instead of following you, it learns your general interests on your own device and only shares those broad topics.
 
 **In Detail:**
 
-Facing the demise of third-party cookies, Google developed the Topics API as part of its "Privacy Sandbox." The goal is to enable ad personalisation without allowing cross-site tracking of individuals.
+As third-party cookies are phased out, Google is testing this new approach. The goal is to allow for ads that might still be interesting to you, but without letting companies track your personal browsing history across the web.
 
 **How It Works:**
 
-1. Your browser observes your browsing activity for a week and assigns you a handful of broad interest topics (e.g., "Classical Music," "Vegetarian Cooking") from a publicly available list of a few hundred.
-2. For each week, it keeps only the top few topics.
-3. When you visit a participating site, the Topics API provides the site (and its advertising partners) with three of your interests: one from the current week and two from previous weeks.
-4. This information is stored only on your device. You can view, remove, or disable the topics associated with you in your browser settings.
+1.  Based on your browsing for a week, your browser identifies a few of your broad interests (like "Fitness" or "Travel & Transportation") from a public list of a few hundred topics.
+
+2.  It only keeps the top few topics each week.
+
+3.  When you visit a site that uses this system, it shares three of your interests: one from the current week and two from past weeks.
+
+4.  This information is stored only on your computer. You can see which topics are associated with you and turn the system off.
 
 **Privacy Trade-Offs:**
 
-- **Improvement:** It's more private than third-party cookies because it doesn't leak a unique identifier and the data stays on your device.
-- **Concern:** It still allows for interest-based advertising, and some privacy advocates argue that the topics could still be combined with other signals to identify users.
+-   **Improvement:** It's more private than third-party cookies because your personal browsing history isn't shared. The data stays on your device.
+
+-   **Concern:** It still allows for advertising based on your interests, and some privacy advocates worry the topics could be combined with other information to identify you.
 
 **What You Can Do:**
 
-- **Review Your Topics:** In Chrome, you can see and manage your topics by visiting `chrome://settings/adPrivacy`.
-- **Opt Out:** In the same settings page, you can turn off the "Ad topics" setting.
+-   **Review Your Topics:** In Chrome, you can see and manage your topics by visiting `chrome://settings/adPrivacy`.
+
+-   **Opt Out:** On the same settings page, you can turn off the "Ad topics" setting.
 
 ---
 
@@ -1537,59 +1549,75 @@ While some users prefer relevant ads to random ones, the process involves extens
 
 ---
 
-### How to Opt Out of Targeted Ads: Reclaiming Your Digital Space
+### How to Opt Out of Targeted Ads
 
-**At a Glance:** You can reduce the number of targeted ads you see by using the opt-out controls provided by major ad platforms, resetting your device's ad ID, and using technical tools like content blockers.
+**At a Glance:** You can reduce the number of ads tailored to your interests by adjusting settings on major platforms, resetting your device's advertising ID, and using tools like ad blockers.
 
 **In Detail:**
 
-Opting out doesn't mean you'll see no ads; it means the ads you see will not be tailored to your inferred interests and will be more generic.
+Opting out doesn't mean you'll see no ads; it means the ads will be more generic and not based on your personal interests or browsing history.
 
 **A Multi-Pronged Approach:**
 
-1. **Platform-Level Controls:**
-   - **Google:** Visit your [Google Ad Settings](https://adssettings.google.com) and turn off "Ad personalisation."
-   - **Apple:** On iOS/iPadOS, go to Settings > Privacy & Security > Tracking and disable "Allow Apps to Request to Track." Also, go to Settings > Privacy & Security > Apple Advertising and turn off "Personalized Ads."
-   - **Meta:** In your Facebook settings, navigate to Ads and adjust your preferences.
-2. **Device-Level Controls:**
-   - **On iPhone/iPad:** Go to Settings > Privacy & Security > Tracking and toggle off "Allow Apps to Request to Track." You can also reset your Advertising Identifier here.
-   - **On Android:** Go to Settings > Privacy > Ads and enable "Opt out of Ads Personalization." You can also reset your advertising ID here.
-3. **Technical Defences:**
-   - **Block Third-Party Cookies:** In your browser settings.
-   - **Use a Content Blocker:** Install a reputable ad blocker like uBlock Origin.
-   - **Enable Global Privacy Control (GPC):** This is a browser setting or extension that automatically signals your opt-out preference to websites that honour it.
+1.  **Platform-Level Controls:**
+
+    -   **Google:** Visit your [Google Ad Settings](https://adssettings.google.com) and turn off "Ad personalisation."
+
+    -   **Apple:** On iOS/iPadOS, go to Settings > Privacy & Security > Tracking and disable "Allow Apps to Request to Track." Also, go to Settings > Privacy & Security > Apple Advertising and turn off "Personalized Ads."
+
+    -   **Meta:** In your Facebook settings, navigate to Ads and adjust your preferences.
+
+2.  **Device-Level Controls:**
+
+    -   **On iPhone/iPad:** Go to Settings > Privacy & Security > Tracking and toggle off "Allow Apps to Request to Track." You can also reset your Advertising Identifier here.
+
+    -   **On Android:** Go to Settings > Privacy > Ads and enable "Opt out of Ads Personalization." You can also reset your advertising ID here.
+
+3.  **Technical Defences:**
+
+    -   **Block Third-Party Cookies:** In your browser settings.
+
+    -   **Use a Content Blocker:** Install a reputable ad blocker like uBlock Origin.
+
+    -   **Enable Global Privacy Control (GPC):** This is a browser setting that automatically tells websites you don't want your data sold.
 
 **What You Can Do:**
 
-- **Be Proactive:** Don't wait for prompts. Go into the settings of the platforms and devices you use and adjust them to your privacy comfort level.
-- **Understand the Limits:** Opting out does not stop data collection; it typically just dissociates the data from your identity for ad targeting purposes. Data may still be collected for analytics and other uses.
+-   **Be Proactive:** Don't wait for prompts. Go into the settings of the platforms and devices you use and adjust them to your privacy comfort level.
+
+-   **Understand the Limits:** Opting out typically means your data isn't used for *personalized ads*, but it may still be collected for other purposes, like measuring how many people saw an ad.
 
 ---
 
-### What is Cross-Site Tracking? The Web-Wide Surveillance System
+### What is Cross-Site Tracking?
 
-**At a Glance:** Cross-site tracking is the practice of linking your identity and browsing activity across multiple, unrelated websites to build a comprehensive profile of your interests, habits, and behaviour for advertising and analytics.
+**At a Glance:** Cross-site tracking is the practice of connecting your activity across many different, unrelated websites to build a complete profile of your interests and habits.
 
 **In Detail:**
 
-When you browse the web, you're not just interacting with single, isolated sites. You are being followed by a hidden ecosystem of third-party trackers that operate across many different websites.
+When you browse the web, you're not just interacting with single, isolated sites. A hidden network of trackers follows you from site to site.
 
 **How It Works:**
 
-The primary tool for cross-site tracking has been the **third-party cookie**. Here's the process:
+The main tool for this has been the **third-party cookie**. Here's the process:
 
-1. You visit `news-site.co.uk`, which has an embedded "Like" button from a social media platform and an ad from a large ad network.
-2. Both of these elements are served from third-party domains (e.g., `social-media.com` and `ad-network.com`). They place cookies on your browser.
-3. Later, you visit `cooking-site.co.uk`, which also uses the same ad network.
-4. The ad network's script reads the cookie it set earlier, recognises your browser, and now knows you've visited both a news site and a cooking site. It adds "news" and "cooking" to your profile.
+1.  You visit a news site that has an embedded "Like" button from a social media platform and an ad from a large ad network.
 
-Over time, by appearing on thousands of sites, these trackers can build a shockingly detailed dossier of your life: your health concerns, political leanings, financial situation, and travel plans.
+2.  Both of these elements come from other companies. They place cookies on your browser.
+
+3.  Later, you visit a cooking site that also uses the same ad network.
+
+4.  The ad network reads the cookie it set earlier, recognizes your browser, and now knows you've visited both a news site and a cooking site. It adds these interests to your profile.
+
+Over time, by appearing on thousands of sites, these trackers can build a surprisingly detailed profile of your life, including your health concerns, hobbies, and shopping interests.
 
 **What You Can Do:**
 
-- **Use Anti-Tracking Browsers:** Browsers like Firefox (with Strict Enhanced Tracking Protection), Brave, and Safari have built-in defences that block third-party cookies and other cross-site tracking methods.
-- **Isolate Your Logins:** Be cautious about using "Sign in with Google/Facebook" on non-essential sites, as this can explicitly link your identity across the web. Use separate email accounts for different purposes.
-- **Use Container Tabs (Firefox):** This feature isolates your activity on a per-site basis. Your logged-in session on a social media site is kept completely separate from your browsing on other sites, preventing the social media tracker from linking your identity to your other browsing.
+-   **Use Anti-Tracking Browsers:** Browsers like Firefox (with its Strict Enhanced Tracking Protection), Brave, and Safari have built-in defences that block third-party cookies and other cross-site tracking methods.
+
+-   **Be Cautious with Social Logins:** Think twice before using "Sign in with Google/Facebook" on non-essential sites, as this can directly link your identity across the web.
+
+-   **Use Container Tabs (Firefox):** This feature isolates your activity on a per-site basis. Your logged-in session on a social media site is kept completely separate from your other browsing.
 
 ---
 
