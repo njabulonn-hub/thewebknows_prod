@@ -33,20 +33,47 @@
     <meta name="twitter:image:alt" content="Illustration representing The Web Knows privacy diagnostics" />
     
     <!-- Canonical -->
-    <link rel="canonical" href="https://thewebknows.com/" />
+    <link rel="canonical" href="https://thewebknows.com/" id="canonical-link" />
     
-    <!-- Google AdSense - Loaded after page load to avoid blocking render -->
+    <!-- Ensure canonical is always thewebknows.com and block indexing of pages.dev -->
     <script>
         (function() {
             try {
+                // Force HTTPS redirect if needed
                 if ((window.location.hostname === 'thewebknows.com' || window.location.hostname === 'thewebknows.pages.dev') && window.location.protocol !== 'https:') {
                     window.location.replace('https://' + window.location.host + window.location.pathname + window.location.search + window.location.hash);
+                    return;
+                }
+                
+                // Block indexing of pages.dev subdomain
+                if (window.location.hostname === 'thewebknows.pages.dev') {
+                    var metaRobots = document.createElement('meta');
+                    metaRobots.name = 'robots';
+                    metaRobots.content = 'noindex, nofollow';
+                    document.head.appendChild(metaRobots);
+                }
+                
+                // Force canonical URL to always be thewebknows.com
+                var canonicalLink = document.getElementById('canonical-link') || document.querySelector('link[rel="canonical"]');
+                if (canonicalLink) {
+                    var currentPath = window.location.pathname + window.location.search + window.location.hash;
+                    canonicalLink.href = 'https://thewebknows.com' + (currentPath === '/' ? '/' : currentPath);
+                } else {
+                    // Create canonical link if it doesn't exist
+                    canonicalLink = document.createElement('link');
+                    canonicalLink.rel = 'canonical';
+                    canonicalLink.id = 'canonical-link';
+                    var currentPath = window.location.pathname + window.location.search + window.location.hash;
+                    canonicalLink.href = 'https://thewebknows.com' + (currentPath === '/' ? '/' : currentPath);
+                    document.head.appendChild(canonicalLink);
                 }
             } catch (error) {
-                console.warn('HTTPS redirect check failed:', error);
+                console.warn('Canonical/redirect check failed:', error);
             }
         }());
     </script>
+    
+    <!-- Google AdSense - Loaded after page load to avoid blocking render -->
 
     <script type="application/ld+json">
         {
