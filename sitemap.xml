@@ -2,31 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://thewebknows.com/</loc>
-    <lastmod>2025-11-10</lastmod>
+    <lastmod>2025-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://thewebknows.com/privacy/</loc>
-    <lastmod>2025-11-10</lastmod>
+    <lastmod>2025-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://thewebknows.com/about/</loc>
-    <lastmod>2025-11-10</lastmod>
+    <lastmod>2025-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://thewebknows.com/insights/</loc>
-    <lastmod>2025-11-10</lastmod>
+    <lastmod>2025-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://thewebknows.com/glossary/</loc>
-    <lastmod>2025-11-10</lastmod>
+    <lastmod>2025-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -91,6 +91,108 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://thewebknows.com/insights/how-to-find-your-ip-address/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-windows/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-macos/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-iphone-ipad/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-android/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-chromeos/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-linux/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-ps5/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-xbox/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-nintendo-switch/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-roku/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-fire-tv/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-apple-tv/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-samsung-tv/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-lg-tv/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-sony-tv/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/find-ip-vizio-tv/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://thewebknows.com/insights/what-is-isp-tracking/</loc>
     <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -104,7 +206,25 @@
   </url>
   <url>
     <loc>https://thewebknows.com/insights/ip-geolocation-accuracy/</loc>
-    <lastmod>2025-11-10</lastmod>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/reverse-dns/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/asn-bgp-for-humans/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/ipv4-vs-ipv6-privacy/</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -135,6 +255,12 @@
   <url>
     <loc>https://thewebknows.com/insights/can-websites-detect-vpn/</loc>
     <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/vpn-detection-how-it-works/</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -331,6 +457,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://thewebknows.com/insights/topics-api-privacy-sandbox/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://thewebknows.com/insights/what-is-global-privacy-control/</loc>
     <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -397,6 +529,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://thewebknows.com/insights/webrtc-leaks/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://thewebknows.com/insights/ios-privacy-settings/</loc>
     <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -411,6 +549,12 @@
   <url>
     <loc>https://thewebknows.com/insights/mobile-app-tracking/</loc>
     <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/mobile-privacy-webviews/</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -577,6 +721,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://thewebknows.com/insights/cookies-and-storage-tracking/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://thewebknows.com/insights/cache-based-tracking/</loc>
     <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -597,6 +747,18 @@
   <url>
     <loc>https://thewebknows.com/insights/http-headers-and-privacy/</loc>
     <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/http-headers-client-hints/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thewebknows.com/insights/global-privacy-control/</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

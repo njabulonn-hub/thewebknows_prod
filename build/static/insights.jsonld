@@ -1,0 +1,175 @@
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": "https://thewebknows.com/insights/#page",
+          "url": "https://thewebknows.com/insights/",
+          "name": "Insights – Plain-English Privacy Guides",
+          "description": "Discover over 100 plain-English guides covering IP addresses, VPNs, browser fingerprinting, tracking cookies, and mobile privacy.",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@id": "https://thewebknows.com/#website"
+          },
+          "mainEntity": {
+            "@id": "https://thewebknows.com/insights/#item-list"
+          },
+          "dateModified": "2025-11-11T00:00:00.000Z"
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://thewebknows.com/insights/#item-list",
+          "name": "Insights Guides",
+          "itemListOrder": "https://schema.org/ItemListUnordered",
+          "numberOfItems": 124,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "url": "https://thewebknows.com/insights/what-is-ip-address/",
+              "name": "What is an IP Address?"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "url": "https://thewebknows.com/insights/how-to-hide-ip-address/",
+              "name": "How do I hide my IP Address?"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "url": "https://thewebknows.com/insights/why-does-ip-change/",
+              "name": "Why Does My IP Change?"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "url": "https://thewebknows.com/insights/public-vs-private-ip/",
+              "name": "Public IP vs Private IP Address"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "url": "https://thewebknows.com/insights/how-to-change-ip-address/",
+              "name": "How to Change My IP Address"
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "url": "https://thewebknows.com/insights/can-i-be-found-with-ip/",
+              "name": "Can I be found with my IP?"
+            },
+            {
+              "@type": "ListItem",
+              "position": 7,
+              "url": "https://thewebknows.com/insights/what-is-ip-spoofing/",
+              "name": "What Is IP Spoofing?"
+            },
+            {
+              "@type": "ListItem",
+              "position": 8,
+              "url": "https://thewebknows.com/insights/what-is-ipv6/",
+              "name": "What is IPv6?"
+            },
+            {
+              "@type": "ListItem",
+              "position": 9,
+              "url": "https://thewebknows.com/insights/why-ipv6-not-implemented/",
+              "name": "Why hasn't IPv6 been fully implemented yet?"
+            },
+            {
+              "@type": "ListItem",
+              "position": 10,
+              "url": "https://thewebknows.com/insights/what-is-my-ip/",
+              "name": "What is my IP address?"
+            },
+            {
+              "@type": "ListItem",
+              "position": 11,
+              "url": "https://thewebknows.com/insights/how-to-find-your-ip-address/",
+              "name": "How to Find Your IP Address on Any Device"
+            },
+            {
+              "@type": "ListItem",
+              "position": 12,
+              "url": "https://thewebknows.com/insights/find-ip-windows/",
+              "name": "How to Find Your IP Address on Windows"
+            },
+            {
+              "@type": "ListItem",
+              "position": 13,
+              "url": "https://thewebknows.com/insights/find-ip-macos/",
+              "name": "How to Find Your IP Address on macOS"
+            },
+            {
+              "@type": "ListItem",
+              "position": 14,
+              "url": "https://thewebknows.com/insights/find-ip-iphone-ipad/",
+              "name": "How to Find Your IP Address on iPhone & iPad"
+            },
+            {
+              "@type": "ListItem",
+              "position": 15,
+              "url": "https://thewebknows.com/insights/find-ip-android/",
+              "name": "How to Find Your IP Address on Android"
+            },
+            {
+              "@type": "ListItem",
+              "position": 16,
+              "url": "https://thewebknows.com/insights/find-ip-chromeos/",
+              "name": "How to Find Your IP Address on ChromeOS"
+            },
+            {
+              "@type": "ListItem",
+              "position": 17,
+              "url": "https://thewebknows.com/insights/find-ip-linux/",
+              "name": "How to Find Your IP Address on Linux"
+            },
+            {
+              "@type": "ListItem",
+              "position": 18,
+              "url": "https://thewebknows.com/insights/find-ip-ps5/",
+              "name": "How to Find Your IP Address on PlayStation 5"
+            },
+            {
+              "@type": "ListItem",
+              "position": 19,
+              "url": "https://thewebknows.com/insights/find-ip-xbox/",
+              "name": "How to Find Your IP Address on Xbox Series X|S or Xbox One"
+            },
+            {
+              "@type": "ListItem",
+              "position": 20,
+              "url": "https://thewebknows.com/insights/find-ip-nintendo-switch/",
+              "name": "How to Find Your IP Address on Nintendo Switch"
+            },
+            {
+              "@type": "ListItem",
+              "position": 21,
+              "url": "https://thewebknows.com/insights/find-ip-roku/",
+              "name": "How to Find Your IP Address on Roku"
+            },
+            {
+              "@type": "ListItem",
+              "position": 22,
+              "url": "https://thewebknows.com/insights/find-ip-fire-tv/",
+              "name": "How to Find Your IP Address on Amazon Fire TV"
+            },
+            {
+              "@type": "ListItem",
+              "position": 23,
+              "url": "https://thewebknows.com/insights/find-ip-apple-tv/",
+              "name": "How to Find Your IP Address on Apple TV"
+            },
+            {
+              "@type": "ListItem",
+              "position": 24,
+              "url": "https://thewebknows.com/insights/find-ip-samsung-tv/",
+              "name": "How to Find Your IP Address on Samsung Smart TV"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
