@@ -25,350 +25,350 @@
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-a-record",
               "name": "A record",
-              "description": "DNS entry mapping a name to an IPv4 address.",
+              "description": "The fundamental DNS record that maps a domain name to an IPv4 address.",
               "url": "https://thewebknows.com/glossary/#glossary-a-record"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-aaaa-record",
               "name": "AAAA record",
-              "description": "DNS entry mapping a name to an IPv6 address.",
+              "description": "The DNS record that maps a domain name to an IPv6 address.",
               "url": "https://thewebknows.com/glossary/#glossary-aaaa-record"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-aaid-gaid",
               "name": "AAID / GAID",
-              "description": "Google’s Android advertising ID, resettable by the user.",
+              "description": "The advertising identifier for Android devices, which you can reset or disable in your settings.",
               "url": "https://thewebknows.com/glossary/#glossary-aaid-gaid"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-accept-encoding",
               "name": "Accept-Encoding",
-              "description": "A header indicating supported compression formats such as gzip or br.",
+              "description": "A header that tells a website what compression methods your browser supports, to make pages load faster.",
               "url": "https://thewebknows.com/glossary/#glossary-accept-encoding"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-accept-language",
               "name": "Accept-Language",
-              "description": "A header that declares preferred languages, useful for localisation but also fingerprinting.",
+              "description": "A header your browser sends to tell a website which languages you prefer.",
               "url": "https://thewebknows.com/glossary/#glossary-accept-language"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-access-logs",
               "name": "Access logs",
-              "description": "Records of who accessed what, when and from where.",
+              "description": "Records that show who accessed a system, what they did, and when.",
               "url": "https://thewebknows.com/glossary/#glossary-access-logs"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-access-reviews",
               "name": "Access reviews",
-              "description": "Regular checks that users’ permissions remain appropriate.",
+              "description": "The periodic process of reviewing users' access rights to ensure they are still appropriate.",
               "url": "https://thewebknows.com/glossary/#glossary-access-reviews"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-adchoices-opt-out",
               "name": "AdChoices opt-out",
-              "description": "Industry tools for limiting interest-based advertising across participants.",
+              "description": "An industry program that lets you opt-out of interest-based advertising from participating companies.",
               "url": "https://thewebknows.com/glossary/#glossary-adchoices-opt-out"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-age-appropriate-design-code-uk",
               "name": "Age-appropriate design code (UK)",
-              "description": "Standards for protecting children online by design and default.",
+              "description": "A set of standards in the UK that requires online services likely to be accessed by children to prioritize their privacy and safety by design.",
               "url": "https://thewebknows.com/glossary/#glossary-age-appropriate-design-code-uk"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-aggregation-service",
               "name": "Aggregation Service",
-              "description": "A trusted service that combines encrypted reports for measurement.",
+              "description": "A secure, trusted service that combines encrypted reports from many users to create summary insights without exposing individual data.",
               "url": "https://thewebknows.com/glossary/#glossary-aggregation-service"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-alpn",
               "name": "ALPN",
-              "description": "Negotiates which application protocol (e.g., HTTP/2) to run over TLS.",
+              "description": "A TLS extension that allows a browser and server to agree on which application protocol (like HTTP/2) to use during the secure handshake.",
               "url": "https://thewebknows.com/glossary/#glossary-alpn"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-always-on-listening",
               "name": "Always-on listening",
-              "description": "Continuous audio monitoring awaiting wake words; raises privacy concerns.",
+              "description": "The feature of smart devices that continuously listens for its wake word, raising privacy concerns about constant audio monitoring.",
               "url": "https://thewebknows.com/glossary/#glossary-always-on-listening"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-android-advertising-id-reset",
               "name": "Android Advertising ID reset",
-              "description": "Letting users regenerate or disable the device ad identifier.",
+              "description": "The feature on Android devices that lets you easily reset or delete the unique identifier used for advertising.",
               "url": "https://thewebknows.com/glossary/#glossary-android-advertising-id-reset"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-anonymisation",
               "name": "Anonymisation",
-              "description": "Irreversibly transforming data so individuals are not identifiable.",
+              "description": "The process of permanently altering data so that an individual can no longer be identified from it.",
               "url": "https://thewebknows.com/glossary/#glossary-anonymisation"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-anycast",
               "name": "Anycast",
-              "description": "Advertising the same IP from multiple locations so traffic reaches the nearest server.",
+              "description": "A network technique where the same IP address is announced from multiple locations worldwide, automatically routing your request to the nearest server for better performance.",
               "url": "https://thewebknows.com/glossary/#glossary-anycast"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-app-privacy-labels-ios",
               "name": "App Privacy labels (iOS)",
-              "description": "Store disclosures detailing what data an app collects and uses.",
+              "description": "The nutrition-like labels on the Apple App Store that summarize what data an app collects and how it's used.",
               "url": "https://thewebknows.com/glossary/#glossary-app-privacy-labels-ios"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-app-sandbox",
               "name": "App sandbox",
-              "description": "OS isolation that restricts each app’s access to data and hardware.",
+              "description": "A security mechanism that restricts each app's access to files, settings, and hardware, preventing it from interfering with other apps or the OS.",
               "url": "https://thewebknows.com/glossary/#glossary-app-sandbox"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-app-tracking-transparency-att",
               "name": "App Tracking Transparency (ATT)",
-              "description": "iOS prompt that requires permission to track across apps/sites.",
+              "description": "The iOS feature that requires apps to ask for your permission before tracking your activity across other companies' apps and websites.",
               "url": "https://thewebknows.com/glossary/#glossary-app-tracking-transparency-att"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-app-transport-security-ats",
               "name": "App Transport Security (ATS)",
-              "description": "iOS requirement encouraging secure network connections.",
+              "description": "A security feature in iOS that encourages apps to use secure, encrypted HTTPS connections for all network communication.",
               "url": "https://thewebknows.com/glossary/#glossary-app-transport-security-ats"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-apple-mail-privacy-protection",
               "name": "Apple Mail Privacy Protection",
-              "description": "Downloads images via proxies to hide opens and IPs.",
+              "description": "A feature in Apple's Mail app that pre-loads and hides images in emails, preventing senders from knowing when you opened an email or your IP address.",
               "url": "https://thewebknows.com/glossary/#glossary-apple-mail-privacy-protection"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-attribution-reporting-api",
               "name": "Attribution Reporting API",
-              "description": "Privacy-preserving ad measurement without third-party cookies.",
+              "description": "A privacy-focused way for advertisers to measure if their ads led to a sale or sign-up, without using tracking cookies.",
               "url": "https://thewebknows.com/glossary/#glossary-attribution-reporting-api"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-audiocontext-fingerprinting",
               "name": "AudioContext fingerprinting",
-              "description": "Exploiting audio processing quirks to identify a browser.",
+              "description": "A tracking method that exploits tiny, imperceptible differences in how your device processes audio.",
               "url": "https://thewebknows.com/glossary/#glossary-audiocontext-fingerprinting"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-audit-logs",
               "name": "Audit logs",
-              "description": "Tamper-evident records of administrative actions and system changes.",
+              "description": "Secure, tamper-resistant records of administrative actions and system changes, used for compliance and security investigations.",
               "url": "https://thewebknows.com/glossary/#glossary-audit-logs"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-authoritative-nameserver",
               "name": "Authoritative nameserver",
-              "description": "The server that holds the official records for a domain.",
+              "description": "The server that holds the definitive, official DNS records for a particular domain.",
               "url": "https://thewebknows.com/glossary/#glossary-authoritative-nameserver"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-autonomous-system-number-asn",
               "name": "Autonomous System Number (ASN)",
-              "description": "An identifier for a network operator that controls a set of IP routes.",
+              "description": "A unique number assigned to a large network (like an internet provider or big tech company) that controls its own routing policies on the internet.",
               "url": "https://thewebknows.com/glossary/#glossary-autonomous-system-number-asn"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-background-app-refresh",
               "name": "Background App Refresh",
-              "description": "Allowing apps to fetch data in the background; may leak identifiers.",
+              "description": "An OS feature that allows apps to update their content in the background; can sometimes be used to leak data.",
               "url": "https://thewebknows.com/glossary/#glossary-background-app-refresh"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-behavioural-biometrics",
               "name": "Behavioural biometrics",
-              "description": "Identifying users by habits such as typing or swiping.",
+              "description": "Identifying individuals based on unique patterns in their behavior, such as how they type, walk, or hold their phone.",
               "url": "https://thewebknows.com/glossary/#glossary-behavioural-biometrics"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-bgp-border-gateway-protocol",
               "name": "BGP (Border Gateway Protocol)",
-              "description": "The routing protocol that moves traffic between autonomous systems on the internet.",
+              "description": "The \"postal system of the internet\" that figures out how to route data between large, independent networks.",
               "url": "https://thewebknows.com/glossary/#glossary-bgp-border-gateway-protocol"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-bimi",
               "name": "BIMI",
-              "description": "A standard allowing brand logos to display for authenticated email.",
+              "description": "A new standard that allows companies that pass strict email authentication (DMARC) to display their logo in your email inbox.",
               "url": "https://thewebknows.com/glossary/#glossary-bimi"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-biometric-template",
               "name": "Biometric template",
-              "description": "A mathematical representation of biometric features stored for matching.",
+              "description": "A mathematical representation of your unique biological characteristic (like your fingerprint or face) that is stored for future comparison.",
               "url": "https://thewebknows.com/glossary/#glossary-biometric-template"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-ble-beacons",
               "name": "BLE beacons",
-              "description": "Low-energy Bluetooth transmitters used for proximity tracking.",
+              "description": "Small, low-power Bluetooth devices that broadcast a signal, often used in stores to track customer movement or send push notifications.",
               "url": "https://thewebknows.com/glossary/#glossary-ble-beacons"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-bluetooth-scanning-permissions",
               "name": "Bluetooth scanning permissions",
-              "description": "Controls around beacon and device discovery to curb tracking.",
+              "description": "OS-level controls that restrict how apps can use Bluetooth to discover nearby devices and beacons, limiting location tracking.",
               "url": "https://thewebknows.com/glossary/#glossary-bluetooth-scanning-permissions"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-bounce-tracking",
               "name": "Bounce tracking",
-              "description": "Chaining redirects to create identifiers without cookies.",
+              "description": "A tracking technique that uses quick, invisible redirects through multiple sites to set identifiers without your knowledge.",
               "url": "https://thewebknows.com/glossary/#glossary-bounce-tracking"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-brave-shields",
               "name": "Brave Shields",
-              "description": "Built-in blocking of ads, trackers and fingerprinting techniques in Brave.",
+              "description": "Brave browser's built-in suite of privacy tools that block ads, trackers, and fingerprinting attempts.",
               "url": "https://thewebknows.com/glossary/#glossary-brave-shields"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-breach-notification",
               "name": "Breach notification",
-              "description": "Legal duties to inform authorities and users of significant incidents.",
+              "description": "The legal requirement to inform authorities and affected individuals when a data breach occurs.",
               "url": "https://thewebknows.com/glossary/#glossary-breach-notification"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-bring-your-own-key-byok",
               "name": "Bring your own key (BYOK)",
-              "description": "Importing your own cryptographic keys into a cloud service.",
+              "description": "When a customer provides their own encryption keys for a cloud service to use.",
               "url": "https://thewebknows.com/glossary/#glossary-bring-your-own-key-byok"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-browser-in-the-browser-attack",
               "name": "Browser-in-the-browser attack",
-              "description": "Fake OAuth windows that mimic real sign-in prompts.",
+              "description": "A sophisticated phishing technique that creates a fake browser window within a real browser to trick you into entering credentials.",
               "url": "https://thewebknows.com/glossary/#glossary-browser-in-the-browser-attack"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-byod",
               "name": "BYOD",
-              "description": "Letting staff use personal devices for work, with added risks and policies.",
+              "description": "\"Bring Your Own Device\" - a policy that allows employees to use their personal devices (laptops, phones) for work.",
               "url": "https://thewebknows.com/glossary/#glossary-byod"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-cache-probing",
               "name": "Cache probing",
-              "description": "Testing what’s cached to infer browsing history.",
+              "description": "A method where a site tests which resources are already in your browser cache to infer your past browsing history.",
               "url": "https://thewebknows.com/glossary/#glossary-cache-probing"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-cache-storage",
               "name": "Cache Storage",
-              "description": "API for storing HTTP responses for offline-first apps.",
+              "description": "A storage area used by websites to save files (like images and scripts) so the site can load faster or work offline.",
               "url": "https://thewebknows.com/glossary/#glossary-cache-storage"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-cache-control",
               "name": "Cache-Control",
-              "description": "Directives that control how responses are cached by browsers and proxies.",
+              "description": "Instructions that tell browsers and proxies how long they can store a copy of a web page or resource.",
               "url": "https://thewebknows.com/glossary/#glossary-cache-control"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-canvas-fingerprinting",
               "name": "Canvas fingerprinting",
-              "description": "Identifying a device from subtle differences in canvas rendering.",
+              "description": "A tracking method that identifies your device by subtly measuring how it draws images and text on an invisible web page element.",
               "url": "https://thewebknows.com/glossary/#glossary-canvas-fingerprinting"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-carrier-messaging-vs-ott",
               "name": "Carrier messaging vs OTT",
-              "description": "SMS/MMS vs internet-based apps with different privacy properties.",
+              "description": "Traditional SMS/MMS (carrier) vs. internet-based messaging apps like WhatsApp or Signal (Over-The-Top), which have different privacy and security properties.",
               "url": "https://thewebknows.com/glossary/#glossary-carrier-messaging-vs-ott"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-carrier-grade-nat-cgnat",
               "name": "Carrier-Grade NAT (CGNAT)",
-              "description": "ISP-level NAT that puts many customers behind the same public IP.",
+              "description": "An extension of NAT used by some mobile and internet providers, where many customers share the same public IP address, which can cause issues for some online games or services.",
               "url": "https://thewebknows.com/glossary/#glossary-carrier-grade-nat-cgnat"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-casb",
               "name": "CASB",
-              "description": "Gateways that enforce policies on cloud app usage.",
+              "description": "Cloud Access Security Broker - a security tool that sits between an organization's network and cloud applications to enforce security policies.",
               "url": "https://thewebknows.com/glossary/#glossary-casb"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-ccpa-cpra",
               "name": "CCPA / CPRA",
-              "description": "California privacy laws granting rights over personal information and sharing.",
+              "description": "The California Consumer Privacy Act (and its expansion, the CPRA), a state law granting Californians rights over their personal information.",
               "url": "https://thewebknows.com/glossary/#glossary-ccpa-cpra"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-certificate-authority-ca",
               "name": "Certificate Authority (CA)",
-              "description": "An entity that issues and vouches for digital certificates.",
+              "description": "A trusted organization that issues digital certificates to verify the identity of websites.",
               "url": "https://thewebknows.com/glossary/#glossary-certificate-authority-ca"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-certificate-chain",
               "name": "Certificate chain",
-              "description": "The path from a site certificate to a trusted root CA.",
+              "description": "The sequence of certificates that links a website's certificate back to a trusted root Certificate Authority, building a chain of trust.",
               "url": "https://thewebknows.com/glossary/#glossary-certificate-chain"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-certificate-transparency",
               "name": "Certificate Transparency",
-              "description": "Public logs that detect mis-issued or rogue certificates.",
+              "description": "A public logging system that helps detect mistakenly or maliciously issued SSL certificates.",
               "url": "https://thewebknows.com/glossary/#glossary-certificate-transparency"
             },
             {
               "@type": "DefinedTerm",
               "@id": "https://thewebknows.com/glossary/#glossary-cidr",
               "name": "CIDR",
-              "description": "Classless Inter-Domain Routing notation that expresses IP ranges more efficiently than legacy classes.",
+              "description": "A flexible method for specifying a range of IP addresses, replacing the old, rigid \"class\" system.",
               "url": "https://thewebknows.com/glossary/#glossary-cidr"
             }
           ]

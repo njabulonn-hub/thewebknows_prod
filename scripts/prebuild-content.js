@@ -240,6 +240,10 @@ function ensureMarkerContent(html, marker) {
 }
 
 function renderArticleCard(article) {
+    // Skip articles without valid slugs
+    if (!article || !article.slug || typeof article.slug !== 'string' || article.slug.trim() === '') {
+        return '';
+    }
     const href = `/insights/${encodeURIComponent(article.slug)}/`;
     const dateDisplay = formatDate(article.lastUpdated);
     const dateAttribute = article.lastUpdated ? ` datetime="${escapeAttribute(article.lastUpdated)}"` : '';
@@ -266,7 +270,10 @@ function buildInsightsStaticMarkup() {
         return { categoriesMarkup: '', articlesMarkup: '', count: 0 };
     }
 
-    const articles = ARTICLES_DATA.slice();
+    // Filter out articles without valid slugs
+    const articles = ARTICLES_DATA.slice().filter(article => 
+        article && article.slug && typeof article.slug === 'string' && article.slug.trim() !== ''
+    );
     const categories = Array.from(new Set(articles.map(article => article.category).filter(Boolean))).sort((a, b) => a.localeCompare(b));
 
     const categoriesMarkup = [
@@ -276,7 +283,7 @@ function buildInsightsStaticMarkup() {
         '</div>'
     ].join('\n');
 
-    const articlesMarkup = articles.map(renderArticleCard).join('\n\n');
+    const articlesMarkup = articles.map(renderArticleCard).filter(Boolean).join('\n\n');
 
     return {
         categoriesMarkup,
