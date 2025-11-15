@@ -390,8 +390,9 @@ function prepareGlossaryEntries() {
         preparedArticles.forEach(article => {
             const hasMatch = patterns.some(pattern => pattern && pattern.test(article.text));
             if (hasMatch) {
-                const slug = article.meta.slug || article.meta.id || article.meta.title;
-                if (!seen.has(slug)) {
+                // Only include articles with valid slugs
+                const slug = article.meta.slug || article.meta.id;
+                if (slug && typeof slug === 'string' && slug.trim() !== '' && !seen.has(slug)) {
                     seen.add(slug);
                     matches.push(article.meta);
                 }
@@ -417,10 +418,15 @@ function renderGlossaryEntry(entry) {
         : '<p class="glossary-item__aliases" hidden></p>';
 
     const relatedArticles = Array.isArray(entry.relatedArticles) ? entry.relatedArticles : [];
-    const relatedListItems = relatedArticles.map(article => {
-        if (!article) return '';
+    // Filter out articles without valid slugs to prevent links to homepage
+    const validRelatedArticles = relatedArticles.filter(article => 
+        article && (article.slug || article.id) && 
+        typeof (article.slug || article.id) === 'string' && 
+        (article.slug || article.id).trim() !== ''
+    );
+    const relatedListItems = validRelatedArticles.map(article => {
         const slug = article.slug || article.id || '';
-        const href = slug ? `/insights/${encodeURIComponent(slug)}/` : '/insights/';
+        const href = `/insights/${encodeURIComponent(slug)}/`;
         const title = article.title || slug || 'View article';
         return `                <li><a href="${escapeAttribute(href)}">${escapeHtml(title)}</a></li>`;
     }).filter(Boolean).join('\n');
