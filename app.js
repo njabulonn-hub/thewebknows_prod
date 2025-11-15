@@ -1656,7 +1656,7 @@ Zilla Slab Highlight
       function g(e, t = !1) {
         var a = document.body;
         if (a) {
-          if (a.setAttribute("data-mode", e), t) try {
+          if (a.setAttribute("data-mode", e), document.documentElement.setAttribute("data-mode", e), t) try {
             localStorage.setItem(p, e)
           } catch (e) {
             console.warn("Failed to save theme preference:", e)
@@ -1836,7 +1836,8 @@ Zilla Slab Highlight
         }
         var t = document.getElementById("theme-toggle"),
           t = (t && t.addEventListener("click", () => {
-            g("dark" === (document.body.getAttribute("data-mode") || "light") ? "light" : "dark", !0)
+            var currentMode = document.body.getAttribute("data-mode") || document.documentElement.getAttribute("data-mode") || "light";
+            g("dark" === currentMode ? "light" : "dark", !0)
           }), c = await l(), document.getElementById("ad-context-input"));
         t && t.addEventListener("input", s)
       }
