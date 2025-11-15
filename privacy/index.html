@@ -62,7 +62,7 @@
             "name": "Privacy Policy | The Web Knows",
             "description": "The Web Knows details its ad-supported diagnostics, outlines third-party partners, and explains how to manage your privacy choices.",
             "datePublished": "2025-11-13",
-            "dateModified": "2025-11-14",
+            "dateModified": "2025-11-11",
             "inLanguage": "en",
             "isPartOf": {
                 "@id": "https://thewebknows.com/#website"
@@ -94,50 +94,77 @@
     <main class="app-shell">
         <article class="info-card">
             <h1>Privacy Policy</h1>
-            <p><strong>Last updated:</strong> November 11, 2025</p>
-            <p class="cta-inline">Use <a href="/">The Web Knows privacy diagnostic</a> to confirm exactly what information is visible. The scan runs locally in your browser, while ad placements may load from our monetisation partners.</p>
+            <p><strong>Last updated:</strong> November 11, 2025 · <strong>Author:</strong> The Web Knows team</p>
 
-            <h2>Our Commitment</h2>
-            <p>The Web Knows is designed with privacy as its core principle. The diagnostic experience keeps calculations in your browser so you can see what the web sees without sending those results back to us. Advertising keeps the service sustainable, and we review partners for transparency before they are allowed on the page.</p>
+            <h2>1. Introduction</h2>
+            <p>When you use The Web Knows, you perform a privacy diagnostic to see what information websites can detect about your browser and connection. This policy explains what we do—and, more importantly, what we <em>do not do</em>—with your information during this process.</p>
+            <p><strong>Core Principle:</strong> The diagnostic scan runs locally in your browser. We do not collect, store, or see your personal diagnostic results. To keep this service free, we display advertisements from trusted monetization partners, who operate under their own policies.</p>
 
-            <h2>How the Diagnostic Works</h2>
-            <p>When you visit this site your browser performs two sets of actions:</p>
+            <h2>2. Our Commitment to Your Privacy</h2>
+            <p>Your privacy is the foundation of this project. Our design choices reflect a commitment to minimize our data footprint while providing a valuable service:</p>
             <ul>
-                <li><strong>Local scan:</strong> Requests to IP lookup services (ipify.org, ipapi.co, ipinfo.io, dns.google) reveal your public network details. Browser APIs provide device, fingerprinting, and advertising status signals. These values are rendered directly to your screen.</li>
-                <li><strong>Advertising load:</strong> Ad units are fetched from approved partner networks. They may set cookies or read browser identifiers to comply with their own frequency-capping and reporting obligations.</li>
-            </ul>
-            <p>Reloading the page reruns the scan from scratch. We do not persist your diagnostic results between sessions.</p>
-
-            <h2>What We Collect</h2>
-            <ul>
-                <li><strong>Diagnostic results:</strong> Not collected or stored by us; the values live solely in your session.</li>
-                <li><strong>Server logs:</strong> We retain minimal server logs for operational security (for example, aggregate error monitoring) and purge them on a rolling basis.</li>
-                <li><strong>Advertising telemetry:</strong> Ad partners may gather impression counts, click data, or coarse device identifiers under their respective policies.</li>
+                <li><strong>Local-First Diagnostics:</strong> All calculations for your privacy scan happen on your device. The results are displayed for you and are not transmitted to our servers.</li>
+                <li><strong>Transparent Advertising:</strong> We fund the site through carefully selected advertising partners. We review these partners for their commitment to user privacy before integration.</li>
             </ul>
 
-            <h2>Advertising Partners</h2>
-            <p>We work with privacy-reviewed ad networks to fund hosting and ongoing improvements. Each partner provides its own consent tools and opt-out mechanisms. Because ads are delivered from their infrastructure, they may set third-party cookies, use local storage, or read existing identifiers to measure reach.</p>
-            <p><strong>For newcomers:</strong> Look for “Ad choices” or “Why this ad?” links inside the creative to manage settings quickly.</p>
-            <p><strong>For advanced users:</strong> You can combine browser-based protections (content blockers, network filters, privacy modes) with the diagnostic to observe how ad signals respond.</p>
-
-            <h2>Third-Party Services</h2>
-            <p>To show you your IP address and location, we use the following services:</p>
+            <h2>3. How It Works: A Two-Part Process</h2>
+            <p>When you load The Web Knows, your browser performs two primary sets of actions:</p>
+            <p><strong>A) The Local Privacy Scan:</strong></p>
+            <p>To show you what the web can see, your browser automatically fetches data from:</p>
             <ul>
-                <li><strong>ipify.org</strong> — For IP address lookup (IPv4 and IPv6)</li>
-                <li><strong>ipapi.co</strong> — For ISP and location information (primary)</li>
-                <li><strong>ipinfo.io</strong> — For ISP and location information (fallback)</li>
-                <li><strong>dns.google</strong> — For reverse DNS (PTR) lookups</li>
+                <li><strong>IP Lookup Services</strong> (e.g., ipify.org, ipapi.co) to reveal your public IP address and approximate location.</li>
+                <li><strong>Your Browser's APIs</strong> to gather details about your device, operating system, screen resolution, language, and other fingerprinting signals.</li>
             </ul>
-            <p>These services may log your requests according to their own privacy policies. Advertising networks integrated on the site maintain separate privacy statements covering their telemetry. If you prefer not to use these services, you can disable JavaScript or rely on browser extensions to block the network calls.</p>
+            <p>All of this data is processed and rendered directly to your screen within your browser. <strong>We do not have access to these results.</strong> Reloading the page performs a fresh scan; no data is persisted between your sessions on our side.</p>
+            <p><strong>B) The Advertising Load:</strong></p>
+            <p>In parallel, ad units are fetched from our approved partner networks. To deliver and measure ads effectively, these partners may:</p>
+            <ul>
+                <li>Set cookies or use local storage.</li>
+                <li>Read standard browser identifiers.</li>
+                <li>Collect impression and click-through data for their reporting.</li>
+            </ul>
 
-            <h2>Your Data</h2>
-            <p>You can request removal of any server-side data we hold by contacting us; however, our operational logs are short-lived and do not include your diagnostic results. To manage advertising data, use the opt-out controls provided by each network or apply browser-level protections.</p>
-            
-            <h2>Changes to This Policy</h2>
-            <p>We may update this privacy policy from time to time. Any changes will be posted on this page with an updated "Last updated" date.</p>
-            
-            <h2>Contact</h2>
-            <p>If you have questions about this privacy policy, please visit our <a href="/about/">About</a> page.</p>
+            <h2>4. Information Handling</h2>
+            <ul>
+                <li><strong>Diagnostic Results:</strong> The results of your scan (e.g., your IP, location, device info) are processed and displayed in your browser. <strong>The Web Knows does not collect, receive, or store these results on its servers.</strong></li>
+                <li><strong>Third-Party Data Collection:</strong> When the scan runs, your browser contacts services like ipapi.co. <strong>These third parties receive your IP address and may log this request</strong> according to their own privacy policies. We have no control over their data collection.</li>
+                <li><strong>Server Logs:</strong> Our web server generates standard logs containing your IP address, browser type, and the time of access. We use this data for security and operational purposes and purge it within <strong>30 days</strong>.</li>
+                <li><strong>Advertising Telemetry:</strong> Our ad partners may gather data such as impression counts and coarse device identifiers under their own privacy policies. We only receive aggregated, non-identifiable reports for performance and billing purposes.</li>
+            </ul>
+
+            <h2>5. Our Advertising &amp; Third-Party Partners</h2>
+            <p>We work with third-party services to provide the full diagnostic and advertising experience.</p>
+            <p><strong>Advertising Partners:</strong></p>
+            <p>We partner with privacy-conscious ad networks to fund the service. Each partner provides its own consent and opt-out mechanisms.</p>
+            <ul>
+                <li><strong>For a quick management option:</strong> Look for "AdChoices" or "Why this ad?" icons within the ad creative itself.</li>
+                <li><strong>For advanced control:</strong> You can use browser-based protections (content blockers, privacy modes) to manage these interactions. Running the diagnostic with these tools active will show you how they affect both the scan results and the ads you see.</li>
+            </ul>
+            <p><strong>Third-Party Diagnostic Services:</strong></p>
+            <p>To show you your public IP and network details, we use:</p>
+            <ul>
+                <li><strong>ipify.org</strong> — For IP address lookup (IPv4 and IPv6).</li>
+                <li><strong>ipapi.co</strong> — For ISP and geolocation information (primary source).</li>
+                <li><strong>ipinfo.io</strong> — For ISP and geolocation information (fallback source).</li>
+                <li><strong>dns.google</strong> — For reverse DNS (PTR) lookups.</li>
+            </ul>
+            <p>These services may log your request according to their respective privacy policies. You can block these requests using browser extensions or by disabling JavaScript, though this will prevent the diagnostic from functioning.</p>
+
+            <h2>6. Your Control &amp; Your Rights</h2>
+            <p>You have rights regarding your personal data. To exercise these rights, please contact us at <strong><a href="mailto:mail@thewebknows.com">mail@thewebknows.com</a></strong>.</p>
+            <ul>
+                <li><strong>Right to Know &amp; Access:</strong> You can ask what personal data we hold about you.</li>
+                <li><strong>Right to Deletion:</strong> You can request the deletion of your personal data.</li>
+                <li><strong>Right to Correction:</strong> You can ask us to correct inaccurate data.</li>
+            </ul>
+            <p>Please note: these rights apply to the server-side data we hold (e.g., server logs). <strong>We do not hold your diagnostic scan data,</strong> so there is no need to request its removal from us.</p>
+            <p>To manage data collected by our advertising partners, please use the opt-out controls provided by each network (e.g., <a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener noreferrer">NAI Opt-Out</a>) or apply global browser-level privacy settings.</p>
+
+            <h2>7. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy to reflect changes in our practices or for other operational, legal, or regulatory reasons. The most current version will always be posted on this page with an updated "Last updated" date.</p>
+
+            <h2>8. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy or wish to exercise your privacy rights, please contact us directly at: <strong><a href="mailto:mail@thewebknows.com">mail@thewebknows.com</a></strong>.</p>
         </article>
     </main>
 

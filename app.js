@@ -1654,18 +1654,20 @@ Zilla Slab Highlight
       let d = 250, c = null, u = null, p = "thewebknows-theme", m = window.matchMedia("(prefers-color-scheme: dark)");
 
       function g(e, t = !1) {
-        var a = document.body;
-        if (a) {
-          if (a.setAttribute("data-mode", e), document.documentElement.setAttribute("data-mode", e), t) try {
-            localStorage.setItem(p, e)
-          } catch (e) {
-            console.warn("Failed to save theme preference:", e)
-          }
-          a = document.getElementById("theme-toggle");
-          a && ((t = a.querySelector(".theme-toggle__label")) && (t.textContent = "dark" === e ? "Light" : "Dark"), a
-            .setAttribute("aria-pressed", "dark" === e ? "true" : "false"), a.setAttribute("aria-label", "dark" ===
-              e ? "Switch to light mode" : "Switch to dark mode"))
+        var a = document.documentElement;
+        if (!a) return;
+        a.setAttribute("data-mode", e);
+        var n = document.body;
+        n && n.setAttribute("data-mode", e);
+        if (t) try {
+          localStorage.setItem(p, e)
+        } catch (e) {
+          console.warn("Failed to save theme preference:", e)
         }
+        a = document.getElementById("theme-toggle");
+        a && ((t = a.querySelector(".theme-toggle__label")) && (t.textContent = "dark" === e ? "Light" : "Dark"), a
+          .setAttribute("aria-pressed", "dark" === e ? "true" : "false"), a.setAttribute("aria-label", "dark" === e ?
+            "Switch to light mode" : "Switch to dark mode"))
       }
       async function h() {
         {
@@ -1836,7 +1838,8 @@ Zilla Slab Highlight
         }
         var t = document.getElementById("theme-toggle"),
           t = (t && t.addEventListener("click", () => {
-            var currentMode = document.body.getAttribute("data-mode") || document.documentElement.getAttribute("data-mode") || "light";
+            var e = document.documentElement,
+              currentMode = e && e.getAttribute("data-mode") || "light";
             g("dark" === currentMode ? "light" : "dark", !0)
           }), c = await l(), document.getElementById("ad-context-input"));
         t && t.addEventListener("input", s)
