@@ -64,6 +64,13 @@
                 }
             }
             document.documentElement.setAttribute('data-mode', mode);
+            if (document.body) {
+                document.body.setAttribute('data-mode', mode);
+            } else {
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.setAttribute('data-mode', mode);
+                });
+            }
         })();
     </script>
     <link rel="stylesheet" href="/styles.css" />
@@ -3581,6 +3588,7 @@ Your Accept-Language header, which tells websites your preferred language, can b
 
             function applyTheme(newMode) {
                 document.documentElement.setAttribute('data-mode', newMode);
+                document.body.setAttribute('data-mode', newMode);
                 toggle.setAttribute('aria-pressed', newMode === 'dark' ? 'true' : 'false');
                 try {
                     if (window.localStorage) {
