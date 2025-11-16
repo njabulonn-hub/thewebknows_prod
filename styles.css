@@ -3,7 +3,7 @@
 [data-mode=light] body .site-header .header-nav-link{padding:.5rem .75rem;border-radius:999px;margin:0}
 /* Keep glossary dropdown text color unchanged in dark mode */
 [data-mode=dark] .glossary-topic select,
-[data-mode=dark] .glossary-topic select option{color:#1a1a1a}
+[data-mode=dark] .glossary-topic select option{color:#1a1a1a;-webkit-text-fill-color:#1a1a1a}
 /* Enforce identical header link shape in light mode */
 [data-mode=light] .site-header .header-nav-link{padding:.5rem .75rem!important;border-radius:999px!important;margin:0!important}
 /* Glossary: keep text color (including selects) unchanged in dark mode via scoped var */
@@ -73,4 +73,11 @@
     word-break:break-word;
     max-width:100%;
   }
+}
+
+/* Utilities for precise wrapping behavior */
+.nowrap{white-space:nowrap}
+.mobile-break{display:none}
+@media (max-width: 640px){
+  .mobile-break{display:block}
 }
