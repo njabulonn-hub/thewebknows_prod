@@ -294,6 +294,35 @@ function generateArticleHtml(article, bodyHtml) {
         ? `    <meta property="article:published_time" content="${isoDate}" />\n    <meta property="article:modified_time" content="${isoDate}" />\n`
         : '';
 
+    // Build a validated related articles list (static), based on the data set
+    const allArticles = loadArticlesData();
+    const validBySlug = new Map(
+        (Array.isArray(allArticles) ? allArticles : []).map(a => [String(a.slug || '').trim(), a])
+    );
+    const related = Array.isArray(article.relatedArticles) ? article.relatedArticles : [];
+    const relatedItems = related
+        .map(r => {
+            const slug = String((r && (r.slug || r.id)) || '').trim();
+            if (!slug || !validBySlug.has(slug)) return '';
+            const a = validBySlug.get(slug);
+            const href = `/insights/${encodeURIComponent(slug)}/`;
+            const label = String(a.title || slug || 'View article');
+            return `                    <li><a href="${escapeAttribute(href)}">${escapeHtml(label)}</a></li>`;
+        })
+        .filter(Boolean)
+        .join('\n');
+    const relatedSectionStatic = relatedItems
+        ? [
+            '',
+            '            <section class="blog-article__related">',
+            '                <h2>Related articles</h2>',
+            '                <ul class="related-articles-list">',
+            relatedItems,
+            '                </ul>',
+            '            </section>'
+          ].join('\n')
+        : '';
+
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -369,6 +398,7 @@ ${structuredDataJson}
             <section class="blog-article__content">
                 ${bodyHtml}
             </section>
+            ${relatedSectionStatic}
         </article>
     </main>
 
