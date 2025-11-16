@@ -58,3 +58,6 @@
 [data-mode=dark] .site-header .nav-row a{color:rgba(229,229,229,.75);background-color:var(--button-bg)}
 [data-mode=dark] .site-header .nav-row a:hover,[data-mode=dark] .site-header .nav-row a:focus-visible{color:var(--color-primary);background-color:rgba(var(--color-primary-rgb),.35);text-decoration:none}
 [data-mode=dark] .site-header .nav-row a[aria-current=page]{color:#1a1a1a;background-color:var(--color-primary)}
+/* Learn More term highlights: KNOWN/CALCULATED (green), GUESSED/INFERRED (orange) */
+.info-explanation .tag-known{background-color:rgba(40,167,69,.28);color:#1a1a1a;font-weight:800;text-transform:uppercase;padding:.05em .3em;border-radius:.2em}
+.info-explanation .tag-guess{background-color:rgba(255,159,64,.32);color:#1a1a1a;font-weight:800;text-transform:uppercase;padding:.05em .3em;border-radius:.2em}
