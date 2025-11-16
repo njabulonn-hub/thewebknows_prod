@@ -248,22 +248,32 @@ function renderArticleCard(article) {
     const readingTime = Number.isFinite(article.readingTime)
         ? `${article.readingTime} min read`
         : '';
-    // Build compact related insight chips (max 2)
+
+    // Build compact related/glossary chips by inheriting from the target article page
     const allArticles = Array.isArray(ARTICLES_DATA) ? ARTICLES_DATA : [];
     const articlesBySlug = new Map(allArticles.map(a => [String(a.slug || '').trim(), a]));
-    const related = Array.isArray(article.relatedArticles) ? article.relatedArticles : [];
-    const relatedChips = related
-        .map(r => {
-            const slug = String((r && (r.slug || r.id)) || '').trim();
-            if (!slug || !articlesBySlug.has(slug)) return '';
-            const a = articlesBySlug.get(slug);
-            const href = `/insights/${encodeURIComponent(slug)}/`;
-            const label = String(a.title || slug);
-            return `            <li><a href="${escapeAttribute(href)}">${escapeHtml(label)}</a></li>`;
-        })
-        .filter(Boolean)
-        .slice(0, 2)
-        .join('\n');
+
+    function extractArticleLinks(slug, sectionClass) {
+        try {
+            const filePath = path.join(rootDir, 'insights', slug, 'index.html');
+            if (!fs.existsSync(filePath)) return [];
+            const html = fs.readFileSync(filePath, 'utf8');
+            const start = html.indexOf(`<section class="${sectionClass}">`);
+            if (start === -1) return [];
+            const end = html.indexOf('</section>', start);
+            if (end === -1) return [];
+            const block = html.slice(start, end);
+            const matches = Array.from(block.matchAll(/<a\s+href="([^"]+)"[^>]*>([^<]+)<\/a>/g));
+            return matches.map(m => ({ href: m[1], label: m[2] })).filter(Boolean);
+        } catch {
+            return [];
+        }
+    }
+
+    const relatedAnchors = extractArticleLinks(article.slug, 'blog-article__related')
+        .filter(a => a.href && a.href.startsWith('/insights/'))
+        .slice(0, 2);
+    const relatedChips = relatedAnchors.map(a => `            <li><a href="${escapeAttribute(a.href)}">${escapeHtml(a.label)}</a></li>`).join('\n');
     const relatedBlock = relatedChips
         ? [
             '        <ul class="related-articles-list" aria-label="Related articles">',
@@ -272,32 +282,10 @@ function renderArticleCard(article) {
           ].join('\n')
         : '';
 
-    // Build compact glossary mention chips (max 2) using title + excerpt text
-    const baseText = [String(article.title || ''), String(article.excerpt || '')].join(' ').toLowerCase();
-    const glossaryCandidates = Array.isArray(glossaryData) ? glossaryData : [];
-    const glossaryMatches = [];
-    const seenGloss = new Set();
-    for (const entry of glossaryCandidates) {
-        const slug = String(entry && entry.slug || '').trim();
-        const term = String(entry && entry.term || '').trim();
-        if (!slug || !term || seenGloss.has(slug)) continue;
-        const labels = [term].concat(Array.isArray(entry.aliases) ? entry.aliases : []).filter(Boolean);
-        const hit = labels.some(label => {
-            const pattern = new RegExp(`\\b${String(label).replace(/[.*+?^${}()|[\\]\\\\]/g, '\\$&')}\\b`, 'i');
-            return pattern.test(baseText);
-        });
-        if (hit) {
-            seenGloss.add(slug);
-            glossaryMatches.push({
-                slug,
-                label: term
-            });
-            if (glossaryMatches.length >= 2) break;
-        }
-    }
-    const glossaryChips = glossaryMatches
-        .map(m => `            <li><a href="/glossary/#glossary-${escapeAttribute(m.slug)}">${escapeHtml(m.label)}</a></li>`)
-        .join('\n');
+    const glossaryAnchors = extractArticleLinks(article.slug, 'blog-article__glossary')
+        .filter(a => a.href && a.href.startsWith('/glossary/#glossary-'))
+        .slice(0, 2);
+    const glossaryChips = glossaryAnchors.map(a => `            <li><a href="${escapeAttribute(a.href)}">${escapeHtml(a.label)}</a></li>`).join('\n');
     const glossaryBlock = glossaryChips
         ? [
             '        <ul class="related-articles-list" aria-label="Glossary terms mentioned">',
