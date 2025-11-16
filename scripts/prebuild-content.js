@@ -786,18 +786,41 @@ function applyArticleFooterScripts(html) {
     ];
     let updated = html;
     let replaced = false;
+
+    // 1) Replace known legacy relative blocks
     patterns.forEach(pattern => {
         if (pattern.test(updated)) {
             updated = updated.replace(pattern, scriptsBlock.trimStart());
             replaced = true;
         }
     });
+
+    // 2) If our absolute scripts already exist, collapse any repeats into a single block
+    const absoluteBlockPattern = new RegExp(
+        // glossary-data, glossary-utils, articles-data, article, app.js, then our load event inline script
+        '(?:\\s*<script src="/glossary-data\\.js"><\\/script>\\s*' +
+        '<script src="/glossary-utils\\.js"><\\/script>\\s*' +
+        '<script src="/blog/articles-data\\.js"><\\/script>\\s*' +
+        '<script src="/blog/article\\.js"><\\/script>\\s*' +
+        '<script src="/app\\.js" defer><\\/script>\\s*' +
+        '<script>[\\s\\S]*?<\\/script>\\s*)+',
+        'g'
+    );
+
+    if (/\/<script src="\/blog\/articles-data\.js"><\/script>/.test(updated) || updated.includes('/blog/articles-data.js')) {
+        // Collapse multiple occurrences into one
+        updated = updated.replace(absoluteBlockPattern, function () { return '\n' + scriptsBlock.trim() + '\n'; });
+        replaced = true; // Treat as handled; don't append again
+    }
+
+    // 3) If nothing was replaced/handled, append once at the end (before </body>)
     if (!replaced) {
         const insertionPoint = updated.lastIndexOf('</body>');
         if (insertionPoint !== -1) {
             updated = `${updated.slice(0, insertionPoint)}${scriptsBlock}${updated.slice(insertionPoint)}`;
         }
     }
+
     return updated;
 }
 
