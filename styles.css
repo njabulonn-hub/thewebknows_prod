@@ -62,6 +62,14 @@
 .info-explanation .tag-known{background-color:rgba(40,167,69,.28);color:#1a1a1a;font-weight:800;text-transform:uppercase;padding:.05em .3em;border-radius:.2em}
 .info-explanation .tag-guess{background-color:rgba(255,159,64,.32);color:#1a1a1a;font-weight:800;text-transform:uppercase;padding:.05em .3em;border-radius:.2em}
 
+/* Header links: force fully opaque text across all modes and states */
+[data-mode=light] .site-header .nav-row a,
+[data-mode=light] .header-nav-link,
+[data-mode=light] .nav-link{color:var(--text-primary)!important}
+[data-mode=dark] .site-header .nav-row a,
+[data-mode=dark] .header-nav-link,
+[data-mode=dark] .nav-link{color:#e5e5e5!important}
+
 /* Ensure section headings without numbers don’t reserve space */
 .info-card h2:not([data-section-number])::before{content:none}
 
