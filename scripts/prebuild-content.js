@@ -427,10 +427,21 @@ function renderGlossaryEntry(entry) {
         typeof (article.slug || article.id) === 'string' && 
         (article.slug || article.id).trim() !== ''
     );
+    // Build a lookup of valid article slugs and canonical titles from ARTICLES_DATA
+    const validArticlesBySlug = new Map(
+        (Array.isArray(ARTICLES_DATA) ? ARTICLES_DATA : [])
+            .map(a => [String(a.slug || '').trim(), String(a.title || '').trim()])
+            .filter(([slug]) => !!slug)
+    );
     const relatedListItems = validRelatedArticles.map(article => {
-        const slug = article.slug || article.id || '';
+        const raw = article.slug || article.id || '';
+        const slug = String(raw).trim();
+        if (!slug || !validArticlesBySlug.has(slug)) {
+            // Skip out-of-sync or missing articles to avoid dead links
+            return '';
+        }
         const href = `/insights/${encodeURIComponent(slug)}/`;
-        const title = article.title || slug || 'View article';
+        const title = validArticlesBySlug.get(slug) || article.title || slug || 'View article';
         return `                <li><a href="${escapeAttribute(href)}">${escapeHtml(title)}</a></li>`;
     }).filter(Boolean).join('\n');
 
@@ -454,13 +465,13 @@ function renderGlossaryEntry(entry) {
     const toolSection = toolListItems
         ? [
             '        <section class="glossary-item__section glossary-item__section--tool">',
-            '            <h3 class="glossary-item__section-title">Main tool references</h3>',
+            '            <h3 class="glossary-item__section-title">On Your Report</h3>',
             '            <ul class="glossary-item__list">',
             toolListItems,
             '            </ul>',
             '        </section>'
         ].join('\n')
-        : '        <section class="glossary-item__section glossary-item__section--tool" hidden>\n            <h3 class="glossary-item__section-title">Main tool references</h3>\n            <ul class="glossary-item__list"></ul>\n        </section>';
+        : '        <section class="glossary-item__section glossary-item__section--tool" hidden>\n            <h3 class="glossary-item__section-title">On Your Report</h3>\n            <ul class="glossary-item__list"></ul>\n        </section>';
 
     const connectionsHidden = relatedListItems || toolListItems ? '' : ' hidden';
 
