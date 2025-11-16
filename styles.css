@@ -61,3 +61,16 @@
 /* Learn More term highlights: KNOWN/CALCULATED (green), GUESSED/INFERRED (orange) */
 .info-explanation .tag-known{background-color:rgba(40,167,69,.28);color:#1a1a1a;font-weight:800;text-transform:uppercase;padding:.05em .3em;border-radius:.2em}
 .info-explanation .tag-guess{background-color:rgba(255,159,64,.32);color:#1a1a1a;font-weight:800;text-transform:uppercase;padding:.05em .3em;border-radius:.2em}
+
+/* Ensure section headings without numbers don’t reserve space */
+.info-card h2:not([data-section-number])::before{content:none}
+
+/* Mobile: force clean wrapping for long headings and subtitles */
+@media (max-width: 640px){
+  .info-card h2{display:block}
+  .info-card h2, .info-card h2 .section-subtitle{
+    overflow-wrap:anywhere;
+    word-break:break-word;
+    max-width:100%;
+  }
+}
