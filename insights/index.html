@@ -2959,6 +2959,27 @@ Your Accept-Language header, which tells websites your preferred language, can b
     <script src="/blog/articles-data.js"></script>
     <script src="/blog/blog-search.js?v=20251116"></script>
     <script>
+        (function() {
+            const articles = document.getElementById('blog-articles');
+            const noResults = document.getElementById('blog-no-results');
+            if (!articles) {
+                return;
+            }
+            const ssrBackup = articles.innerHTML;
+            const restoreIfEmpty = () => {
+                const noResultsVisible = noResults && !noResults.hidden;
+                if (articles.children.length === 0 && !noResultsVisible) {
+                    articles.classList.remove('is-loading');
+                    articles.innerHTML = ssrBackup;
+                    articles.dataset.ssr = 'restored';
+                }
+            };
+            window.addEventListener('error', restoreIfEmpty);
+            window.addEventListener('unhandledrejection', restoreIfEmpty);
+            setTimeout(restoreIfEmpty, 1500);
+        })();
+    </script>
+    <script>
         // Theme toggle functionality
         (function() {
             const THEME_STORAGE_KEY = 'thewebknows-theme';
