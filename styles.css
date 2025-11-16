@@ -9,7 +9,7 @@
 /* Glossary: keep text color (including selects) unchanged in dark mode via scoped var */
 [data-mode=dark] .glossary-wrapper, [data-mode=dark] .glossary-controls{--text-primary:#1a1a1a}
 /* Remove light-mode highlight from footer + insights hub links */
-[data-mode=light] body :is(.site-footer a,.insights-hub-card__pillar a,.insights-hub-card__body a){background-color:transparent;padding:0;border-radius:0}
+[data-mode=light] body .site-footer a,[data-mode=light] body .breadcrumb a,[data-mode=light] body .breadcrumb-list a,[data-mode=light] body .insights-hub-card__pillar a,[data-mode=light] body .insights-hub-card__body a{background-color:transparent!important;padding:0!important;border-radius:0!important}
 /* (removed temporary insights card overrides to rely on rebuild output) */
 /* Insights hub hero link: restore dark highlight in light mode */
 [data-mode=light] #insights-hub-heading a{
