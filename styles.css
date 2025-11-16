@@ -10,3 +10,4 @@
 [data-mode=dark] .glossary-wrapper, [data-mode=dark] .glossary-controls{--text-primary:#1a1a1a}
 /* Remove light-mode highlight from footer + insights hub links */
 [data-mode=light] body :is(.site-footer a,#insights-hub-heading a,.insights-hub-card__pillar a,.insights-hub-card__body a){background-color:transparent;padding:0;border-radius:0}
+/* (removed temporary insights card overrides to rely on rebuild output) */
