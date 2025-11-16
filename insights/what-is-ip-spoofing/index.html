@@ -115,6 +115,7 @@
 
 
 
+
 <body>
     <header class="site-header" role="banner">
         <div class="header-inner">
@@ -185,6 +186,22 @@
         </div>
     </footer>
 
+    <script src="/app.js" defer></script>
+    <script>
+        // Defer AdSense script loading until after page load
+        window.addEventListener('load', function() {
+            var script = document.createElement('script');
+            script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9160600423347839';
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            document.head.appendChild(script);
+        });
+    </script>
+
+    <script src="/glossary-data.js"></script>
+    <script src="/glossary-utils.js"></script>
+    <script src="/blog/articles-data.js"></script>
+    <script src="/blog/article.js"></script>
     <script src="/app.js" defer></script>
     <script>
         // Defer AdSense script loading until after page load

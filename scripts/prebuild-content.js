@@ -245,22 +245,25 @@ function renderArticleCard(article) {
         return '';
     }
     const href = `/insights/${encodeURIComponent(article.slug)}/`;
-    const dateDisplay = formatDate(article.lastUpdated);
-    const dateAttribute = article.lastUpdated ? ` datetime="${escapeAttribute(article.lastUpdated)}"` : '';
     const readingTime = Number.isFinite(article.readingTime)
         ? `${article.readingTime} min read`
         : '';
+    const metaBlock = readingTime
+        ? [
+            '        <div class="blog-article-card__meta">',
+            `            <span class="blog-article-card__reading-time">${escapeHtml(readingTime)}</span>`,
+            '        </div>'
+        ].join('\n')
+        : '';
+
     return [
         '<article class="blog-article-card" data-category="', escapeAttribute(article.category || 'General'), '">',
-        '    <div class="blog-article-card__category">', escapeHtml(article.category || 'General'), '</div>',
-        '    <h2 class="blog-article-card__title">',
-        '        <a href="', escapeAttribute(href), '">', escapeHtml(article.title || 'Untitled article'), '</a>',
-        '    </h2>',
-        '    <p class="blog-article-card__excerpt">', escapeHtml(article.excerpt || ''), '</p>',
-        '    <div class="blog-article-card__meta">',
-        '        <time', dateAttribute, '>', escapeHtml(dateDisplay), '</time>',
-        readingTime ? `        <span class="blog-article-card__reading-time">${escapeHtml(readingTime)}</span>` : '',
-        '    </div>',
+        '    <a class="blog-article-card__link" href="', escapeAttribute(href), '">',
+        '        <div class="blog-article-card__category">', escapeHtml(article.category || 'General'), '</div>',
+        '        <h2 class="blog-article-card__title">', escapeHtml(article.title || 'Untitled article'), '</h2>',
+        '        <p class="blog-article-card__excerpt">', escapeHtml(article.excerpt || ''), '</p>',
+        metaBlock,
+        '    </a>',
         '</article>'
     ].filter(Boolean).join('\n');
 }
