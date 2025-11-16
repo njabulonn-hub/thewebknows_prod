@@ -780,45 +780,32 @@ function applyArticleLinkUpdates(html) {
 
 function applyArticleFooterScripts(html) {
     const scriptsBlock = '\n' + ARTICLE_FOOTER_SCRIPTS.join('\n') + '\n';
-    const patterns = [
-        /<script src="\.\.\/glossary-data\.js"><\/script>[\s\S]*?<script src="\.\.\/app\.js" defer><\/script>/,
-        /<script src="(\.\.\/){2}glossary-data\.js"><\/script>[\s\S]*?<script src="(\.\.\/){2}app\.js" defer><\/script>/
-    ];
-    let updated = html;
-    let replaced = false;
 
-    // 1) Replace known legacy relative blocks
-    patterns.forEach(pattern => {
-        if (pattern.test(updated)) {
-            updated = updated.replace(pattern, scriptsBlock.trimStart());
-            replaced = true;
-        }
+    // Normalize: remove any existing absolute footer scripts (to avoid duplicates), then insert once
+    let updated = html;
+
+    // Remove any existing absolute app.js includes
+    updated = updated.replace(/\n\s*<script src="\/app\.js" defer><\/script>\s*/g, '\n');
+
+    // Remove any existing absolute glossary/article data scripts block lines
+    updated = updated.replace(/\n\s*<script src="\/(glossary-data|glossary-utils|blog\/articles-data|blog\/article)\.js"><\/script>\s*/g, '\n');
+
+    // Remove any existing inline AdSense load block matching our pattern
+    updated = updated.replace(/\n\s*<script>\s*\/\/ Defer AdSense script loading[\s\S]*?<\/script>\s*/g, '\n');
+
+    // Also replace legacy relative blocks with nothing (we'll add the consolidated block below)
+    const legacyPatterns = [
+        /<script src="\.\.\/glossary-data\.js"><\/script>[\s\S]*?<script src="\.\.\/app\.js" defer><\/script>/g,
+        /<script src="(\.\.\/){2}glossary-data\.js"><\/script>[\s\S]*?<script src="(\.\.\/){2}app\.js" defer><\/script>/g
+    ];
+    legacyPatterns.forEach(pattern => {
+        updated = updated.replace(pattern, '\n');
     });
 
-    // 2) If our absolute scripts already exist, collapse any repeats into a single block
-    const absoluteBlockPattern = new RegExp(
-        // glossary-data, glossary-utils, articles-data, article, app.js, then our load event inline script
-        '(?:\\s*<script src="/glossary-data\\.js"><\\/script>\\s*' +
-        '<script src="/glossary-utils\\.js"><\\/script>\\s*' +
-        '<script src="/blog/articles-data\\.js"><\\/script>\\s*' +
-        '<script src="/blog/article\\.js"><\\/script>\\s*' +
-        '<script src="/app\\.js" defer><\\/script>\\s*' +
-        '<script>[\\s\\S]*?<\\/script>\\s*)+',
-        'g'
-    );
-
-    if (/\/<script src="\/blog\/articles-data\.js"><\/script>/.test(updated) || updated.includes('/blog/articles-data.js')) {
-        // Collapse multiple occurrences into one
-        updated = updated.replace(absoluteBlockPattern, function () { return '\n' + scriptsBlock.trim() + '\n'; });
-        replaced = true; // Treat as handled; don't append again
-    }
-
-    // 3) If nothing was replaced/handled, append once at the end (before </body>)
-    if (!replaced) {
-        const insertionPoint = updated.lastIndexOf('</body>');
-        if (insertionPoint !== -1) {
-            updated = `${updated.slice(0, insertionPoint)}${scriptsBlock}${updated.slice(insertionPoint)}`;
-        }
+    // Insert consolidated footer scripts once before </body>
+    const insertionPoint = updated.lastIndexOf('</body>');
+    if (insertionPoint !== -1) {
+        updated = `${updated.slice(0, insertionPoint)}${scriptsBlock}${updated.slice(insertionPoint)}`;
     }
 
     return updated;
