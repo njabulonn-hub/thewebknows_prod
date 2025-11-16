@@ -1836,6 +1836,13 @@ Zilla Slab Highlight
               }), window.addEventListener("orientationchange", d), d()
           }
         }
+        // Normalize header active state across templates
+        // Ensure the correct nav item has aria-current="page" based on the current path,
+        // regardless of whether markup used "header-nav-link" or "nav-link".
+        (function ensureHeaderActiveLink(){try{var e=Array.from(document.querySelectorAll(".site-header .nav-row a"));if(!e.length)return;e.forEach(function(e){e.removeAttribute("aria-current")});var t="/";try{var a=window.location&&window.location.pathname?window.location.pathname:"/";t="/"===a||""===a?"/":0===a.indexOf("/glossary/")||"/glossary/"===a?"/glossary/":0===a.indexOf("/insights/")||"/insights/"===a?"/insights/":"/"}catch(e){t="/"}var n="";try{n=window.location.origin}catch(e){n=""}var r=e.find(function(e){try{var a=e.getAttribute("href")||"";if(!a)return!1;var r=new URL(a,n);return r.pathname===t}catch(e){return!1}});r||(r=e.find(function(e){var a=e.getAttribute("href")||"";return a===t||a.replace(/\/+$/,"")===t.replace(/\/+$/,"")})),r&&r.setAttribute("aria-current","page")}catch(e){}})();
+        // Normalize header link classes across templates:
+        // Convert legacy "nav-link" to "header-nav-link" to match homepage styling.
+        (function normalizeHeaderLinkClasses(){try{var e=document.querySelectorAll(".site-header .nav-row a.nav-link");e&&e.forEach(function(e){e.classList.remove("nav-link");e.classList.add("header-nav-link")})}catch(e){}})();
         var t = document.getElementById("theme-toggle"),
           t = (t && t.addEventListener("click", () => {
             var e = document.documentElement,
