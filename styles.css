@@ -4,3 +4,5 @@
 /* Keep glossary dropdown text color unchanged in dark mode */
 [data-mode=dark] .glossary-topic select,
 [data-mode=dark] .glossary-topic select option{color:#1a1a1a}
+/* Enforce identical header link shape in light mode */
+[data-mode=light] .site-header .header-nav-link{padding:.5rem .75rem!important;border-radius:999px!important;margin:0!important}
