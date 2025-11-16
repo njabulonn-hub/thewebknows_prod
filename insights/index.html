@@ -2960,29 +2960,42 @@ Your Accept-Language header, which tells websites your preferred language, can b
     <script>
         (function() {
             const articles = document.getElementById('blog-articles');
-            if (!articles) {
-                return;
-            }
+            if (!articles) return;
             const noResults = document.getElementById('blog-no-results');
             const ssrBackup = articles.innerHTML;
             let restored = false;
 
-            const restoreIfEmpty = () => {
-                if (restored) {
-                    return;
-                }
+            function shouldRestore() {
+                if (restored) return false;
                 const noResultsVisible = noResults && !noResults.hidden;
-                if (articles.children.length === 0 && !noResultsVisible) {
-                    articles.classList.remove('is-loading');
-                    articles.innerHTML = ssrBackup;
-                    articles.dataset.ssr = 'restored';
-                    restored = true;
-                }
-            };
+                // Detect the error state injected by client renderer and the empty state
+                const errorNode = articles.querySelector('.blog-loading');
+                const showsClientError = !!errorNode || /Error:\s*Article data failed to load/i.test(articles.textContent || '');
+                const onlyErrorChild = errorNode && articles.children.length === 1;
+                const isEmpty = articles.children.length === 0;
+                // Restore if the grid is empty OR shows only the client error placeholder,
+                // and we are not in the explicit "no results" UI.
+                return (isEmpty || onlyErrorChild || showsClientError) && !noResultsVisible;
+            }
 
-            window.addEventListener('error', restoreIfEmpty);
-            window.addEventListener('unhandledrejection', restoreIfEmpty);
-            setTimeout(restoreIfEmpty, 1500);
+            function restore() {
+                if (!shouldRestore()) return;
+                articles.classList.remove('is-loading');
+                articles.innerHTML = ssrBackup;
+                articles.dataset.ssr = 'restored';
+                restored = true;
+            }
+
+            // Try on global errors and shortly after load
+            window.addEventListener('error', restore);
+            window.addEventListener('unhandledrejection', restore);
+            setTimeout(restore, 1200);
+
+            // Also observe mutations briefly to catch client-side error swaps
+            const obs = new MutationObserver(() => restore());
+            obs.observe(articles, { childList: true, subtree: false });
+            // Stop observing after a short window to avoid overhead
+            setTimeout(() => obs.disconnect(), 5000);
         })();
     </script>
     <script src="/blog/blog-search.js?v=20251116"></script>
