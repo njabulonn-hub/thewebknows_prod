@@ -10,6 +10,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>HTTP Headers &amp; Client Hints: A Privacy Deep-Dive | Insights | The Web Knows</title>
     <meta name="description" content="What every request reveals via legacy headers and User-Agent Client Hints, how fingerprinting exploits them, and the safe ways to trim leakage without..." />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://thewebknows.com/insights/http-headers-client-hints/" />
     <!-- Google AdSense - Loaded after page load to avoid blocking render -->
     <meta property="og:type" content="article" />
@@ -18,7 +19,6 @@
     <meta property="og:title" content="HTTP Headers &amp; Client Hints: A Privacy Deep-Dive" />
     <meta property="og:description" content="What every request reveals via legacy headers and User-Agent Client Hints, how fingerprinting exploits them, and the safe ways to trim leakage without..." />
     <meta property="og:image" content="https://thewebknows.com/og-image.png" />
-    <meta property="og:locale" content="en_US" />
     <meta property="article:section" content="User Agent &amp; Headers" />
     <meta property="article:published_time" content="2025-11-14T00:00:00.000Z" />
     <meta property="article:modified_time" content="2025-11-14T00:00:00.000Z" />
@@ -26,7 +26,6 @@
     <meta name="twitter:title" content="HTTP Headers &amp; Client Hints: A Privacy Deep-Dive" />
     <meta name="twitter:description" content="What every request reveals via legacy headers and User-Agent Client Hints, how fingerprinting exploits them, and the safe ways to trim leakage without..." />
     <meta name="twitter:image" content="https://thewebknows.com/og-image.png" />
-    <meta name="twitter:image:alt" content="HTTP Headers &amp; Client Hints: A Privacy Deep-Dive" />
     <meta name="twitter:url" content="https://thewebknows.com/insights/http-headers-client-hints/" />
     <script>
         (function() {
@@ -111,6 +110,7 @@
     }
     </script>
 </head>
+
 <body>
     <header class="site-header" role="banner">
         <div class="header-inner">
@@ -188,6 +188,10 @@
         </div>
     </footer>
 
+    <script src="/glossary-data.js"></script>
+    <script src="/glossary-utils.js"></script>
+    <script src="/blog/articles-data.js"></script>
+    <script src="/blog/article.js"></script>
     <script src="/app.js" defer></script>
     <script>
         // Defer AdSense script loading until after page load

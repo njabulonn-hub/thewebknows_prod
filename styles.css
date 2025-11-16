@@ -23,3 +23,18 @@
 /* Insights: make the entire card clickable and hide any legacy dates */
 .blog-article-card__link{display:flex;flex-direction:column;width:100%;height:100%;padding:var(--spacing-xl);background-color:var(--color-primary);color:inherit;text-decoration:none}.blog-article-card__link:hover,.blog-article-card__link:focus-visible{color:inherit;text-decoration:none}
 .blog-article-card__meta time{display:none}
+
+/* FAQ code blocks: ensure long commands wrap and don't overflow on small screens */
+.info-explanation pre{
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+.info-explanation pre code{
+  white-space: inherit;
+}
+.info-explanation code{
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
