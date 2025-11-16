@@ -9,8 +9,16 @@
 /* Glossary: keep text color (including selects) unchanged in dark mode via scoped var */
 [data-mode=dark] .glossary-wrapper, [data-mode=dark] .glossary-controls{--text-primary:#1a1a1a}
 /* Remove light-mode highlight from footer + insights hub links */
-[data-mode=light] body :is(.site-footer a,#insights-hub-heading a,.insights-hub-card__pillar a,.insights-hub-card__body a){background-color:transparent;padding:0;border-radius:0}
-/* (removed temporary insights card overrides to rely on rebuild output) */\n/* Insights hub hero link: restore dark highlight in light mode */\n[data-mode=light] #insights-hub-heading a{background-color:#1a1a1a;color:#fff;padding:.1em .2em;border-radius:.2em}\n\n
+[data-mode=light] body :is(.site-footer a,.insights-hub-card__pillar a,.insights-hub-card__body a){background-color:transparent;padding:0;border-radius:0}
+/* (removed temporary insights card overrides to rely on rebuild output) */
+/* Insights hub hero link: restore dark highlight in light mode */
+[data-mode=light] #insights-hub-heading a{
+    background-color:#1a1a1a;
+    color:#fff;
+    padding:.1em .2em;
+    border-radius:.2em;
+}
+
 
 /* Insights: make the entire card clickable and hide any legacy dates */
 .blog-article-card__link{display:flex;flex-direction:column;width:100%;height:100%;padding:var(--spacing-xl);background-color:var(--color-primary);color:inherit;text-decoration:none}.blog-article-card__link:hover,.blog-article-card__link:focus-visible{color:inherit;text-decoration:none}
