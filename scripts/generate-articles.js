@@ -5,6 +5,7 @@ const DATA_PATH = path.join(__dirname, '..', 'blog', 'articles-data.js');
 const SOURCE_MARKDOWN = path.join(__dirname, '..', 'blog', 'articles-expanded.md');
 const OUTPUT_DIR = path.join(__dirname, '..', 'insights');
 const SITE_ORIGIN = 'https://thewebknows.com';
+const vm = require('vm');
 
 const THEME_PREFLIGHT_SCRIPT = `    <script>
         (function() {
@@ -36,6 +37,75 @@ function loadArticlesData() {
         throw new Error('Unable to parse ARTICLES_DATA in articles-data.js');
     }
     return eval(match[1]);
+}
+
+function loadGlossaryData() {
+    const filePath = path.join(__dirname, '..', 'glossary-data.js');
+    const code = fs.readFileSync(filePath, 'utf8');
+    const context = { window: {}, console };
+    context.window.window = context.window;
+    vm.createContext(context);
+    vm.runInContext(code, context, { filename: 'glossary-data.js' });
+    const data = context.window.glossaryData;
+    if (!Array.isArray(data)) {
+        throw new Error('Failed to load glossary data');
+    }
+    return data;
+}
+
+function buildGlossaryMentionsSection(bodyHtml) {
+    try {
+        const glossary = loadGlossaryData();
+        const plainText = String(bodyHtml || '').replace(/<[^>]+>/g, ' ').toLowerCase();
+        if (!plainText.trim()) return '';
+
+        // Build candidate list: prefer longer terms first to reduce overlap
+        const candidates = glossary.map(entry => {
+            const term = String(entry.term || '').trim();
+            const aliases = Array.isArray(entry.aliases) ? entry.aliases : [];
+            return {
+                slug: String(entry.slug || '').trim(),
+                labels: [term, ...aliases.map(a => String(a || '').trim())].filter(Boolean)
+            };
+        }).filter(e => e.slug && e.labels.length);
+
+        // Sort by longest label for better matching
+        candidates.sort((a, b) => {
+            const la = Math.max(...a.labels.map(l => l.length));
+            const lb = Math.max(...b.labels.map(l => l.length));
+            return lb - la;
+        });
+
+        const seen = new Set();
+        const items = [];
+        for (const c of candidates) {
+            if (seen.has(c.slug)) continue;
+            const matched = c.labels.some(label => {
+                if (!label) return false;
+                const pattern = new RegExp(`\\b${label.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\$&')}\\b`, 'i');
+                return pattern.test(plainText);
+            });
+            if (matched) {
+                seen.add(c.slug);
+                const href = `/glossary/#glossary-${encodeURIComponent(c.slug)}`;
+                const label = c.labels[0];
+                items.push(`                    <li><a href="${escapeAttribute(href)}">${escapeHtml(label)}</a></li>`);
+                if (items.length >= 12) break; // keep it concise
+            }
+        }
+        if (!items.length) return '';
+        return [
+            '',
+            '            <section class="blog-article__glossary">',
+            '                <h2>Glossary Terms Mentioned</h2>',
+            '                <ul class="related-articles-list">',
+            items.join('\n'),
+            '                </ul>',
+            '            </section>'
+        ].join('\n');
+    } catch {
+        return '';
+    }
 }
 
 function parseMarkdownSections(markdown) {
@@ -323,6 +393,8 @@ function generateArticleHtml(article, bodyHtml) {
           ].join('\n')
         : '';
 
+    const glossaryMentionsSection = buildGlossaryMentionsSection(bodyHtml);
+
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -398,6 +470,7 @@ ${structuredDataJson}
             <section class="blog-article__content">
                 ${bodyHtml}
             </section>
+            ${glossaryMentionsSection}
             ${relatedSectionStatic}
         </article>
     </main>
