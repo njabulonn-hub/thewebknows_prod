@@ -248,6 +248,64 @@ function renderArticleCard(article) {
     const readingTime = Number.isFinite(article.readingTime)
         ? `${article.readingTime} min read`
         : '';
+    // Build compact related insight chips (max 2)
+    const allArticles = Array.isArray(ARTICLES_DATA) ? ARTICLES_DATA : [];
+    const articlesBySlug = new Map(allArticles.map(a => [String(a.slug || '').trim(), a]));
+    const related = Array.isArray(article.relatedArticles) ? article.relatedArticles : [];
+    const relatedChips = related
+        .map(r => {
+            const slug = String((r && (r.slug || r.id)) || '').trim();
+            if (!slug || !articlesBySlug.has(slug)) return '';
+            const a = articlesBySlug.get(slug);
+            const href = `/insights/${encodeURIComponent(slug)}/`;
+            const label = String(a.title || slug);
+            return `            <li><a href="${escapeAttribute(href)}">${escapeHtml(label)}</a></li>`;
+        })
+        .filter(Boolean)
+        .slice(0, 2)
+        .join('\n');
+    const relatedBlock = relatedChips
+        ? [
+            '        <ul class="related-articles-list" aria-label="Related articles">',
+            relatedChips,
+            '        </ul>'
+          ].join('\n')
+        : '';
+
+    // Build compact glossary mention chips (max 2) using title + excerpt text
+    const baseText = [String(article.title || ''), String(article.excerpt || '')].join(' ').toLowerCase();
+    const glossaryCandidates = Array.isArray(glossaryData) ? glossaryData : [];
+    const glossaryMatches = [];
+    const seenGloss = new Set();
+    for (const entry of glossaryCandidates) {
+        const slug = String(entry && entry.slug || '').trim();
+        const term = String(entry && entry.term || '').trim();
+        if (!slug || !term || seenGloss.has(slug)) continue;
+        const labels = [term].concat(Array.isArray(entry.aliases) ? entry.aliases : []).filter(Boolean);
+        const hit = labels.some(label => {
+            const pattern = new RegExp(`\\b${String(label).replace(/[.*+?^${}()|[\\]\\\\]/g, '\\$&')}\\b`, 'i');
+            return pattern.test(baseText);
+        });
+        if (hit) {
+            seenGloss.add(slug);
+            glossaryMatches.push({
+                slug,
+                label: term
+            });
+            if (glossaryMatches.length >= 2) break;
+        }
+    }
+    const glossaryChips = glossaryMatches
+        .map(m => `            <li><a href="/glossary/#glossary-${escapeAttribute(m.slug)}">${escapeHtml(m.label)}</a></li>`)
+        .join('\n');
+    const glossaryBlock = glossaryChips
+        ? [
+            '        <ul class="related-articles-list" aria-label="Glossary terms mentioned">',
+            glossaryChips,
+            '        </ul>'
+          ].join('\n')
+        : '';
+
     const metaBlock = readingTime
         ? [
             '        <div class="blog-article-card__meta">',
@@ -262,6 +320,8 @@ function renderArticleCard(article) {
         '        <div class="blog-article-card__category">', escapeHtml(article.category || 'General'), '</div>',
         '        <h2 class="blog-article-card__title">', escapeHtml(article.title || 'Untitled article'), '</h2>',
         '        <p class="blog-article-card__excerpt">', escapeHtml(article.excerpt || ''), '</p>',
+        relatedBlock,
+        glossaryBlock,
         metaBlock,
         '    </a>',
         '</article>'
