@@ -52,12 +52,15 @@
     transition:color var(--transition-base),background-color var(--transition-base);
 }
 .site-header .nav-row a:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px}
-[data-mode=light] .site-header .nav-row a{color:var(--text-muted);background-color:#f5f5f5}
+[data-mode=light] .site-header .nav-row a{color:#1a1a1a;background-color:#f5f5f5;opacity:1}
 [data-mode=light] .site-header .nav-row a:hover,[data-mode=light] .site-header .nav-row a:focus-visible{color:#1a1a1a;background-color:rgba(var(--color-primary-rgb),.25);text-decoration:none}
 [data-mode=light] .site-header .nav-row a[aria-current=page]{color:#1a1a1a;background-color:#FADC0E}
-[data-mode=dark] .site-header .nav-row a{color:rgba(229,229,229,.75);background-color:var(--button-bg)}
+[data-mode=dark] .site-header .nav-row a{color:#e5e5e5;background-color:var(--button-bg);opacity:1}
 [data-mode=dark] .site-header .nav-row a:hover,[data-mode=dark] .site-header .nav-row a:focus-visible{color:var(--color-primary);background-color:rgba(var(--color-primary-rgb),.35);text-decoration:none}
 [data-mode=dark] .site-header .nav-row a[aria-current=page]{color:#1a1a1a;background-color:var(--color-primary)}
+/* Force full opacity for inactive header nav links (both .header-nav-link and .nav-row a) */
+[data-mode=light] .site-header .header-nav-link:not([aria-current=page]){color:#1a1a1a!important;opacity:1!important}
+[data-mode=dark] .site-header .header-nav-link:not([aria-current=page]){color:#e5e5e5!important;opacity:1!important}
 /* Learn More term highlights: KNOWN/CALCULATED (green), GUESSED/INFERRED (orange) */
 .info-explanation .tag-known{background-color:rgba(40,167,69,.28);color:#1a1a1a;font-weight:800;text-transform:uppercase;padding:.05em .3em;border-radius:.2em}
 .info-explanation .tag-guess{background-color:rgba(255,159,64,.32);color:#1a1a1a;font-weight:800;text-transform:uppercase;padding:.05em .3em;border-radius:.2em}
