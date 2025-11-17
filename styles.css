@@ -68,6 +68,7 @@
 [data-mode=dark] .site-header .nav-row a:not([aria-current=page]){color:#e5e5e5!important;opacity:1!important}
 /* Learn More term highlights: KNOWN/CALCULATED (green), GUESSED/INFERRED (orange) */
 /* Target tags in "Is this accurate?" sections on main page - make them bold with colored backgrounds */
+/* Use maximum specificity to override any conflicting rules */
 .info-explanation .tag-known,
 .info-item .info-explanation .tag-known,
 .info-explanation p .tag-known,
@@ -78,7 +79,10 @@
 .info-item .info-explanation strong .tag-known,
 .info-explanation p strong .tag-known,
 .info-item .info-explanation p strong .tag-known,
-strong .tag-known{background-color:rgba(40,167,69,.28)!important;color:#1a1a1a!important;font-weight:800!important;text-transform:uppercase!important;padding:.05em .3em!important;border-radius:.2em!important;display:inline-block!important}
+.info-explanation p strong span.tag-known,
+.info-item .info-explanation p strong span.tag-known,
+strong .tag-known,
+strong span.tag-known{background-color:rgba(40,167,69,.28)!important;color:#1a1a1a!important;font-weight:800!important;text-transform:uppercase!important;padding:.05em .3em!important;border-radius:.2em!important;display:inline-block!important;line-height:1.2!important}
 .info-explanation .tag-guess,
 .info-item .info-explanation .tag-guess,
 .info-explanation p .tag-guess,
@@ -89,7 +93,10 @@ strong .tag-known{background-color:rgba(40,167,69,.28)!important;color:#1a1a1a!i
 .info-item .info-explanation strong .tag-guess,
 .info-explanation p strong .tag-guess,
 .info-item .info-explanation p strong .tag-guess,
-strong .tag-guess{background-color:rgba(255,159,64,.32)!important;color:#1a1a1a!important;font-weight:800!important;text-transform:uppercase!important;padding:.05em .3em!important;border-radius:.2em!important;display:inline-block!important}
+.info-explanation p strong span.tag-guess,
+.info-item .info-explanation p strong span.tag-guess,
+strong .tag-guess,
+strong span.tag-guess{background-color:rgba(255,159,64,.32)!important;color:#1a1a1a!important;font-weight:800!important;text-transform:uppercase!important;padding:.05em .3em!important;border-radius:.2em!important;display:inline-block!important;line-height:1.2!important}
 
 /* Header links follow component-specific color rules (no global force-color) */
 
