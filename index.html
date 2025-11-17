@@ -144,27 +144,6 @@
         })();
     </script>
     <link rel="stylesheet" href="/styles.css" />
-    <script>
-        // Lazy load info-metadata.js after page load
-        (function() {
-            function loadInfoMetadata() {
-                if (window.INFO_METADATA) {
-                    return; // Already loaded
-                }
-                var script = document.createElement('script');
-                script.src = '/info-metadata.js';
-                script.async = true;
-                document.head.appendChild(script);
-            }
-            
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', loadInfoMetadata);
-            } else {
-                // DOM already loaded
-                loadInfoMetadata();
-            }
-        })();
-    </script>
 </head>
 <body>
     <noscript>
