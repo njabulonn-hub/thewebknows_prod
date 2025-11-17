@@ -95,7 +95,7 @@ strong span.tag-known,
 [data-mode=dark] .info-explanation p .tag-known,
 [data-mode=dark] .info-item .info-explanation p .tag-known,
 [data-mode=dark] .info-explanation p strong span.tag-known,
-[data-mode=dark] .info-item .info-explanation p strong span.tag-known{background-color:rgba(34,197,94,.65)!important;color:#1a1a1a!important;font-weight:400!important;text-transform:uppercase!important;padding:.05em .3em!important;border-radius:.2em!important;display:inline-block!important;line-height:1.2!important}
+[data-mode=dark] .info-item .info-explanation p strong span.tag-known{background-color:rgba(34,197,94,.65)!important;color:#1a1a1a!important;font-weight:600!important;text-transform:uppercase!important;padding:.05em .3em!important;border-radius:.2em!important;display:inline-block!important;line-height:1.2!important}
 .info-explanation .tag-guess,
 .info-item .info-explanation .tag-guess,
 .info-explanation p .tag-guess,
@@ -121,7 +121,7 @@ strong span.tag-guess,
 [data-mode=dark] .info-explanation p .tag-guess,
 [data-mode=dark] .info-item .info-explanation p .tag-guess,
 [data-mode=dark] .info-explanation p strong span.tag-guess,
-[data-mode=dark] .info-item .info-explanation p strong span.tag-guess{background-color:rgba(251,146,60,.65)!important;color:#1a1a1a!important;font-weight:400!important;text-transform:uppercase!important;padding:.05em .3em!important;border-radius:.2em!important;display:inline-block!important;line-height:1.2!important}
+[data-mode=dark] .info-item .info-explanation p strong span.tag-guess{background-color:rgba(251,146,60,.65)!important;color:#1a1a1a!important;font-weight:600!important;text-transform:uppercase!important;padding:.05em .3em!important;border-radius:.2em!important;display:inline-block!important;line-height:1.2!important}
 
 /* Header links follow component-specific color rules (no global force-color) */
 
