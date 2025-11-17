@@ -67,19 +67,29 @@
 [data-mode=dark] .site-header .header-nav-link:not([aria-current=page]),
 [data-mode=dark] .site-header .nav-row a:not([aria-current=page]){color:#e5e5e5!important;opacity:1!important}
 /* Learn More term highlights: KNOWN/CALCULATED (green), GUESSED/INFERRED (orange) */
-/* Target tags in "Is this accurate?" sections on main page */
+/* Target tags in "Is this accurate?" sections on main page - make them bold with colored backgrounds */
 .info-explanation .tag-known,
 .info-item .info-explanation .tag-known,
 .info-explanation p .tag-known,
 .info-item .info-explanation p .tag-known,
 .info-explanation span.tag-known,
-.info-item .info-explanation span.tag-known{background-color:rgba(40,167,69,.28)!important;color:#1a1a1a!important;font-weight:800!important;text-transform:uppercase!important;padding:.05em .3em!important;border-radius:.2em!important;display:inline-block!important}
+.info-item .info-explanation span.tag-known,
+.info-explanation strong .tag-known,
+.info-item .info-explanation strong .tag-known,
+.info-explanation p strong .tag-known,
+.info-item .info-explanation p strong .tag-known,
+strong .tag-known{background-color:rgba(40,167,69,.28)!important;color:#1a1a1a!important;font-weight:800!important;text-transform:uppercase!important;padding:.05em .3em!important;border-radius:.2em!important;display:inline-block!important}
 .info-explanation .tag-guess,
 .info-item .info-explanation .tag-guess,
 .info-explanation p .tag-guess,
 .info-item .info-explanation p .tag-guess,
 .info-explanation span.tag-guess,
-.info-item .info-explanation span.tag-guess{background-color:rgba(255,159,64,.32)!important;color:#1a1a1a!important;font-weight:800!important;text-transform:uppercase!important;padding:.05em .3em!important;border-radius:.2em!important;display:inline-block!important}
+.info-item .info-explanation span.tag-guess,
+.info-explanation strong .tag-guess,
+.info-item .info-explanation strong .tag-guess,
+.info-explanation p strong .tag-guess,
+.info-item .info-explanation p strong .tag-guess,
+strong .tag-guess{background-color:rgba(255,159,64,.32)!important;color:#1a1a1a!important;font-weight:800!important;text-transform:uppercase!important;padding:.05em .3em!important;border-radius:.2em!important;display:inline-block!important}
 
 /* Header links follow component-specific color rules (no global force-color) */
 

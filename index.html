@@ -228,7 +228,7 @@
                             <h4>How could your Public IP Address be used maliciously?</h4>
                             <p id="ipv4-malicious">Attackers combine IPv4 with other signals to profile you, launch targeted attacks, or approximate where you live or work.</p>
                             <h4>Is this accurate?</h4>
-                            <p id="ipv4-accuracy">This value is <span class="tag-known">known</span> because it is the exact IPv4 address your connection broadcasts to every site you visit.</p>
+                            <p id="ipv4-accuracy">This value is <strong><span class="tag-known">known</span></strong> because it is the exact IPv4 address your connection broadcasts to every site you visit.</p>
                             <h4>Can I hide my Public IP Address?</h4>
                             <p id="ipv4-hide">Use a trustworthy VPN, proxy, or privacy network to mask your IPv4 address. Remember that VPN providers can still see your real address and some services block shared VPN ranges.</p>
                         </div>
@@ -244,7 +244,7 @@
                     <h4>How could your Public IPv6 Address be used maliciously?</h4>
                     <p id="ipv6-malicious">Exposed IPv6 addresses can be combined with other telemetry for tracking or to target attacks at your network.</p>
                     <h4>Is this accurate?</h4>
-                    <p id="ipv6-accuracy">This is <span class="tag-known">known</span> when your ISP enables IPv6. If nothing appears, your provider is not broadcasting IPv6 to the web.</p>
+                    <p id="ipv6-accuracy">This is <strong><span class="tag-known">known</span></strong> when your ISP enables IPv6. If nothing appears, your provider is not broadcasting IPv6 to the web.</p>
                     <h4>Can I hide my Public IPv6 Address?</h4>
                     <p id="ipv6-hide">Use a VPN that supports IPv6 or disable IPv6 on your device or router if you do not want the address exposed.</p>
                 </div></details></div>
@@ -257,9 +257,9 @@
                     <h4>How are your ISP and ASN used legitimately?</h4>
                     <p id="isp-legal">Websites use this data to understand connection quality, apply local licensing rules, detect VPNs, and tailor experiences to home or business networks.</p>
                     <h4>How could your ISP and ASN be used maliciously?</h4>
-                    <p id="isp-malicious">Attackers can cross-reference ISP data to <span class="tag-guess">guess</span> your location, profile customers of a provider, or target vulnerabilities affecting that network.</p>
+                    <p id="isp-malicious">Attackers can cross-reference ISP data to <strong><span class="tag-guess">guess</span></strong> your location, profile customers of a provider, or target vulnerabilities affecting that network.</p>
                     <h4>Is this accurate?</h4>
-                    <p id="isp-accuracy">This information is <span class="tag-known">known</span> and drawn from public routing databases that map IP ranges to ISPs.</p>
+                    <p id="isp-accuracy">This information is <strong><span class="tag-known">known</span></strong> and drawn from public routing databases that map IP ranges to ISPs.</p>
                     <h4>Can I hide my ISP or ASN?</h4>
                     <p id="isp-hide">Connecting through a VPN or privacy relay will show the VPN operator instead of your residential ISP.</p>
                 </div></details></div>
@@ -268,13 +268,13 @@
                 <span class="info-label">Location (IP-based)</span>
                 <span class="info-value" aria-live="polite" id="location">Estimating your city and region from public IP geolocation databases.</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation">
                     <h4>What is your IP-based location?</h4>
-                    <p id="location-explanation">This is an IP-based <span class="tag-guess">guess</span> at your location that is typically accurate to the city or metro area but not to a precise street address.</p>
+                    <p id="location-explanation">This is an IP-based <strong><span class="tag-guess">guess</span></strong> at your location that is typically accurate to the city or metro area but not to a precise street address.</p>
                     <h4>How is your IP-based location used legitimately?</h4>
                     <p id="location-legal">Websites use location to localize pricing, language, compliance messages, and fraud controls.</p>
                     <h4>How could your IP-based location be used maliciously?</h4>
                     <p id="location-malicious">Bad actors can combine this with other data points to stalk targets, launch region-specific scams, or infer daily habits.</p>
                     <h4>Is this accurate?</h4>
-                    <p id="location-accuracy">This is <span class="tag-guess">inferred</span> from commercial geolocation databases and can be wrong, especially when you use VPNs or corporate routes.</p>
+                    <p id="location-accuracy">This is <strong><span class="tag-guess">inferred</span></strong> from commercial geolocation databases and can be wrong, especially when you use VPNs or corporate routes.</p>
                     <h4>Can I hide my IP-based location?</h4>
                     <p id="location-hide">A VPN or privacy relay can make it appear that you are in a different city; keep in mind this may impact access to localized services.</p>
                 </div></details></div>
@@ -289,22 +289,22 @@
                     <h4>How could your referrer be used maliciously?</h4>
                     <p id="referrer-malicious">Referrers can expose sensitive query strings or reveal your browsing habits when tracked across multiple sites.</p>
                     <h4>Is this accurate?</h4>
-                    <p id="referrer-accuracy">Referrer values are <span class="tag-known">known</span> because browsers send them automatically unless a privacy control removes the header.</p>
+                    <p id="referrer-accuracy">Referrer values are <strong><span class="tag-known">known</span></strong> because browsers send them automatically unless a privacy control removes the header.</p>
                     <h4>Can I hide my referrer?</h4>
                     <p id="referrer-hide">Most modern browsers and privacy extensions can strip referrers; note that doing so may affect affiliate attribution or break some embedded content.</p>
                 </div></details></div>
             </div>
             <div class="info-item">
                 <span class="info-label">Network type (guess)</span><span class="info-value" aria-live="polite" id="network-type">Guessing whether your IP looks residential, mobile, or like a VPN exit.</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What does your network type guess mean?</h4>
-                        <p id="network-type-explanation">We compare your ISP name with <span class="tag-known">known</span> residential, mobile, and hosting providers to <span class="tag-guess">infer</span> whether your traffic resembles a home line or anonymized relay.</p>
+                        <p id="network-type-explanation">We compare your ISP name with <strong><span class="tag-known">known</span></strong> residential, mobile, and hosting providers to <strong><span class="tag-guess">infer</span></strong> whether your traffic resembles a home line or anonymized relay.</p>
                         <h4>How is your network type guess used legitimately?</h4>
                         <p id="network-type-legal">Legitimate businesses use this signal to trigger extra anti-fraud checks, throttle automated bots, or adapt experiences for corporate networks.</p>
                         <h4>How could your network type guess be used maliciously?</h4>
                         <p id="network-type-malicious">Malicious actors may flag VPN usage, craft more believable phishing lures, or bypass security settings aimed specifically at residential users.</p>
                         <h4>Is this accurate?</h4>
-                        <p id="network-type-accuracy">This is an educated <span class="tag-guess">guess</span> based on naming patterns and may mislabel niche or newly announced networks.</p>
+                        <p id="network-type-accuracy">This is an educated <strong><span class="tag-guess">guess</span></strong> based on naming patterns and may mislabel niche or newly announced networks.</p>
                         <h4>Can I change my network type guess?</h4>
-                        <p id="network-type-hide">Because the label is <span class="tag-guess">inferred</span>, the only way to change it is to switch providers or use a VPN that mimics a residential connection.</p></div></details>
+                        <p id="network-type-hide">Because the label is <strong><span class="tag-guess">inferred</span></strong>, the only way to change it is to switch providers or use a VPN that mimics a residential connection.</p></div></details>
             </div>
             <div class="info-item">
                 <span class="info-label">Reverse DNS</span><span class="info-value" aria-live="polite" id="reverse-dns">Checking the hostname attached to your IP address, when one exists.</span><details class="info-explanation-collapsible"><summary>Learn More <span class="collapse-icon">+</span></summary><div class="info-explanation"><h4>What is your reverse DNS hostname?</h4>
@@ -314,7 +314,7 @@
                         <h4>How could your reverse DNS hostname be used maliciously?</h4>
                         <p id="reverse-dns-malicious">Attackers can inspect the hostname to learn which ISP you use or whether other devices share the same network.</p>
                         <h4>Is this accurate?</h4>
-                        <p id="reverse-dns-accuracy">It is <span class="tag-known">known</span> only if your ISP publishes a reverse DNS record; many residential IPs do not have one.</p>
+                        <p id="reverse-dns-accuracy">It is <strong><span class="tag-known">known</span></strong> only if your ISP publishes a reverse DNS record; many residential IPs do not have one.</p>
                         <h4>Can I hide my reverse DNS hostname?</h4>
                         <p id="reverse-dns-hide">You cannot edit reverse DNS directly, but using a VPN will surface the VPN provider’s hostname instead.</p></div></details>
             </div>
