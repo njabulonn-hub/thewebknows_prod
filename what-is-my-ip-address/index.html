@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://static.cloudflareinsights.com https://ep2.adtrafficquality.google; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https://api64.ipify.org https://ipapi.co https://ipinfo.io https://ipwho.is https://dns.google https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com; font-src 'self' data:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep2.adtrafficquality.google https://*.google.com; base-uri 'self'; form-action 'self';" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="geolocation=(self), camera=(), microphone=(), browsing-topics=(self)" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- SEO Meta Tags -->
+    <title>What Is My IP Address? (IPv4 & IPv6) – Privacy-First IP Checker | The Web Knows</title>
+    <meta name="description" content="See your public IP address, ISP, and approximate location instantly. We don't log or sell your data. Learn what your IP address reveals about you and how to protect your privacy." />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://thewebknows.com/what-is-my-ip-address/" />
+    <meta property="og:title" content="What Is My IP Address? – Privacy-First IP Checker" />
+    <meta property="og:description" content="See your public IP address, ISP, and approximate location instantly. We don't log or sell your data." />
+    <meta property="og:image" content="https://thewebknows.com/og-image.png" />
+    <meta property="og:site_name" content="The Web Knows" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://thewebknows.com/what-is-my-ip-address/" />
+    <meta name="twitter:title" content="What Is My IP Address? – Privacy-First IP Checker" />
+    <meta name="twitter:description" content="See your public IP address, ISP, and approximate location instantly. We don't log or sell your data." />
+    <meta name="twitter:image" content="https://thewebknows.com/og-image.png" />
+    <meta name="twitter:image:alt" content="IP Address Checker - The Web Knows" />
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://thewebknows.com/what-is-my-ip-address/" id="canonical-link" />
+    
+    <script>
+        (function() {
+            try {
+                // Force HTTPS redirect if needed
+                if ((window.location.hostname === 'thewebknows.com' || window.location.hostname === 'thewebknows.pages.dev') && window.location.protocol !== 'https:') {
+                    window.location.replace('https://' + window.location.host + window.location.pathname + window.location.search + window.location.hash);
+                    return;
+                }
+                
+                // Block indexing of pages.dev subdomain
+                if (window.location.hostname === 'thewebknows.pages.dev') {
+                    var metaRobots = document.createElement('meta');
+                    metaRobots.name = 'robots';
+                    metaRobots.content = 'noindex, nofollow';
+                    document.head.appendChild(metaRobots);
+                }
+                
+                // Force canonical URL to always be thewebknows.com
+                var canonicalLink = document.getElementById('canonical-link') || document.querySelector('link[rel="canonical"]');
+                if (canonicalLink) {
+                    var currentPath = window.location.pathname + window.location.search + window.location.hash;
+                    canonicalLink.href = 'https://thewebknows.com' + (currentPath === '/' ? '/' : currentPath);
+                } else {
+                    canonicalLink = document.createElement('link');
+                    canonicalLink.rel = 'canonical';
+                    canonicalLink.id = 'canonical-link';
+                    var currentPath = window.location.pathname + window.location.search + window.location.hash;
+                    canonicalLink.href = 'https://thewebknows.com' + (currentPath === '/' ? '/' : currentPath);
+                    document.head.appendChild(canonicalLink);
+                }
+            } catch (error) {
+                console.warn('Canonical/redirect check failed:', error);
+            }
+        })();
+    </script>
+    
+    <script>
+        (function() {
+            var storageKey = 'thewebknows-theme';
+            var mode = 'light';
+            try {
+                var stored = window.localStorage ? localStorage.getItem(storageKey) : null;
+                if (stored === 'dark' || stored === 'light') {
+                    mode = stored;
+                } else if (window.matchMedia) {
+                    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+            } catch (error) {
+                try {
+                    mode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                } catch (ignore) {
+                    mode = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-mode', mode);
+        })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+    
+    <style>
+        .ip-display-hero {
+            background: var(--card-bg, #fff);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .ip-display-hero h1 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .ip-display-intro {
+            font-size: 1.1rem;
+            color: var(--text-secondary, #666);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .ip-display-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .ip-value-large {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            color: var(--text-primary, #000);
+            background: var(--bg-secondary, #f5f5f5);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            word-break: break-all;
+        }
+        .ip-copy-button {
+            background: var(--accent-color, #0066cc);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+        .ip-copy-button:hover {
+            background: var(--accent-hover, #0052a3);
+        }
+        .ip-copy-button:active {
+            transform: scale(0.98);
+        }
+        .ip-copy-button.copied {
+            background: #28a745;
+        }
+        .ip-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .ip-info-item {
+            padding: 0.75rem;
+            background: var(--bg-secondary, #f5f5f5);
+            border-radius: 6px;
+        }
+        .ip-info-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary, #666);
+            margin-bottom: 0.25rem;
+        }
+        .ip-info-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary, #000);
+        }
+        .privacy-note {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #e8f4f8;
+            border-left: 4px solid #0066cc;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .privacy-note strong {
+            color: #0066cc;
+        }
+        @media (max-width: 768px) {
+            .ip-value-large {
+                font-size: 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .ip-copy-button {
+                width: 100%;
+            }
+            .ip-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <noscript>
+        <div class="noscript-banner">
+            <p>This page requires JavaScript to display your IP address. Please enable JavaScript to use this tool.</p>
+        </div>
+    </noscript>
+    
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a class="brand" href="/">
+                <span class="brand-text" aria-hidden="true">The Web Knows</span>
+                <span class="brand-badge" aria-hidden="true">W</span>
+                <span class="sr-only brand-badge__label">The Web Knows</span>
+            </a>
+            <nav class="nav-row" aria-label="Primary">
+                <a class="header-nav-link" href="/">Report</a>
+                <a class="header-nav-link" href="/insights/">Insights</a>
+                <a class="header-nav-link" href="/glossary/">Glossary</a>
+            </nav>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
+                <span class="theme-toggle__label">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <section class="ip-display-hero">
+            <h1>What Is My IP Address?</h1>
+            <p class="ip-display-intro">See your public IP address, ISP, and approximate location. We don't log or sell your data.</p>
+            
+            <div class="ip-display-container">
+                <div class="ip-value-large" id="ip-display-main">
+                    <span id="ip-value-text">Detecting your IP address...</span>
+                    <button class="ip-copy-button" id="ip-copy-btn" aria-label="Copy IP address" disabled>Copy</button>
+                </div>
+                
+                <div id="ipv6-display" style="display: none;">
+                    <div class="ip-value-large" style="font-size: 1.5rem;">
+                        <span>IPv6: <span id="ipv6-value-text">—</span></span>
+                        <button class="ip-copy-button" id="ipv6-copy-btn" aria-label="Copy IPv6 address" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="ip-info-grid" id="ip-info-grid" style="display: none;">
+                    <div class="ip-info-item">
+                        <div class="ip-info-label">ISP</div>
+                        <div class="ip-info-value" id="ip-isp">—</div>
+                    </div>
+                    <div class="ip-info-item">
+                        <div class="ip-info-label">Location</div>
+                        <div class="ip-info-value" id="ip-location">—</div>
+                    </div>
+                    <div class="ip-info-item">
+                        <div class="ip-info-label">Network Type</div>
+                        <div class="ip-info-value" id="ip-network-type">—</div>
+                    </div>
+                </div>
+                
+                <div class="privacy-note">
+                    <strong>We don't track you across the web.</strong> Your IP address is displayed here for your information only. We don't store, log, or sell this data. <a href="/">Learn what this IP reveals about you →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Section -->
+        <section class="info-card" aria-labelledby="what-is-ip-heading">
+            <h2 id="what-is-ip-heading">What Is an IP Address?</h2>
+            <div class="info-item reassurance-content">
+                <div class="info-explanation" style="grid-column: 1 / -1;">
+                    <p>An Internet Protocol (IP) address is a unique numerical label assigned to every device connected to a network. Think of it like your home's postal address, but for the internet. Just as mail needs your street address to reach you, websites need your IP address to send you the data you requested.</p>
+                    
+                    <h3>What Your IP Address Reveals</h3>
+                    <p>Your public IP address reveals several pieces of information about your connection:</p>
+                    <ul>
+                        <li><strong>Your Approximate Location:</strong> Typically your city or region, but not your precise street address. IP geolocation is usually accurate to within a few miles, but it's not exact.</li>
+                        <li><strong>Your Internet Service Provider (ISP):</strong> The company you pay for your internet access, like Comcast, Verizon, or AT&T.</li>
+                        <li><strong>Your Network Type:</strong> Whether you're on a residential, mobile, or business connection.</li>
+                    </ul>
+                    
+                    <h3>How Websites Use Your IP Address</h3>
+                    <p>Websites, apps, and online services use IP addresses for legitimate purposes:</p>
+                    <ul>
+                        <li><strong>Routing Data:</strong> To send the information you request to the right place.</li>
+                        <li><strong>Fraud Prevention:</strong> To detect suspicious login attempts or unusual activity.</li>
+                        <li><strong>Content Localization:</strong> To show you local news, prices in your currency, or region-specific content.</li>
+                        <li><strong>Analytics:</strong> To measure website traffic and understand visitor patterns.</li>
+                    </ul>
+                    
+                    <h3>Public vs. Private IP Addresses</h3>
+                    <p>You actually have two types of IP addresses:</p>
+                    <ul>
+                        <li><strong>Public IP Address:</strong> This is what websites see when you visit them. It's shared by all devices on your home or office network. This is what we show you on this page.</li>
+                        <li><strong>Private IP Address:</strong> This is the unique address for your specific device (like your laptop or phone) within your home network. Your router uses this to send data to the right device. Websites don't see this address.</li>
+                    </ul>
+                    
+                    <h3>IPv4 vs. IPv6</h3>
+                    <p>There are two versions of IP addresses in use today:</p>
+                    <ul>
+                        <li><strong>IPv4:</strong> The older format, written as four numbers separated by dots (like 192.0.2.1). This is what most people are familiar with.</li>
+                        <li><strong>IPv6:</strong> The newer format, written as longer hexadecimal addresses (like 2001:0db8::8a2e:370:7334). It was created because we're running out of IPv4 addresses.</li>
+                    </ul>
+                    <p>Most devices and websites support both, but IPv4 is still the most common.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Find Your IP Section -->
+        <section class="info-card" aria-labelledby="how-to-find-heading">
+            <h2 id="how-to-find-heading">How to Find Your IP Address</h2>
+            <div class="info-item reassurance-content">
+                <div class="info-explanation" style="grid-column: 1 / -1;">
+                    <p>The easiest way to find your public IP address is right here on this page—it's displayed at the top. But if you need to find it another way, here are some options:</p>
+                    
+                    <h3>Using This Website (Easiest Method)</h3>
+                    <ol>
+                        <li>Visit <strong>thewebknows.com/what-is-my-ip-address</strong></li>
+                        <li>Your public IP address will be displayed at the top of the page</li>
+                        <li>You'll also see your ISP and approximate location</li>
+                    </ol>
+                    
+                    <h3>On Windows</h3>
+                    <p><strong>Using Command Prompt:</strong></p>
+                    <ol>
+                        <li>Press the <strong>Start</strong> menu, type <code>cmd</code>, and press <strong>Enter</strong></li>
+                        <li>Type this command and press <strong>Enter</strong>:
+                            <pre><code>nslookup myip.opendns.com resolver1.opendns.com</code></pre>
+                        </li>
+                        <li>Look for the line that says <strong>"Non-authoritative answer:"</strong> and find your IP address below it</li>
+                    </ol>
+                    
+                    <h3>On Mac</h3>
+                    <p><strong>Using Terminal:</strong></p>
+                    <ol>
+                        <li>Press <strong>Command (⌘) + Spacebar</strong> to open Spotlight, type <strong>"Terminal"</strong>, and press <strong>Enter</strong></li>
+                        <li>Type this command and press <strong>Enter</strong>:
+                            <pre><code>dig +short myip.opendns.com @resolver1.opendns.com</code></pre>
+                        </li>
+                        <li>Your IP address will appear</li>
+                    </ol>
+                    
+                    <p>For more detailed instructions on finding your IP address on different devices, check out our <a href="/insights/how-to-find-your-ip-address/">complete guide</a>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy & Security Section -->
+        <section class="info-card" aria-labelledby="privacy-heading">
+            <h2 id="privacy-heading">Is It Safe to Share Your IP Address?</h2>
+            <div class="info-item reassurance-content">
+                <div class="info-explanation" style="grid-column: 1 / -1;">
+                    <p>In most cases, <strong>yes, it's safe</strong> for websites to see your IP address. Every website you visit already sees it automatically—it's how the internet works. However, there are some privacy considerations to be aware of:</p>
+                    
+                    <h3>What Your IP Address Can Reveal</h3>
+                    <ul>
+                        <li><strong>Your General Location:</strong> Your city or region, but not your exact address</li>
+                        <li><strong>Your ISP:</strong> Which internet provider you use</li>
+                        <li><strong>Your Network Type:</strong> Whether you're on a home, mobile, or business connection</li>
+                    </ul>
+                    
+                    <h3>What Your IP Address Cannot Reveal</h3>
+                    <ul>
+                        <li><strong>Your Exact Physical Address:</strong> IP geolocation is not precise enough to find your home</li>
+                        <li><strong>Your Personal Identity:</strong> Your IP address alone doesn't reveal your name, email, or other personal information</li>
+                        <li><strong>Your Browsing History:</strong> Websites can only see that you visited them, not what other sites you've been to</li>
+                    </ul>
+                    
+                    <h3>When You Might Want to Hide Your IP</h3>
+                    <p>You might consider hiding your IP address if:</p>
+                    <ul>
+                        <li>You're concerned about online privacy and tracking</li>
+                        <li>You want to access region-restricted content</li>
+                        <li>You're using public Wi-Fi and want extra security</li>
+                        <li>You want to prevent websites from building a profile of your location over time</li>
+                    </ul>
+                    
+                    <h3>How to Hide Your IP Address</h3>
+                    <p>The most common ways to hide your IP address are:</p>
+                    <ul>
+                        <li><strong>VPN (Virtual Private Network):</strong> Routes your traffic through a server in another location, showing that server's IP instead of yours</li>
+                        <li><strong>Proxy Server:</strong> Similar to a VPN but typically less secure and slower</li>
+                        <li><strong>Tor Browser:</strong> Provides strong anonymity but can be slow and some websites block it</li>
+                    </ul>
+                    <p>Learn more about <a href="/insights/how-to-hide-ip-address/">how to hide your IP address</a> and the pros and cons of each method.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="info-card" aria-labelledby="faq-heading">
+            <h2 id="faq-heading">Frequently Asked Questions</h2>
+            
+            <div class="info-item reassurance-content">
+                <details class="info-explanation-collapsible" style="grid-column: 1 / -1;">
+                    <summary>What is my IP address? <span class="collapse-icon">+</span></summary>
+                    <div class="info-explanation">
+                        <p>Your IP address is a unique numerical label assigned to your internet connection. It's like a digital address that allows websites to send you the data you request. You can see your current public IP address displayed at the top of this page.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="info-item reassurance-content">
+                <details class="info-explanation-collapsible" style="grid-column: 1 / -1;">
+                    <summary>What can my IP address reveal about me? <span class="collapse-icon">+</span></summary>
+                    <div class="info-explanation">
+                        <p>Your IP address can reveal your approximate location (usually your city or region), your Internet Service Provider (ISP), and your network type (residential, mobile, or business). It cannot reveal your exact physical address, your name, or your browsing history from other websites.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="info-item reassurance-content">
+                <details class="info-explanation-collapsible" style="grid-column: 1 / -1;">
+                    <summary>Is it safe to share my IP address? <span class="collapse-icon">+</span></summary>
+                    <div class="info-explanation">
+                        <p>Yes, in most cases it's safe. Every website you visit already sees your IP address automatically—it's how the internet works. However, if you're concerned about privacy or want to prevent location-based tracking, you can use a VPN or proxy to hide your IP address.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="info-item reassurance-content">
+                <details class="info-explanation-collapsible" style="grid-column: 1 / -1;">
+                    <summary>How do I change or hide my IP address? <span class="collapse-icon">+</span></summary>
+                    <div class="info-explanation">
+                        <p>The most common ways to hide your IP address are:</p>
+                        <ul>
+                            <li><strong>VPN:</strong> Routes your traffic through a server in another location</li>
+                            <li><strong>Proxy Server:</strong> Similar to a VPN but typically less secure</li>
+                            <li><strong>Tor Browser:</strong> Provides strong anonymity but can be slow</li>
+                        </ul>
+                        <p>Your IP address will also change if you switch networks (for example, from home Wi-Fi to mobile data) or if your ISP assigns you a new one.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="info-item reassurance-content">
+                <details class="info-explanation-collapsible" style="grid-column: 1 / -1;">
+                    <summary>What is the difference between public and private IP? <span class="collapse-icon">+</span></summary>
+                    <div class="info-explanation">
+                        <p><strong>Public IP address:</strong> This is what websites see when you visit them. It's shared by all devices on your home or office network. This is what we show you on this page.</p>
+                        <p><strong>Private IP address:</strong> This is the unique address for your specific device (like your laptop or phone) within your home network. Your router uses this to send data to the right device. Websites don't see this address.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="info-item reassurance-content">
+                <details class="info-explanation-collapsible" style="grid-column: 1 / -1;">
+                    <summary>What is the difference between IPv4 and IPv6? <span class="collapse-icon">+</span></summary>
+                    <div class="info-explanation">
+                        <p><strong>IPv4:</strong> The older format, written as four numbers separated by dots (like 192.0.2.1). This is what most people are familiar with and is still the most common.</p>
+                        <p><strong>IPv6:</strong> The newer format, written as longer hexadecimal addresses (like 2001:0db8::8a2e:370:7334). It was created because we're running out of IPv4 addresses. Most devices support both formats.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="info-item reassurance-content">
+                <details class="info-explanation-collapsible" style="grid-column: 1 / -1;">
+                    <summary>Can someone find me with my IP address? <span class="collapse-icon">+</span></summary>
+                    <div class="info-explanation">
+                        <p>Not easily. Your IP address can reveal your general location (usually your city or region), but it cannot reveal your exact physical address. Law enforcement or your ISP would need to be involved to connect an IP address to a specific person, and that typically requires a legal process like a warrant.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="info-item reassurance-content">
+                <details class="info-explanation-collapsible" style="grid-column: 1 / -1;">
+                    <summary>How accurate is IP geolocation? <span class="collapse-icon">+</span></summary>
+                    <div class="info-explanation">
+                        <p>IP geolocation is typically accurate to within a few miles of your actual location, but it's not exact. It usually shows your city or region correctly, but it cannot pinpoint your exact street address. The accuracy can vary depending on your ISP and location. Learn more about <a href="/insights/ip-geolocation-accuracy/">IP geolocation accuracy</a>.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-trust">Plain-English diagnostics for modern privacy.</p>
+                <p class="footer-copyright">&copy; 2025 The Web Knows. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/about/">About</a>
+                <a href="/glossary/">Glossary</a>
+                <a href="/insights/">Insights</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://thewebknows.com/what-is-my-ip-address/#webpage",
+          "url": "https://thewebknows.com/what-is-my-ip-address/",
+          "name": "What Is My IP Address? (IPv4 & IPv6) – Privacy-First IP Checker",
+          "description": "See your public IP address, ISP, and approximate location instantly. We don't log or sell your data. Learn what your IP address reveals about you and how to protect your privacy.",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@id": "https://thewebknows.com/#website"
+          },
+          "datePublished": "2025-11-20",
+          "dateModified": "2025-11-20"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://thewebknows.com/what-is-my-ip-address/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is my IP address?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Your IP address is a unique numerical label assigned to your internet connection. It's like a digital address that allows websites to send you the data you request. You can see your current public IP address displayed at the top of this page."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What can my IP address reveal about me?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Your IP address can reveal your approximate location (usually your city or region), your Internet Service Provider (ISP), and your network type (residential, mobile, or business). It cannot reveal your exact physical address, your name, or your browsing history from other websites."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is it safe to share my IP address?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, in most cases it's safe. Every website you visit already sees your IP address automatically—it's how the internet works. However, if you're concerned about privacy or want to prevent location-based tracking, you can use a VPN or proxy to hide your IP address."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I change or hide my IP address?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The most common ways to hide your IP address are: VPN (routes your traffic through a server in another location), Proxy Server (similar to a VPN but typically less secure), or Tor Browser (provides strong anonymity but can be slow). Your IP address will also change if you switch networks or if your ISP assigns you a new one."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between public and private IP?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Public IP address is what websites see when you visit them. It's shared by all devices on your home or office network. Private IP address is the unique address for your specific device within your home network. Your router uses this to send data to the right device. Websites don't see this address."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between IPv4 and IPv6?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "IPv4 is the older format, written as four numbers separated by dots (like 192.0.2.1). IPv6 is the newer format, written as longer hexadecimal addresses (like 2001:0db8::8a2e:370:7334). It was created because we're running out of IPv4 addresses. Most devices support both formats."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can someone find me with my IP address?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Not easily. Your IP address can reveal your general location (usually your city or region), but it cannot reveal your exact physical address. Law enforcement or your ISP would need to be involved to connect an IP address to a specific person, and that typically requires a legal process like a warrant."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How accurate is IP geolocation?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "IP geolocation is typically accurate to within a few miles of your actual location, but it's not exact. It usually shows your city or region correctly, but it cannot pinpoint your exact street address. The accuracy can vary depending on your ISP and location."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://thewebknows.com/#website",
+          "url": "https://thewebknows.com/",
+          "name": "The Web Knows",
+          "description": "Plain-English privacy diagnostics & guides.",
+          "inLanguage": "en",
+          "publisher": {
+            "@id": "https://thewebknows.com/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://thewebknows.com/#organization",
+          "name": "The Web Knows",
+          "url": "https://thewebknows.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://thewebknows.com/favicon.svg"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script src="/app.js" defer></script>
+    <script>
+        // IP Detection and Display Script
+        (async function() {
+            async function fetchJSON(url) {
+                try {
+                    const response = await fetch(url, { cache: 'no-store' });
+                    if (response.ok) return await response.json();
+                    return null;
+                } catch (error) {
+                    console.warn(`Failed to fetch ${url}:`, error);
+                    return null;
+                }
+            }
+
+            function updateDisplay(elementId, value, fallback = '—') {
+                const el = document.getElementById(elementId);
+                if (el) el.textContent = value || fallback;
+            }
+
+            function copyToClipboard(text, buttonId) {
+                if (!text || text === '—') return;
+                navigator.clipboard.writeText(text).then(() => {
+                    const btn = document.getElementById(buttonId);
+                    if (btn) {
+                        const originalText = btn.textContent;
+                        btn.textContent = 'Copied!';
+                        btn.classList.add('copied');
+                        setTimeout(() => {
+                            btn.textContent = originalText;
+                            btn.classList.remove('copied');
+                        }, 2000);
+                    }
+                }).catch(err => console.warn('Copy failed:', err));
+            }
+
+            // Fetch IPv4
+            let ipv4 = null;
+            let ipv4Data = await fetchJSON('https://api.ipify.org?format=json');
+            if (ipv4Data && ipv4Data.ip) {
+                ipv4 = ipv4Data.ip;
+                updateDisplay('ip-value-text', ipv4);
+                const copyBtn = document.getElementById('ip-copy-btn');
+                if (copyBtn) {
+                    copyBtn.disabled = false;
+                    copyBtn.addEventListener('click', () => copyToClipboard(ipv4, 'ip-copy-btn'));
+                }
+            } else {
+                updateDisplay('ip-value-text', 'Unable to detect IP address');
+            }
+
+            // Fetch IPv6
+            const ipv6Data = await fetchJSON('https://api64.ipify.org?format=json');
+            if (ipv6Data && ipv6Data.ip && ipv6Data.ip.includes(':')) {
+                const ipv6Display = document.getElementById('ipv6-display');
+                if (ipv6Display) ipv6Display.style.display = 'block';
+                updateDisplay('ipv6-value-text', ipv6Data.ip);
+                const ipv6CopyBtn = document.getElementById('ipv6-copy-btn');
+                if (ipv6CopyBtn) {
+                    ipv6CopyBtn.addEventListener('click', () => copyToClipboard(ipv6Data.ip, 'ipv6-copy-btn'));
+                }
+            }
+
+            // Fetch ISP and location data
+            let geoData = await fetchJSON('https://ipapi.co/json/');
+            if (!geoData || geoData.error) {
+                geoData = await fetchJSON('https://ipinfo.io/json');
+            }
+            if (!geoData || geoData.error) {
+                const whoisData = await fetchJSON('https://ipwho.is/');
+                if (whoisData && whoisData.success !== false) {
+                    geoData = {
+                        org: whoisData.connection?.org || whoisData.connection?.isp || null,
+                        isp: whoisData.connection?.isp || whoisData.connection?.org || null,
+                        city: whoisData.city || null,
+                        region: whoisData.region || whoisData.regionName || null,
+                        country_name: whoisData.country || null
+                    };
+                }
+            }
+
+            if (geoData) {
+                const isp = geoData.org || geoData.isp || null;
+                const locationParts = [
+                    geoData.city,
+                    geoData.region || geoData.regionName,
+                    geoData.country_name || geoData.country
+                ].filter(Boolean);
+                const location = locationParts.length > 0 ? locationParts.join(', ') : null;
+
+                // Determine network type
+                let networkType = '—';
+                if (isp) {
+                    const ispLower = isp.toLowerCase();
+                    if (['aws', 'amazon', 'google', 'gcp', 'azure', 'microsoft', 'cloudflare', 'ovh', 'hetzner', 'digitalocean', 'linode', 'vultr'].some(term => ispLower.includes(term))) {
+                        networkType = 'Likely data-center/VPN';
+                    } else {
+                        networkType = 'Likely home/office ISP';
+                    }
+                }
+
+                updateDisplay('ip-isp', isp);
+                updateDisplay('ip-location', location);
+                updateDisplay('ip-network-type', networkType);
+
+                const infoGrid = document.getElementById('ip-info-grid');
+                if (infoGrid) infoGrid.style.display = 'grid';
+            }
+        })();
+
+        // Theme toggle
+        (function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    const html = document.documentElement;
+                    const currentMode = html.getAttribute('data-mode') || 'light';
+                    const newMode = currentMode === 'dark' ? 'light' : 'dark';
+                    html.setAttribute('data-mode', newMode);
+                    try {
+                        localStorage.setItem('thewebknows-theme', newMode);
+                    } catch (e) {}
+                    
+                    const label = themeToggle.querySelector('.theme-toggle__label');
+                    if (label) label.textContent = newMode === 'dark' ? 'Light' : 'Dark';
+                    themeToggle.setAttribute('aria-pressed', newMode === 'dark' ? 'true' : 'false');
+                });
+            }
+        })();
+
+        // Defer AdSense script loading until after page load
+        window.addEventListener('load', function() {
+            var script = document.createElement('script');
+            script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9160600423347839';
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            document.head.appendChild(script);
+        });
+    </script>
+</body>
+</html>
+
